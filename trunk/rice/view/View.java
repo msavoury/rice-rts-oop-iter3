@@ -13,6 +13,8 @@ import java.awt.event.KeyListener;
  */
 public class View implements ControllableView{
 
+    private ScreenManager screenManager;
+
     public View(){
         
     }

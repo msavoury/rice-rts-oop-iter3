@@ -9,6 +9,6 @@ package rice.view;
  *
  * @author spock
  */
-public class KeyBindingScreen {
+class KeyBindingScreen {
 
 }

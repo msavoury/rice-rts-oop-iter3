@@ -10,5 +10,5 @@ package rice.view;
  * @author spock
  */
 public interface SOVisitor {
-
+    public abstract void visit(ViewableStructure s);
 }

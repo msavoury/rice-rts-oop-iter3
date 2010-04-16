@@ -5,10 +5,12 @@
 
 package rice.view;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author spock
  */
 public interface ViewableLocatable {
-
+    public abstract Dimension getLocatiom();
 }

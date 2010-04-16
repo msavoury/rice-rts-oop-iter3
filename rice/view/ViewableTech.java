@@ -10,5 +10,9 @@ package rice.view;
  * @author spock
  */
 public interface ViewableTech {
-
+    public abstract int getLevel();
+    public abstract int getMaxLevel();
+    public abstract double getProgress();
+    public abstract ViewableStructure getUniversity();
+    public abstract void accept(TOVisitor t);
 }

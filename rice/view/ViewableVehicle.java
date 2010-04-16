@@ -10,5 +10,5 @@ package rice.view;
  * @author spock
  */
 public interface ViewableVehicle {
-
+    public abstract int getCapacity();
 }

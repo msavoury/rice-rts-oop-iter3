@@ -5,17 +5,32 @@
 
 package rice.view;
 
+import java.awt.event.KeyListener;
+
 /**
  *
  * @author spock
  */
-public class View {
+public class View implements ControllableView{
 
     public View(){
         
     }
 
     public void refresh(){
+    }
+
+    public void switchMode(String type){
+
+    }
+
+    public void addKeyListener(KeyListener k){
+
+    }
+
+
+    public void removeKeyListener(KeyListener k){
+
     }
 
 }

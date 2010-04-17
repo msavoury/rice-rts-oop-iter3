@@ -53,4 +53,14 @@ public class Position {
 		this.setY(position.getY());
 	}	
 
+	public boolean equals(Position position)
+	{
+		return ((this.getX()==position.getX()) && (this.getY()==position.getY()));
+	}
+	
+	public String toString()
+	{
+		return ("["+this.getX()+","+this.getY()+"]");
+	}
+	
 }

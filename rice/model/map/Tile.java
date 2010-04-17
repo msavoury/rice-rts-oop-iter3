@@ -1,13 +1,18 @@
 package rice.model.map;
 
+import util.Position;
+
 public abstract class Tile
 {
-	private int posX;
-	private int posY;
+	private Position position;
 	
-	Tile(int x, int y)
+	Tile(Position position)
 	{
-		this.posX=x;
-		this.posY=y;
+		this.position=position;
+	}
+	
+	public Position getPosition()
+	{
+		return this.position;
 	}
 }

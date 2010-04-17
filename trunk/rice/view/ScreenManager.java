@@ -36,15 +36,20 @@ class ScreenManager extends JFrame{
     private GLCanvas canvas;
     private FPSAnimator fpsanim;
     private ArrayList<GameGraphic> screens;
+    private GameGraphic currentScreen;
 
     ScreenManager(boolean fullScreen){
-        
+
+        screens = new ArrayList<GameGraphic>();
+
         screens.add(new TitleScreen());
         screens.add(new MainScreen());
         screens.add(new UnitOverviewScreen());
         screens.add(new StructureOverviewScreen());
         screens.add(new TechOverviewScreen());
         screens.add(new KeyBindingScreen());
+
+        //currentScreen
 
         if(fullScreen){
             GraphicsEnvironment ge = GraphicsEnvironment

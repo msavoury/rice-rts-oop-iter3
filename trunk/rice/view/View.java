@@ -17,6 +17,7 @@ public class View implements ControllableView{
 
     public View(){
         screenManager = new ScreenManager(true);
+        screenManager.requestFocusInWindow();
     }
 
     public void refresh(){
@@ -27,12 +28,12 @@ public class View implements ControllableView{
     }
 
     public void addKeyListener(KeyListener k){
-
+        screenManager.addKeyListener(k);
     }
 
 
     public void removeKeyListener(KeyListener k){
-
+        screenManager.removeKeyListener(k);
     }
 
 }

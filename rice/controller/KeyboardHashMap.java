@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package controller;
+package rice.controller;
 
 import java.util.HashMap;
 import java.io.File;

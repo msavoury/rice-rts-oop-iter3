@@ -3,6 +3,7 @@ package rice.model.structures;
 import java.util.List;
 
 import rice.model.map.AreaTile;
+import rice.model.player.Player;
 import rice.model.unit.Unit;
 import rice.model.unit.UnitOwner;
 
@@ -10,7 +11,7 @@ public class Capital extends HarvestingStructure implements UnitOwner, OreHarves
 {
 	public Capital(int id, Player owner)
 	{
-		
+	   super("Capital", id, owner);	
 	}
 
 	@Override

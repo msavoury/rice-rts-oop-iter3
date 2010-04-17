@@ -1,10 +1,12 @@
 package rice.model.structures;
 
+import rice.model.player.Player;
+
 public class University extends Structure {
 	
 	public University(int id, Player owner)
 	{
-		
+		super("University", id, owner);
 	}
 
 	@Override

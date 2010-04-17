@@ -6,6 +6,7 @@
 package rice.model.unit;
 
 import rice.model.Controllable;
+import rice.model.player.Player;
 import rice.view.ViewableUnit;
 
 /**
@@ -14,7 +15,12 @@ import rice.view.ViewableUnit;
  */
 public abstract class Unit extends Controllable implements ViewableUnit {
 
-     public int getHealth() {
+     public Unit(String typeName, int id, Player owner) {
+		super("Unit", id, owner);
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getHealth() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

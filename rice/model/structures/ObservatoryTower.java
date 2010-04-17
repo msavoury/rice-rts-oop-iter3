@@ -1,10 +1,12 @@
 package rice.model.structures;
 
+import rice.model.player.Player;
+
 public class ObservatoryTower extends Structure {
 
 	public ObservatoryTower(int id, Player owner)
 	{
-		
+		super("Observatory", id, owner);
 	}
 	
 	@Override

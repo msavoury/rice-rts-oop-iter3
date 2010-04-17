@@ -5,6 +5,7 @@
 
 package rice.model.unit;
 
+import rice.model.player.Player;
 import rice.view.MSVisitor;
 import rice.view.UOVisitor;
 
@@ -13,7 +14,11 @@ import rice.view.UOVisitor;
  * @author Marcos
  */
 public class Melee extends Unit {
-  public void accept(MSVisitor v){
+  public Melee(String typeName, int id, Player owner) {
+		super(typeName, id, owner);
+		// TODO Auto-generated constructor stub
+	}
+public void accept(MSVisitor v){
 
     }
   public void accept(UOVisitor u) {

@@ -2,6 +2,7 @@ package rice.model.structures;
 
 import java.util.List;
 
+import rice.model.player.Player;
 import rice.model.unit.Unit;
 import rice.model.unit.UnitOwner;
 
@@ -9,7 +10,7 @@ public class Fort extends Structure implements UnitOwner
 {
 	public Fort(int id, Player owner)
 	{
-		
+		super("Fort", id, owner);
 	}
 
 	@Override

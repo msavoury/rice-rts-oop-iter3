@@ -23,7 +23,7 @@ public class RunGame {
         if (args.length > 0){
           fullScreenMode = (args[0].equals("true"));
         }
-        View view = new View(fullScreenMode);
+        View view = new View(fullScreenMode, model);
         controller.registerModel(model);
         controller.registerView(view);
         controller.start();

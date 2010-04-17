@@ -101,7 +101,7 @@ public class Controller extends KeyAdapter implements ActionListener
 
 // accessor functions
 // -----------------------------------------------------------------------------
-       int getTickNum()
+       public int getTickNum()
        {
 	   return tickCounter;
        }

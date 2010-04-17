@@ -77,30 +77,21 @@ class MainScreen extends GameGraphic{
                         for(int rpInc = 0; rpInc < /*rp.size()*/10; ++rpInc){
                             //rp.get(rpInc).getStatus();
                             //rp.get(rpInc).getDirection();
-                            /*thingsToDraw.add(new SelfDrawingImage(  "testArrow",
-                                                                    tileCenterx ,
-                                                                    tileCentery ,
-                                                                    tileCenterx + .03,
-                                                                    tileCentery + .03));*/
-                            thingsToDraw.add(new SelfDrawingImage(  "testArrow",
-                                                                    tileCenterx + .015*polarX(Math.PI/5*(rpInc), .1),
-                                                                    tileCentery + (-1)*.015*polarY(Math.PI/5*(rpInc), .1),
-                                                                    tileCenterx + .015*polarX(Math.PI/5*(rpInc), .1) + .033,
-                                                                    tileCentery + (-1)*.015*polarY(Math.PI/5*(rpInc), .1)+ .033));
-                            System.out.println(tileCenterx + .015*polarX(Math.PI/5*(rpInc), .1));
-                            System.out.println(tileCentery + (-1)*.015*polarY(Math.PI/5*(rpInc), .1));
-
-                            /*
-                             * graphix.drawImage(graphicsT.getGraphic(imageArrow), centerX + (int)polarX(Math.PI/5*(i), 65.0)-spacing,
-                                  centerY + (-1)*(int)polarY(Math.PI/5*(i), 70.0)-spacing, null);
-                                graphix.setColor(Color.WHITE);
-                                graphix.drawString(""+rallyPoints.get(i).rallyPoint(), centerX + (int)polarX(Math.PI/5*(i), 50.0),
-                                  centerY + (-1)*(int)polarY(Math.PI/5*(i), 50.0));
-                             */
-
+                            thingsToDraw.add(new SelfDrawingImage(  "arrowGreenNW",
+                                                                    tileCenterx + polarX(Math.PI/5*(rpInc), .07) - .016,
+                                                                    tileCentery + (-1)*polarY(Math.PI/5*(rpInc), .07)*screenRatio- .016,
+                                                                    tileCenterx + polarX(Math.PI/5*(rpInc), .07) + .033- .016,
+                                                                    tileCentery + (-1)*polarY(Math.PI/5*(rpInc), .07)*screenRatio+ .033- .016));
+                            thingsToDraw.add(new SelfDrawingImage(  "arrowRedS",
+                                                                    tileCenterx + polarX(Math.PI/5*(rpInc), .05) - .012,
+                                                                    tileCentery + (-1)*polarY(Math.PI/5*(rpInc), .05)*screenRatio- .012,
+                                                                    tileCenterx + polarX(Math.PI/5*(rpInc), .05) + .02- .012,
+                                                                    tileCentery + (-1)*polarY(Math.PI/5*(rpInc), .05)*screenRatio+ .02- .012));
                         }
                     }
-
+                    /*if(map[i][j].getStructure()!=null){
+                        //thingsToDraw.add();
+                    }*/
                 }
             }
         }

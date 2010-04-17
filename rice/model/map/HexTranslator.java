@@ -23,7 +23,7 @@ public class HexTranslator extends MapPositionTranslator
 
 	
 	//return direction depending angle
-	public int getDirection(double angle)
+	private int getDirection(double angle)
 	{
 		return ((int)angle % 360)/60;
 	}
@@ -35,7 +35,7 @@ public class HexTranslator extends MapPositionTranslator
 	}
 
 	//return adjacent position depending on current position and direction
-	public Position getAdjecentPosition(Position position, int direction)
+	private Position getAdjecentPosition(Position position, int direction)
 	{
 		Position newPosition = new Position();
 		switch (direction)
@@ -82,8 +82,7 @@ public class HexTranslator extends MapPositionTranslator
 					posiotions.add(newPosition);
 				}
 			}
-		}		
-		
+		}				
 		return posiotions;
 	}
 

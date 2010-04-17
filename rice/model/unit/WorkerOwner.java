@@ -18,6 +18,4 @@ public interface WorkerOwner {
    */
    public int removeWorkers();
    public int removeIdleWorkers(int num );
-   public void assignToResource();
-   public void unassignFromResource();
 }

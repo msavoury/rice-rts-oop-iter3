@@ -7,7 +7,7 @@ package rice.model.map;
 
 import rice.model.Controllable;
 import rice.model.accessories.Accessory;
-import util.Position;
+import rice.util.Position;
 
 /**
  *

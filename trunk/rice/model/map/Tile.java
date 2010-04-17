@@ -1,6 +1,6 @@
 package rice.model.map;
 
-import util.Position;
+import rice.util.Position;
 
 public abstract class Tile
 {

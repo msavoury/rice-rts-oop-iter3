@@ -1,18 +1,18 @@
 package rice.model.map;
 
 import java.util.List;
-import util.Position;
 import rice.model.Controllable;
 import rice.model.accessories.Accessory;
+import rice.util.Position;
 
 
 public class AreaMap extends Map
 {
 	private static AreaMap instance;
 	
-	public AreaMap(int[][] terrain)
+	public AreaMap(int[][] terrain, MapPositionTranslator mpt)
 	{
-		super();
+		super(mpt);
 		instance=this;
 		
 		int w=terrain[0].length;

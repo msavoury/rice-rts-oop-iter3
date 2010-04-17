@@ -1,7 +1,8 @@
 package rice.model.map;
 
 import java.util.List;
-import util.Position;
+
+import rice.util.Position;
 
 public abstract class Map {
 	private Tile[][] tiles;
@@ -9,9 +10,9 @@ public abstract class Map {
 	private int height;
 	private MapPositionTranslator mpt;
 	
-	public Map()
+	public Map(MapPositionTranslator mpt)
 	{
-		
+		this.mpt=mpt;
 	}
 	
 	//Set the tiles

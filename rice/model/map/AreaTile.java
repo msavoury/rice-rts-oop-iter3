@@ -5,8 +5,8 @@
 
 package rice.model.map;
 
-import rice.model.Accessory;
 import rice.model.Controllable;
+import rice.model.accessories.Accessory;
 import util.Position;
 
 /**
@@ -14,17 +14,26 @@ import util.Position;
  * @author Marcos
  */
 public class AreaTile extends Tile {
-   // AreaTile(int x, int y,) {
-    //AreaTile(int x, int y){
-      //super(x,y);
-   // }
-   AreaTile (Position p){
-       super(p);
-   }
-
+	private int terrain;
+	private int passabilityLevel;
+	
    AreaTile(Position p, int terrainType){
        super(p);
+       this.terrain=terrainType;
+       this.passabilityLevel=terrainType;
        //todo: set terraintype
+   }
+   
+   //return passability level
+   public int getPassabilityLevel()
+   {
+	   return this.passabilityLevel;
+   }
+   
+   //change passability level
+   public void changePassabilityLevel(int value)
+   {
+	   this.passabilityLevel+=value;
    }
 
    public void putControllable(Controllable c){

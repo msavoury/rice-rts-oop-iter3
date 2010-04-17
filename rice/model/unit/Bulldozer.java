@@ -5,6 +5,7 @@
 
 package rice.model.unit;
 
+import java.util.List;
 import rice.view.MSVisitor;
 import rice.view.UOVisitor;
 
@@ -23,6 +24,18 @@ public class Bulldozer extends COV {
     }
 
     public int getCapacity() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void addUnit(Unit u) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void removeUnit(Unit u) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public List<Unit> getAllUnits() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

@@ -15,6 +15,12 @@ public abstract class Map {
 		this.mpt=mpt;
 	}
 	
+	//returns the MapPositionTranslator
+	public MapPositionTranslator getMapPositionTranslator()
+	{
+		return this.mpt;
+	}
+	
 	//Set the tiles
 	void setTiles(Tile[][] tiles)
 	{

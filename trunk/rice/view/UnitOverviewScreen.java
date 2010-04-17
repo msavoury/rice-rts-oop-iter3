@@ -9,6 +9,6 @@ package rice.view;
  *
  * @author spock
  */
-class UnitOverviewScreen {
+class UnitOverviewScreen extends GameGraphic{
 
 }

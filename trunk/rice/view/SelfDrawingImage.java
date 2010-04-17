@@ -9,6 +9,6 @@ package rice.view;
  *
  * @author spock
  */
-class SelfDrawingImage {
+class SelfDrawingImage extends SelfDrawingObject{
 
 }

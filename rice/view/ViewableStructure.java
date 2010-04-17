@@ -9,7 +9,7 @@ package rice.view;
  *
  * @author spock
  */
-public interface ViewableStructure {
+public interface ViewableStructure extends ViewableLocatable{
     public abstract int getHealth();
     public abstract int getArmor();
     public abstract int getAttack();

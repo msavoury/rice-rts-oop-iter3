@@ -9,6 +9,6 @@ package rice.view;
  *
  * @author spock
  */
-public interface ViewableVehicle {
+public interface ViewableVehicle extends ViewableUnit{
     public abstract int getCapacity();
 }

@@ -9,7 +9,7 @@ package rice.view;
  *
  * @author spock
  */
-public interface ViewableTech {
+public interface ViewableTech extends Viewable{
     public abstract int getLevel();
     public abstract int getMaxLevel();
     public abstract double getProgress();

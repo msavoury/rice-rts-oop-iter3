@@ -11,6 +11,6 @@ import java.awt.Dimension;
  *
  * @author spock
  */
-public interface ViewableLocatable {
+public interface ViewableLocatable extends Viewable{
     public abstract Dimension getLocatiom();
 }

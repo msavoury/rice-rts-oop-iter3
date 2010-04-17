@@ -5,13 +5,18 @@
 
 package rice.model;
 
+import rice.view.Viewable;
+
 
 /**
  *
  * @author Marcos
  */
-public abstract class Controllable extends Locatable {
+public abstract class Controllable extends Locatable implements Viewable {
   private int id;
-  
+
+  public String getType() {
+      return this.getTypeName();
+  }
    
 }

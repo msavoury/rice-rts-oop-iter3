@@ -5,46 +5,38 @@
 
 package rice.model.unit;
 
-import rice.model.Controllable;
-import rice.view.ViewableUnit;
+import java.util.List;
+import rice.view.MSVisitor;
+import rice.view.UOVisitor;
 
 /**
  *
  * @author Marcos
  */
-public abstract class Unit extends Controllable implements ViewableUnit {
+public class Transporter extends Vehicle {
 
-     public int getHealth() {
+    public void accept(UOVisitor u) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public int getSpeed() {
+    public void accept(MSVisitor m) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public int getArmor() {
+    public int getCapacity() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public int getAttack() {
+    public void addUnit(Unit u) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public int getDefense() {
+    public void removeUnit(Unit u) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public String getStatus() {
+    public List<Unit> getAllUnits() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
-    public int getSize() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public int getID() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
 
 }

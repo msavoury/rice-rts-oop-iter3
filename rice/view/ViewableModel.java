@@ -15,9 +15,6 @@ import java.util.List;
 public interface ViewableModel {
 
     public abstract void receiveMainScreenVisitor(MSVisitor m);
-    public abstract void receiveStructureOverviewScreenVisitor(SOVisitor s);
-    public abstract void receiveUnitOverviewScreenVisitor(UOVisitor u);
-    public abstract void receiveTechOverviewScreenVisitor(TOVisitor u);
     public abstract String getCurrentlySelectedMode();
     public abstract String getCurrentlySelectedType();
     public abstract String getCurrentlySelectedInstance();

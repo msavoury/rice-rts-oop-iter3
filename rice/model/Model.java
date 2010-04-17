@@ -5,13 +5,14 @@
 
 package rice.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import rice.model.map.AreaMap;
+import rice.model.player.Player;
+import rice.util.Position;
 import rice.view.MSVisitor;
-import rice.view.SOVisitor;
-import rice.view.TOVisitor;
-import rice.view.UOVisitor;
 import rice.view.ViewableModel;
 import rice.view.ViewableRallyPoint;
 import rice.view.ViewableStructure;
@@ -24,20 +25,39 @@ import rice.view.ViewableUnit;
  */
 public class Model implements ViewableModel {
 
+	private Player[] players;
+	private Player mainPlayer;
 	
 	
 	public Model() {
       MapInitializer mi = new MapInitializer();
       mi.parse();
-		//make map initializer
-		//make new map
-		//set map stuff from initializer
-		//make players
-		//set player stuff
+      
+      AreaMap.setTerrain(mi.getTerrain());
+      AreaMap.setTranslator(mi.getTranslator());
+      
+      //start debug
+      //this should be changed so that the area map gets its position
+      //list from the initializer as well
+      List list = new ArrayList<Position>();
+      list.add(new Position());
+      list.add(new Position());
+      AreaMap.setPositions(list);
+      //end debug
+            
+      
+	  //make players
+      players = new Player[2];
+      players[0] = new Player();
+      players[1] = new Player();
+      mainPlayer = players[0];
+	  //set player stuff
 	}
 
     public void tick(){
-        
+        for(Player p : players){
+        	p.tick();
+        }
     }
 
 	@Override

@@ -10,6 +10,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import rice.model.map.HexTranslator;
+import rice.model.map.MapPositionTranslator;
+
 /**
  * This class represents the party responisble of reading a file and parsing it appropriately
  * for the Map to be initialized.
@@ -96,7 +99,16 @@ public class MapInitializer {
 		}
 	  }
 	
+	public MapPositionTranslator getTranslator() {
+		//TODO: have this come from value in file
+		return new HexTranslator();
+		
+			
+	}
+	
 }
+
+
 
 abstract class InitializerState {
 	MapInitializer m;

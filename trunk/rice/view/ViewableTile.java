@@ -12,7 +12,7 @@ import java.util.HashMap;
  *
  * @author spock
  */
-public interface ViewableTile {
+public interface ViewableTile extends ViewableLocatable{
     public abstract Dimension getLocation();
     public abstract String getFlow();
     public abstract String getItem();

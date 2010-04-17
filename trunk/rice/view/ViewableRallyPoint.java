@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author spock
  */
-public interface ViewableRallyPoint {
+public interface ViewableRallyPoint extends ViewableLocatable{
     public abstract List<ViewableUnit> getAllUnits();
     public abstract List<ViewableUnit> getSupportGroup();
     public abstract List<ViewableUnit> getBattleGroup();

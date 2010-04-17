@@ -5,6 +5,8 @@
 
 package rice.view;
 
+import rice.model.Model;
+
 import java.awt.event.KeyListener;
 
 /**
@@ -25,6 +27,9 @@ public class View implements ControllableView{
 
     public void switchMode(String type){
 
+    }
+
+    public void setModel(Model m){
     }
 
     public void addKeyListener(KeyListener k){

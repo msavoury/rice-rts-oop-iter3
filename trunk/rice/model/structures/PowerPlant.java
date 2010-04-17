@@ -1,12 +1,13 @@
 package rice.model.structures;
 
 import rice.model.map.AreaTile;
+import rice.model.player.Player;
 
 public class PowerPlant extends HarvestingStructure implements EnergyHarvester 
 {
 	public PowerPlant(int id, Player owner)
 	{
-		
+		super("Power Plant", id, owner);
 	}
 
 	@Override

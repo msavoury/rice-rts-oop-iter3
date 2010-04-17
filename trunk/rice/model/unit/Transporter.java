@@ -6,6 +6,8 @@
 package rice.model.unit;
 
 import java.util.List;
+
+import rice.model.player.Player;
 import rice.view.MSVisitor;
 import rice.view.UOVisitor;
 
@@ -15,7 +17,12 @@ import rice.view.UOVisitor;
  */
 public class Transporter extends Vehicle {
 
-    public void accept(UOVisitor u) {
+    public Transporter(String typeName, int id, Player owner) {
+		super(typeName, id, owner);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void accept(UOVisitor u) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

@@ -16,9 +16,14 @@ import rice.view.View;
 public class RunGame {
 
     public static void main(String args[]){
+    	boolean fullScreenMode = false;
+    	
         Model model = new Model();
         Controller controller = new Controller();
-        View view = new View(args[0].equals("true"));
+        if (args.length > 0){
+          fullScreenMode = (args[0].equals("true"));
+        }
+        View view = new View(fullScreenMode);
         controller.registerModel(model);
         controller.registerView(view);
         controller.start();

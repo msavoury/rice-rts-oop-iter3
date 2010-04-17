@@ -5,6 +5,7 @@
 
 package rice.model;
 
+import rice.model.player.Player;
 import rice.view.Viewable;
 
 

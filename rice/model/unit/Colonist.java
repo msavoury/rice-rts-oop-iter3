@@ -19,7 +19,10 @@ public class Colonist extends Unit {
 		super(typeName, id, owner);
 		// TODO Auto-generated constructor stub
 	}
-
+    public boolean isSoldier() {
+		return false;
+	}
+    
 	public void accept(UOVisitor u) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

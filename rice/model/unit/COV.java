@@ -18,4 +18,5 @@ public abstract class COV extends Vehicle {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 }

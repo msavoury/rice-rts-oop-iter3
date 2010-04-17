@@ -27,5 +27,9 @@ public class Explorer extends Unit{
     public void accept(MSVisitor m) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+    public boolean isSoldier() {
+		return false;
+	}
 
 }

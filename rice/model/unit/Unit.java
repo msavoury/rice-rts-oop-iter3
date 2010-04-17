@@ -16,31 +16,22 @@ import rice.view.ViewableUnit;
  * @author Marcos
  */
 public abstract class Unit extends Controllable implements ViewableUnit {
-
+     private int speed;
+     private int size;
+	
      public Unit(String typeName, int id, Player owner) {
 		super("Unit", id, owner);
 		// TODO Auto-generated constructor stub
-	}
+	 }
 
-	public int getHealth() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+    public abstract boolean isSoldier();
+    
     public int getSpeed() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.speed;
     }
 
-    public int getArmor() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public int getAttack() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public int getDefense() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+   
+   
 
     public String getStatus() {
         throw new UnsupportedOperationException("Not supported yet.");

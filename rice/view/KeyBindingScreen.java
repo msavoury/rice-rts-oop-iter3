@@ -9,6 +9,6 @@ package rice.view;
  *
  * @author spock
  */
-class KeyBindingScreen {
+class KeyBindingScreen extends GameGraphic{
 
 }

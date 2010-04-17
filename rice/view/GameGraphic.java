@@ -5,10 +5,28 @@
 
 package rice.view;
 
+import javax.media.opengl.GL;
+
 /**
  *
  * @author spock
  */
-class GameGraphic {
+abstract class GameGraphic {
+    private boolean activated = false;
+
+    boolean activate(String s){
+        return false;
+    }
+
+    void deactivate(){
+
+    }
+
+    boolean getActivated(){
+        return activated;
+    }
+
+    void refresh(){
+    }
 
 }

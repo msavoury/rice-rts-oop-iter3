@@ -16,7 +16,7 @@ public class View implements ControllableView{
     private ScreenManager screenManager;
 
     public View(){
-        
+        screenManager = new ScreenManager(true);
     }
 
     public void refresh(){

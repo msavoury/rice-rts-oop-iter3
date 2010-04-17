@@ -9,6 +9,6 @@ package rice.view;
  *
  * @author spock
  */
-class TechOverviewScreen {
+class TechOverviewScreen extends GameGraphic{
 
 }

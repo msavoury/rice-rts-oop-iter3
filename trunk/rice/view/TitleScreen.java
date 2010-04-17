@@ -7,6 +7,7 @@ package rice.view;
 
 import javax.media.opengl.GL;
 import com.sun.opengl.util.j2d.TextRenderer;
+import java.awt.Color;
 import javax.media.opengl.GLAutoDrawable;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ class TitleScreen extends GameGraphic{
         drawItems.add(new SelfDrawingImage("rice", .15, .70, .30, .85));
         drawItems.add(new SelfDrawingImage("rice", .70, .15, .85, .30));
         drawItems.add(new SelfDrawingImage("rice", .70, .70, .85, .85));
+        drawItems.add(new SelfDrawingBar(.25, .25, .75, .75, Color.RED));
         drawItems.add(new SelfDrawingText("RICE", .4, .55));
     }
 

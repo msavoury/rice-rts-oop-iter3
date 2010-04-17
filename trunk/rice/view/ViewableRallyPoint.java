@@ -15,6 +15,8 @@ public interface ViewableRallyPoint extends ViewableLocatable{
     public abstract List<ViewableUnit> getAllUnits();
     public abstract List<ViewableUnit> getSupportGroup();
     public abstract List<ViewableUnit> getBattleGroup();
+    public abstract String getDirection();
+    public abstract String getStatus();
     public abstract int getSpeed();
     public abstract int getAttack();
     public abstract int getDefense();

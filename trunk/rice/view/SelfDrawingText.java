@@ -31,7 +31,7 @@ class SelfDrawingText extends SelfDrawingObject{
         renderer.beginRendering(drawable.getWidth(), drawable.getHeight());
 
         renderer.setColor(Color.WHITE);
-        renderer.draw(text, (int)(x*drawable.getHeight()), (int)(y*drawable.getWidth()));
+        renderer.draw(text, (int)(x*drawable.getWidth()), (int)(y*drawable.getHeight()));
 
         renderer.endRendering();
     }

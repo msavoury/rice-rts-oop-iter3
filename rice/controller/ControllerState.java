@@ -1,0 +1,23 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package controller;
+
+/**
+ *
+ * @author Chris
+ */
+abstract class ControllerState
+{
+    void processCommand( String command )
+    {
+
+    }
+
+    void activated( String command )
+    {
+	
+    }
+}

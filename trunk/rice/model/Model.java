@@ -59,6 +59,10 @@ public class Model implements ViewableModel {
         	p.tick();
         }
     }
+    
+    public void tick(int tickNum){
+    	tick();
+    }
 
 	@Override
 	public List<ViewableStructure> getAllStructures() {

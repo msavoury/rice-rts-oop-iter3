@@ -24,4 +24,7 @@ public void accept(MSVisitor v){
   public void accept(UOVisitor u) {
   //      throw new UnsupportedOperationException("Not supported yet.");
   }
+  public boolean isSoldier() {
+		return true;
+	}
 }

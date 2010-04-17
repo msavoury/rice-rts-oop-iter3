@@ -19,4 +19,7 @@ public abstract class Vehicle extends Unit implements ViewableVehicle, UnitOwner
 		// TODO Auto-generated constructor stub
 	}
 
+	public boolean isSoldier() {
+		return false;
+	}
 }

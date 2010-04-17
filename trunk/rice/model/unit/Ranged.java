@@ -19,6 +19,10 @@ public class Ranged extends Unit{
 		super(typeName, id, owner);
 		// TODO Auto-generated constructor stub
 	}
+    
+    public boolean isSoldier() {
+		return true;
+	}
 
 	public void accept(UOVisitor u) {
         throw new UnsupportedOperationException("Not supported yet.");

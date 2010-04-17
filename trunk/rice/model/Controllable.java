@@ -11,7 +11,7 @@ import java.util.List;
 import rice.model.command.Command;
 import rice.model.player.Player;
 import rice.view.Viewable;
-import util.Position;
+import rice.util.Position;
 
 
 /**

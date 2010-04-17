@@ -57,21 +57,27 @@ public class HexTranslator extends MapPositionTranslator
 		case UP_RIGHT:
 			newPosition.setX(position.getX()+1);
 			newPosition.setY(((position.getX() % 2)==0 ? position.getY()-1 : position.getY()));
+			break;
 		case UP:
 			newPosition.setX(position.getX());
 			newPosition.setY(position.getY()-1);
+			break;
 		case UP_LEFT:
 			newPosition.setX(position.getX()-1);
 			newPosition.setY(((position.getX() % 2)==0 ? position.getY()-1 : position.getY()));
+			break;
 		case DOWN_LEFT:
 			newPosition.setX(position.getX()-1);
 			newPosition.setY(((position.getX() % 2)==1 ? position.getY()+1 : position.getY()));
+			break;
 		case DOWN:
 			newPosition.setX(position.getX());
 			newPosition.setY(position.getY()+1);
+			break;
 		case DOWN_RIGHT:
 			newPosition.setX(position.getX()+1);
 			newPosition.setY(((position.getX() % 2)==1 ? position.getY()+1 : position.getY()));
+			break;
 		default:
 			newPosition.set(position);
 		}

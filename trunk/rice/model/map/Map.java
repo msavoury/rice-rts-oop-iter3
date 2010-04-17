@@ -64,7 +64,7 @@ public abstract class Map {
 	//return adjacent position depending on current position and angle
 	public Position getAdjecentPosition(Position position, double angle)
 	{
-		return this.mpt.getAdjecentPosition(position, angle);
+		return this.mpt.getAdjecentPosition(position, this.mpt.getDirection(angle));
 	}
 	
 	//return a list of positions surrounding the origin with a certain radius

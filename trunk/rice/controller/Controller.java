@@ -40,6 +40,8 @@ public class Controller extends KeyAdapter implements ActionListener
        TechnologyState technologyState;
        KeyBindingState keyBindingState;
 
+       int tickCounter = 0;
+
        // START: Controller testing - variables
        JFrame frame;
        // END: Controller testing - variables
@@ -97,6 +99,12 @@ public class Controller extends KeyAdapter implements ActionListener
 	   }
        }
 
+// accessor functions
+// -----------------------------------------------------------------------------
+       int getTickNum()
+       {
+	   return tickCounter;
+       }
 // command processing via ControllerState delegation
 // -----------------------------------------------------------------------------
        
@@ -104,11 +112,12 @@ public class Controller extends KeyAdapter implements ActionListener
 // -----------------------------------------------------------------------------
        public void actionPerformed(ActionEvent e)
        {
+	   ++tickCounter;
            model.tick();
            for(View v: views)
 	   {
                v.refresh();
            }
-           System.out.println("Tick");
+           System.out.println("Tick " + tickCounter);
        }
 }

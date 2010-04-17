@@ -14,7 +14,23 @@ public abstract class Locatable {
     private AreaTile areaTile;
     private String typeName;
 
+    public Locatable(String typeName)
+    {
+    	this.typeName=typeName;
+    }
+    
     public String getTypeName() {
         return typeName;
     }
+    
+    public AreaTile getTile()
+    {
+    	return this.areaTile;
+    }
+    
+    public void setTile(AreaTile areaTile)
+    {
+    	this.areaTile=areaTile;
+    }
+ 
 }

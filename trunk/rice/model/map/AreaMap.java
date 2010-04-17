@@ -1,9 +1,9 @@
 package rice.model.map;
 
 import java.util.List;
-import rice.model.Accessory;
 import util.Position;
 import rice.model.Controllable;
+import rice.model.accessories.Accessory;
 
 
 public class AreaMap extends Map

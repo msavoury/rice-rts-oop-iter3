@@ -15,8 +15,8 @@ public class View implements ControllableView{
 
     private ScreenManager screenManager;
 
-    public View(){
-        screenManager = new ScreenManager(true);
+    public View(boolean fs){
+        screenManager = new ScreenManager(fs);
         screenManager.requestFocusInWindow();
     }
 

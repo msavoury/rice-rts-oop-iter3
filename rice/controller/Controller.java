@@ -101,10 +101,11 @@ public class Controller extends KeyAdapter implements ActionListener
 
 // accessor functions
 // -----------------------------------------------------------------------------
-       public int getTickNum()
+       private int getTickNum()
        {
 	   return tickCounter;
        }
+       
 // command processing via ControllerState delegation
 // -----------------------------------------------------------------------------
        
@@ -113,7 +114,7 @@ public class Controller extends KeyAdapter implements ActionListener
        public void actionPerformed(ActionEvent e)
        {
 	   ++tickCounter;
-           model.tick();
+           model.tick( getTickNum() );
            for(View v: views)
 	   {
                v.refresh();

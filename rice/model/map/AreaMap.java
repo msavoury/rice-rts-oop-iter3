@@ -121,7 +121,8 @@ public class AreaMap extends Map
 			{
 				//pop next position to check
 				Position currentPosition = positions.pop();
-				int value = pathMap.get(currentPosition);
+								
+				int value = pathMap.get(currentPosition.toString());
 				value++;
 				
 				//add all surrounding tiles to list of positions to visit

@@ -19,6 +19,7 @@ import com.sun.opengl.util.j2d.TextRenderer;
 import java.awt.Font;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 import javax.swing.JFrame;
@@ -35,10 +36,12 @@ class ScreenManager extends JFrame{
     private ArrayList<GameGraphic> screens;
     private GameGraphic currentScreen;
     private GraphicsTable graphics;
+    private ViewableModel model;
+    private HashMap<String, GameGraphic> screenSelector;
 
-    ScreenManager(boolean fullScreen){
-
+    ScreenManager(boolean fullScreen, ViewableModel model){
         
+        this.model = model;
 
         if(fullScreen){
             GraphicsEnvironment ge = GraphicsEnvironment
@@ -64,6 +67,10 @@ class ScreenManager extends JFrame{
         fpsanim = new FPSAnimator(canvas, 60);
         setVisible(true);
         this.validate();
+    }
+
+    void setMode(String mode){
+        currentScreen = screenSelector.get(mode);
     }
 
     class GListener implements GLEventListener {
@@ -105,13 +112,22 @@ class ScreenManager extends JFrame{
                 screens = new ArrayList<GameGraphic>();
 
                 screens.add(new TitleScreen());
-                screens.add(new MainScreen());
+                screens.add(new MainScreen(model));
                 screens.add(new UnitOverviewScreen());
                 screens.add(new StructureOverviewScreen());
                 screens.add(new TechOverviewScreen());
                 screens.add(new KeyBindingScreen());
 
-                currentScreen = screens.get(0);
+                screenSelector = new HashMap<String, GameGraphic>();
+
+                screenSelector.put("TitleScreen", screens.get(0));
+                screenSelector.put("MainScreen", screens.get(1));
+                screenSelector.put("UnitOverviewScreen", screens.get(2));
+                screenSelector.put("StructureOverviewScreen", screens.get(3));
+                screenSelector.put("TechOverviewScreen", screens.get(4));
+                screenSelector.put("KeyBindingScreen", screens.get(5));
+
+                currentScreen = screens.get(1);
             }
             catch (GLException e) {
                 e.printStackTrace();

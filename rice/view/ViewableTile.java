@@ -7,6 +7,7 @@ package rice.view;
 
 import java.awt.Dimension;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -19,7 +20,7 @@ public interface ViewableTile extends ViewableLocatable{
     public abstract String getDecal();
     public abstract String getObstacle();
     public abstract String getTerrainType();
-    public abstract ViewableRallyPoint getRallyPoint();
+    public abstract List<ViewableRallyPoint> getRallyPoints();
     public abstract String getStructure();
     public abstract HashMap<String, Integer> getResourceValues();
     public abstract ViewableResource getHarvestingResource();

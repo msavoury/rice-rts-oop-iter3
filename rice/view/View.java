@@ -5,7 +5,6 @@
 
 package rice.view;
 
-import rice.model.Model;
 
 import java.awt.event.KeyListener;
 
@@ -15,10 +14,12 @@ import java.awt.event.KeyListener;
  */
 public class View implements ControllableView{
 
+    ViewableModel model;
     private ScreenManager screenManager;
 
-    public View(boolean fs){
-        screenManager = new ScreenManager(fs);
+    public View(boolean fs, ViewableModel model){
+        this.model = model;
+        screenManager = new ScreenManager(fs, this.model);
         screenManager.requestFocusInWindow();
     }
 
@@ -26,10 +27,11 @@ public class View implements ControllableView{
     }
 
     public void switchMode(String type){
-
+        screenManager.setMode(type);
     }
 
-    public void setModel(Model m){
+    public void setModel(ViewableModel model){
+        this.model = model;
     }
 
     public void addKeyListener(KeyListener k){

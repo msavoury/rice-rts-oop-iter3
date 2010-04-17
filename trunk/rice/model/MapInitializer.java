@@ -7,24 +7,54 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * This class represents the party responisble of reading a file and parsing it appropriately
+ * for the Map to be initialized.
+ * 
+ * @author Marcos
+ *
+ */
 public class MapInitializer {
-	//File file;
-	
+	InitializerState state;
 	/**
 	 * The name of the default map to be used
 	 */
 	private String defaultFile = "rice/maps/testMap";
 	private String userFile;
 	
-	//public void setFile(File f){
-		
-	//}
+	List<int[]> terrainRows;
 	
+	public MapInitializer() {
+		this.state = new TerrainState(this);
+		terrainRows = new ArrayList<int[]>();
+	}
+		
 	public void setFile(String filename){
       this.userFile = filename;
 	}
 	
+	public void addTerrainRow(int[] row){
+		terrainRows.add(row);
+	}
+	
+	public int [][] getTerrain() {
+		//throw new UnsupportedOperationException();
+		int[][] terrains = new int[terrainRows.size()][terrainRows.get(0).length];
+		
+		for(int i = 0; i < terrainRows.size(); i++){
+			terrains[i] = terrainRows.get(i);
+		}
+		
+		return terrains;
+	}
+	
+	//
+	/**
+	 * Parse the map, the terrain section should be square 
+	 */
 	public void parse() {
 	 String userdir = System.getProperty("user.dir");
 	 System.out.println(userdir);
@@ -42,8 +72,18 @@ public class MapInitializer {
 			String strLine;
 			//Read File Line By Line\
 			 while ((strLine = br.readLine()) != null)   {
-			      // Print the content on the console
-				      System.out.println (strLine);
+			   if(strLine.startsWith("terrain")){
+				   state = new TerrainState(this);
+				   continue;
+			   }
+			   else if(strLine.startsWith("location")){
+				   state = new LocationState(this);
+				   continue;
+			   }
+			   else if (strLine.startsWith("/")){ //for comments
+				   continue;
+			   }
+			   state.processLine(strLine);
 			 }
 			  //Close the input stream
 			in.close();
@@ -55,5 +95,61 @@ public class MapInitializer {
 			e.printStackTrace();
 		}
 	  }
-	     
+	
+}
+
+abstract class InitializerState {
+	MapInitializer m;
+	public InitializerState(MapInitializer m){
+	  this.m = m;	
+	}
+	
+	abstract void processLine(String s);
+		
+	
+}
+
+/**
+ * Process a terrain line
+ * @author Marcos
+ *
+ */
+class TerrainState extends InitializerState {
+
+	public TerrainState(MapInitializer m) {
+		super(m);
+		// TODO Auto-generated constructor stub
+	}
+	
+	void processLine(String s){
+	  //System.out.println("terrain state " + s);
+	  String[] terrains = s.split(",");
+	  int[] translated = new int[terrains.length];
+	  try {
+	    for(int i = 0; i< terrains.length; i++){
+		    translated[i] = Integer.parseInt(terrains[i]);
+	    }
+	    m.addTerrainRow(translated);
+	  }
+	  catch(NumberFormatException e){
+		  e.printStackTrace();
+	  }
+	}
+	
+}
+
+class LocationState extends InitializerState {
+
+	public LocationState(MapInitializer m) {
+		super(m);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	void processLine(String s) {
+		// TODO Auto-generated method stub
+		  System.out.println("location state " + s);	
+	
+	}
+	
 }

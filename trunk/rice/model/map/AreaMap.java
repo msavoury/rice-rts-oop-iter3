@@ -16,6 +16,9 @@ public class AreaMap extends Map
 {
 	private static AreaMap instance;
 	private List<Position> startingPositions;
+	private static int [][] terrain;
+	private static MapPositionTranslator mpt;
+	private static List<Position> staticPositions;
 	
 	public AreaMap(int[][] terrain, MapPositionTranslator mpt, List<Position> startingPositions)
 	{
@@ -39,9 +42,24 @@ public class AreaMap extends Map
 		this.setHeight(h);
 	}
 	
+	public static void setTranslator(MapPositionTranslator m){
+		mpt = m;
+	}
+	
+	public static void setTerrain(int [][] t){
+		terrain = t;
+	}
+	
+	public static void setPositions(List<Position> list){
+		staticPositions = list;
+	}
+	
 	//returns the instance of the AreaMap
 	public static AreaMap getInstance()
 	{
+		if(instance == null){
+			instance = new AreaMap(terrain, mpt, staticPositions);
+		}
 		return instance;
 	}
 

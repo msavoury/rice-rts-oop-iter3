@@ -24,6 +24,8 @@ import rice.view.ViewableUnit;
  */
 public class Model implements ViewableModel {
 
+	
+	
 	public Model() {
       MapInitializer mi = new MapInitializer();
       mi.parse();
@@ -110,22 +112,6 @@ public class Model implements ViewableModel {
 		
 	}
 
-	@Override
-	public void receiveStructureOverviewScreenVisitor(SOVisitor s) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void receiveTechOverviewScreenVisitor(TOVisitor u) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void receiveUnitOverviewScreenVisitor(UOVisitor u) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

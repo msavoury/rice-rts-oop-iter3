@@ -9,7 +9,13 @@ public abstract class MapPositionTranslator
 {
 	private Map map;
 	
-	public MapPositionTranslator(Map map)
+	public MapPositionTranslator()
+	{
+		
+	}
+	
+	//link the map to the translator
+	public void linkMap(Map map)
 	{
 		this.map=map;
 	}
@@ -17,7 +23,11 @@ public abstract class MapPositionTranslator
 	//Check if the input location is within map bounds
 	public boolean verifyLocation(Position position)
 	{
-		return this.map.verifyLocation(position);
+		if(this.map!=null)
+		{
+			return this.map.verifyLocation(position);
+		}
+		return false;
 	}
 	
 	//get number of directions

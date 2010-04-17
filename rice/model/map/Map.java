@@ -13,6 +13,7 @@ public abstract class Map {
 	public Map(MapPositionTranslator mpt)
 	{
 		this.mpt=mpt;
+		this.mpt.linkMap(this);
 	}
 	
 	//returns the MapPositionTranslator

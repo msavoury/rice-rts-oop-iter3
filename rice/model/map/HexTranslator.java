@@ -16,9 +16,9 @@ public class HexTranslator extends MapPositionTranslator
 	public static final int DOWN_RIGHT = 5;
 	public static final int DIR_COUNT = 6;
 	
-	public HexTranslator(Map map)
+	public HexTranslator()
 	{
-		super(map);
+		
 	}
 
 	public int getDirectionCount()

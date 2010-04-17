@@ -3,7 +3,8 @@ package rice.model.map;
 import java.util.ArrayList;
 import java.util.List;
 
-import util.Position;
+import rice.util.Position;
+
 
 public class HexTranslator extends MapPositionTranslator
 {	
@@ -20,22 +21,35 @@ public class HexTranslator extends MapPositionTranslator
 		super(map);
 	}
 
-
+	public int getDirectionCount()
+	{
+		return DIR_COUNT;
+	}
+	
+	public int getOptimalDirection(Position origin, Position destination)
+	{
+		return this.getDirection(this.getOptimalAngle(origin, destination));
+	}
+	
+	private double getOptimalAngle(Position origin, Position destination)
+	{
+		Position diff = new Position(origin.getX()-destination.getX(),destination.getX()-origin.getX());
+		double angle = Math.atan2((double)diff.getX(), (double)diff.getY())*(180/Math.PI);
+		if(angle<0)
+		{
+			angle+=360;
+		}
+		return angle;
+	}
 	
 	//return direction depending angle
-	private int getDirection(double angle)
+	public int getDirection(double angle)
 	{
 		return ((int)angle % 360)/60;
 	}
 	
-	//return adjacent position depending on current position and angle
-	public Position getAdjecentPosition(Position position, double angle)
-	{
-		return	this.getAdjecentPosition(position,this.getDirection(angle));	
-	}
-
 	//return adjacent position depending on current position and direction
-	private Position getAdjecentPosition(Position position, int direction)
+	public Position getAdjecentPosition(Position position, int direction)
 	{
 		Position newPosition = new Position();
 		switch (direction)

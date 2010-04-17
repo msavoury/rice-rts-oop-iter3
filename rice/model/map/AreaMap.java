@@ -1,7 +1,10 @@
 package rice.model.map;
 
 import java.util.List;
+import rice.model.Accessory;
 import util.Position;
+import rice.model.Controllable;
+
 
 public class AreaMap extends Map
 {

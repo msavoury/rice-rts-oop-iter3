@@ -18,8 +18,7 @@ public class RunGame {
     public static void main(String args[]){
         Model model = new Model();
         Controller controller = new Controller();
-        View view = new View();
-
+        View view = new View(args[0].equals("true"));
         controller.registerModel(model);
         controller.registerView(view);
         controller.start();

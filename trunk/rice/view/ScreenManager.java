@@ -11,15 +11,12 @@ import javax.media.opengl.GLCanvas;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLEventListener;
 import javax.media.opengl.GLException;
-import javax.media.opengl.GLContext;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.DisplayMode;
 import com.sun.opengl.util.FPSAnimator;
-import com.sun.opengl.util.ImageUtil;
-import com.sun.opengl.util.texture.Texture;
-import com.sun.opengl.util.texture.TextureIO;
 import com.sun.opengl.util.j2d.TextRenderer;
+import java.awt.Font;
 
 import java.util.ArrayList;
 
@@ -37,19 +34,11 @@ class ScreenManager extends JFrame{
     private FPSAnimator fpsanim;
     private ArrayList<GameGraphic> screens;
     private GameGraphic currentScreen;
+    private GraphicsTable graphics;
 
     ScreenManager(boolean fullScreen){
 
-        screens = new ArrayList<GameGraphic>();
-
-        screens.add(new TitleScreen());
-        screens.add(new MainScreen());
-        screens.add(new UnitOverviewScreen());
-        screens.add(new StructureOverviewScreen());
-        screens.add(new TechOverviewScreen());
-        screens.add(new KeyBindingScreen());
-
-        //currentScreen
+        
 
         if(fullScreen){
             GraphicsEnvironment ge = GraphicsEnvironment
@@ -79,9 +68,14 @@ class ScreenManager extends JFrame{
 
     class GListener implements GLEventListener {
 
+        TextRenderer renderer;
+
         public void display(GLAutoDrawable drawable) {
             GL gl = drawable.getGL();
             gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
+
+            currentScreen.render(gl, drawable, renderer);
+
         }
 
         public void displayChanged(GLAutoDrawable drawable, boolean arg1, boolean arg2) {
@@ -104,7 +98,20 @@ class ScreenManager extends JFrame{
                 gl.glEnable(GL.GL_TEXTURE_2D);								//enable 2D textures
                 gl.glEnable(GL.GL_BLEND);
                 gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
+                graphics = GraphicsTable.getInstance();
 
+                renderer = new TextRenderer(new Font("SansSerif", Font.BOLD, 30));
+
+                screens = new ArrayList<GameGraphic>();
+
+                screens.add(new TitleScreen());
+                screens.add(new MainScreen());
+                screens.add(new UnitOverviewScreen());
+                screens.add(new StructureOverviewScreen());
+                screens.add(new TechOverviewScreen());
+                screens.add(new KeyBindingScreen());
+
+                currentScreen = screens.get(0);
             }
             catch (GLException e) {
                 e.printStackTrace();

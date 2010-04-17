@@ -6,6 +6,8 @@
 package rice.view;
 
 import javax.media.opengl.GL;
+import com.sun.opengl.util.j2d.TextRenderer;
+import javax.media.opengl.GLAutoDrawable;
 
 /**
  *
@@ -27,6 +29,10 @@ abstract class GameGraphic {
     }
 
     void refresh(){
+    }
+
+    void render(GL gl, GLAutoDrawable drawable, TextRenderer render){
+        
     }
 
 }

@@ -1,7 +1,7 @@
 package rice.model.map;
 
-import java.awt.Dimension;
 import java.util.List;
+import util.Position;
 
 public abstract class Map {
 	private Tile[][] tiles;
@@ -14,6 +14,12 @@ public abstract class Map {
 		
 	}
 	
+	//Set the tiles
+	void setTiles(Tile[][] tiles)
+	{
+		this.tiles=tiles;
+	}
+	
 	//Return the width of the map
 	public int getWidth()
 	{
@@ -24,11 +30,21 @@ public abstract class Map {
 	{
 		return this.height;
 	}
+	//set the width of the map
+	void setWidth(int width)
+	{
+		this.width=width;
+	}
+	//set the width of the map
+	void setHeight(int height)
+	{
+		this.height=height;
+	}
 	
 	//Check if the input location is within map bounds
-	public boolean verifyLocation(int x, int y)
+	public boolean verifyLocation(Position position)
 	{
-		if((x<0) || (x>=this.width) || (y<0) || (y>=this.height))
+		if((position.getX()<0) || (position.getX()>=this.width) || (position.getY()<0) || (position.getY()>=this.height))
 		{
 			return false;
 		}
@@ -38,22 +54,22 @@ public abstract class Map {
 		}
 	}
 	
-	//returns a tile at position x,y
-	public Tile getTile(int x, int y)
+	//returns a tile at position
+	public Tile getTile(Position position)
 	{
-		return this.tiles[y][x];
+		return this.tiles[position.getY()][position.getX()];
 	}
 	
 	//return adjacent position depending on current position and angle
-	public Dimension getAdjecentPosition(int x, int y, double angle)
+	public Position getAdjecentPosition(Position position, double angle)
 	{
-		return this.mpt.getAdjecentPosition(x, y, angle);
+		return this.mpt.getAdjecentPosition(position, angle);
 	}
 	
 	//return a list of positions surrounding the origin with a certain radius
-	public List<Dimension> getPositionRing(int originX, int originY, int radius)
+	public List<Position> getPositionRing(Position origin, int radius)
 	{
-		return this.mpt.getPositionRing(originX, originY, radius);
+		return this.mpt.getPositionRing(origin, radius);
 	}
 	
 }

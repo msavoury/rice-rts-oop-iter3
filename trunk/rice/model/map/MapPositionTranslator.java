@@ -9,6 +9,30 @@ public abstract class MapPositionTranslator
 {
 	private Map map;
 	
+	/**
+	 * Return the given double corresponding to the direction string
+	 * @param c
+	 */
+	public static double convertDirection(String direction) {
+		double result = 0.0;
+		
+		if (direction.equals("NORTH"))
+		  result = 30.0;
+		else if (direction.equals("NORTHWEST"))
+		  result = 90.0;
+		else if (direction.equals("NORTHEAST"))
+		  result = 150.0;
+		else if (direction.equals("SOUTHWEST"))
+		  result = 210.0;
+		else if (direction.equals("SOUTHEAST"))
+		  result = 270.0;
+		else if (direction.equals("SOUTH"))
+		  result = 330.0;
+		
+		return result;
+	}
+	
+	
 	public MapPositionTranslator()
 	{
 		

@@ -204,6 +204,18 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 		return null;
 	}
 
+	@Override
+	public void nextTechnologyBranch() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void previousTechnolgy() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }

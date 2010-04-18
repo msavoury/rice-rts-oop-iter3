@@ -24,13 +24,14 @@ import rice.model.player.Player;
 import rice.model.player.SelectorAcceptor;
 import rice.util.Position;
 import rice.view.Viewable;
+import rice.view.ViewableControllable;
 
 
 /**
  * The controllable class represents all things that can be controlled by a Player
  * @author Marcos
  */
-public abstract class Controllable extends Locatable implements Viewable, SelectorAcceptor {
+public abstract class Controllable extends Locatable implements ViewableControllable, SelectorAcceptor {
   private int id;
   private Player owner;
   private double health;
@@ -390,5 +391,9 @@ public abstract class Controllable extends Locatable implements Viewable, Select
    */
   public void getActionTiles() {
 	  
+  }
+  
+  public String getCommand() {
+	  return "command";
   }
 }

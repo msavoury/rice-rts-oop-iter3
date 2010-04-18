@@ -3,6 +3,7 @@ package rice.model.structures;
 import java.util.List;
 
 import rice.model.player.Player;
+import rice.model.player.RiceSelector;
 import rice.model.unit.Unit;
 import rice.model.unit.UnitOwner;
 
@@ -72,5 +73,10 @@ public class Fort extends Structure implements UnitOwner
 	public void setAlocation(double percentage) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void accept(RiceSelector s)
+	{
+		s.addFort(this);
 	}
 }

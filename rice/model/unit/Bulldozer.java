@@ -8,6 +8,7 @@ package rice.model.unit;
 import java.util.List;
 
 import rice.model.player.Player;
+import rice.model.player.RiceSelector;
 import rice.view.MSVisitor;
 import rice.view.UOVisitor;
 
@@ -46,5 +47,9 @@ public class Bulldozer extends COV {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+	public void accept(RiceSelector s)
+	{
+		s.addBulldozer(this);
+	}
 
 }

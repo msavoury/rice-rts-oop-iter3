@@ -6,6 +6,7 @@
 package rice.model.unit;
 
 import rice.model.player.Player;
+import rice.model.player.RiceSelector;
 import rice.view.MSVisitor;
 import rice.view.UOVisitor;
 
@@ -31,5 +32,10 @@ public class Ranged extends Unit{
     public void accept(MSVisitor m) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+	public void accept(RiceSelector s)
+	{
+		s.addRanged(this);
+	}
 
 }

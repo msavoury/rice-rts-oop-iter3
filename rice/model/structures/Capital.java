@@ -6,6 +6,7 @@ import rice.model.map.ATVisitorAcceptor;
 import rice.model.map.AreaTile;
 import rice.model.map.AreaTileVisitor;
 import rice.model.player.Player;
+import rice.model.player.RiceSelector;
 import rice.model.unit.Unit;
 import rice.model.unit.UnitOwner;
 
@@ -93,6 +94,11 @@ public class Capital extends HarvestingStructure implements UnitOwner, OreHarves
 	public void accept(AreaTileVisitor v)
 	{
 		v.visit(this);
+	}
+	
+	public void accept(RiceSelector s)
+	{
+		s.addCapital(this);
 	}
 
 }

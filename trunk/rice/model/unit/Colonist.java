@@ -17,8 +17,12 @@ public class Colonist extends Unit {
 
     public Colonist(String typeName, int id, Player owner) {
 		super(typeName, id, owner);
-		// TODO Auto-generated constructor stub
+		
 	}
+    
+    public Colonist(int id, Player owner){
+    	this("Colonist", id, owner);
+    }
     public boolean isSoldier() {
 		return false;
 	}

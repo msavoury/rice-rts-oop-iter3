@@ -5,8 +5,8 @@
 
 package rice.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import rice.controller.Tickable;
@@ -40,13 +40,17 @@ public class Model implements ViewableModel, Tickable {
       AreaMap.setTranslator(mi.getTranslator());
       AreaMap.setPositions(mi.getStartingPositions());
      
-      //AreaMap.getInstance().
-      
       
 	  //make players
+      Iterator<Position> iter = mi.getStartingPositions().iterator();
       players = new Player[2];
-      players[0] = new Player();
-      players[1] = new Player();
+      
+      for(int i = 0; i < players.length; i++){
+    	  players[i] = new Player(iter.next());
+    	  players[i].initialize();
+      }
+     
+      //set main player
       mainPlayer = players[0];
 	  //set player stuff
 	}

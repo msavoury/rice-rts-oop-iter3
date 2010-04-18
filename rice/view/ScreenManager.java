@@ -73,6 +73,10 @@ class ScreenManager extends JFrame{
         currentScreen = screenSelector.get(mode);
     }
 
+    void toggleMainScreenMode(){
+        currentScreen.auxillaryCommand("Toggle");
+    }
+
     class GListener implements GLEventListener {
 
         TextRenderer renderer;
@@ -128,6 +132,7 @@ class ScreenManager extends JFrame{
                 screenSelector.put("KeyBindingScreen", screens.get(5));
 
                 currentScreen = screens.get(1);
+                
             }
             catch (GLException e) {
                 e.printStackTrace();

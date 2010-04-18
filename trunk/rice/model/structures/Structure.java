@@ -12,10 +12,32 @@ import rice.view.ViewableStructure;
 
 public abstract class Structure extends Controllable implements WorkerOwner, Allocatable, ViewableStructure
 {
+	private double completionLevel=0;
 
-	public Structure(String typeName, int id, Player owner) {
+	public Structure(String typeName, int id, Player owner)
+	{
 		super(typeName, id, owner);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public boolean isCompleted()
+	{
+		return this.completionLevel==100;
+	}
+	
+	public void increaseCompletion(double value)
+	{
+		if(!this.isCompleted())
+		{
+			//increase completion level and health
+			double perc = value/100;
+			this.changeHealth(perc*this.getMaxHealth());
+			this.completionLevel+=value;
+			if(this.completionLevel>100)
+			{
+				this.completionLevel=100;
+			}
+		}
 	}
 	
 	public double getAllocation(){
@@ -66,16 +88,6 @@ public abstract class Structure extends Controllable implements WorkerOwner, All
 	public void accept(MSVisitor m)
 	{
 		m.visit(this);		
-	}
-
-	public int getID()
-	{
-		return this.getId();
-	}
-
-	public Position getLocation()
-	{
-		return this.getLocation();
 	}
 	
 }

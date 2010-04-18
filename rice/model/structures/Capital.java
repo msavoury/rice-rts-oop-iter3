@@ -1,5 +1,6 @@
 package rice.model.structures;
 
+import java.util.HashMap;
 import java.util.List;
 
 import rice.model.map.ATVisitorAcceptor;
@@ -17,6 +18,18 @@ public class Capital extends HarvestingStructure implements UnitOwner, OreHarves
 	public Capital(int id, Player owner)
 	{
 	   super("Capital", id, owner);	
+	  //default stats initializations
+	  this.setMaxHealth(200.00);
+	  this.setHealth(10.00);
+	  this.setArmor(10);
+	  this.setOffensiveDamage(0);
+	  this.setDefensiveDamage(5);
+	  this.setVisibilityRadius(1);
+	  HashMap<String,Integer> newUpkeep = new HashMap<String,Integer>();
+	  newUpkeep.put("Ore", 5);
+	  newUpkeep.put("Food", 0);
+	  newUpkeep.put("Energy", 5);
+	  this.setUpkeep(newUpkeep);
 	}
 
 	@Override

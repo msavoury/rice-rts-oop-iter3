@@ -1,5 +1,6 @@
 package rice.model.structures;
 
+import java.util.HashMap;
 import java.util.List;
 
 import rice.model.player.Player;
@@ -12,12 +13,24 @@ public class Fort extends Structure implements UnitOwner
 	public Fort(int id, Player owner)
 	{
 		super("Fort", id, owner);
+		  //default stats initializations
+		  this.setMaxHealth(250.00);
+		  this.setHealth(10.00);
+		  this.setArmor(15);
+		  this.setOffensiveDamage(50);
+		  this.setDefensiveDamage(10);
+		  this.setVisibilityRadius(2);
+		  HashMap<String,Integer> newUpkeep = new HashMap<String,Integer>();
+		  newUpkeep.put("Ore", 15);
+		  newUpkeep.put("Food", 0);
+		  newUpkeep.put("Energy", 15);
+		  this.setUpkeep(newUpkeep);
 	}
 
 	@Override
 	public void addUnit(Unit u) {
 		// TODO Auto-generated method stub
-		
+				
 	}
 
 	@Override

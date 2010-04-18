@@ -2,6 +2,7 @@ package rice.model.player;
 
 
 import rice.controller.Tickable;
+import rice.model.Controllable;
 import rice.model.map.AreaMap;
 import rice.model.structures.Capital;
 import rice.model.unit.Colonist;
@@ -109,5 +110,9 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	public void processCommand(String command) {
 		// TODO Auto-generated method stub
 		selector.processCommand(command);
+	}
+	
+	public Controllable getSelected() {
+		return selector.getSelected();
 	}
 }

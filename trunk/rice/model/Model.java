@@ -100,8 +100,8 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 
 	@Override
 	public ViewableControllable getCurrentlySelectedInstance() {
-		// TODO Auto-generated method stub
-		return null;
+		return mainPlayer.getSelected();
+		//return null;
 	}
 
 	@Override

@@ -12,7 +12,7 @@ import rice.util.Position;
  *
  * @author spock
  */
-public interface ViewableTile extends ViewableControllable{
+public interface ViewableTile extends ViewableLocatable{
     public abstract Position getLocation();
     public abstract double getFlow();
     public abstract String getItem();

@@ -97,7 +97,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   }
   
   public void tick(){
-	  System.out.println("Controllable ticking here!");
+	  System.out.println("Controllable: " +toString() +" tick. Powered status: " + powered);
 	  //TODO: stuff with temp direction and speed and what not here
 	  if(powered){
 		  if(!commands.isEmpty()){

@@ -10,8 +10,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import rice.model.ability.Ability;
+import rice.model.ability.ClearQueueAbility;
+import rice.model.ability.DecommissionAbility;
 import rice.model.ability.PowerDownAbility;
 import rice.model.ability.PowerUpAbility;
+import rice.model.ability.WaitAbility;
 import rice.model.command.Command;
 import rice.model.map.AreaTile;
 import rice.model.player.Player;
@@ -21,7 +24,7 @@ import rice.view.Viewable;
 
 
 /**
- *
+ * The controllable class represents all things that can be controlled by a Player
  * @author Marcos
  */
 public abstract class Controllable extends Locatable implements Viewable, SelectorAcceptor {
@@ -97,18 +100,20 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   }
   
   public void tick(){
-	  System.out.println("Controllable: " +toString() +" tick. Powered status: " + powered);
+	  // System.out.println("Controllable: " +this.getType() +" tick. Powered status: " + powered);
 	  //TODO: stuff with temp direction and speed and what not here
-	  if(powered){
+	  //if(powered){
 		  if(!commands.isEmpty()){
 			  if(commands.executeCommand() == Command.FINISHED){
 				  commands.pop();
 			  }
 		  }
 		  else {
-			  System.out.println(toString() + "Empty Command Queue");
+			  
 		  }
-	  }
+		  System.out.println(toString() + "PowerStatus: " + powered + printQueue());
+		  
+	 // }
 	  //TODO: stuff with applyables here
   }
   
@@ -121,6 +126,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
    * @param ability
    */
   public void performSelectedAbility(String ability) {
+	System.out.println("perform selected ability");
     abilities.get(abilityPointer).acceptInput(ability);  
   }
   
@@ -133,6 +139,8 @@ public abstract class Controllable extends Locatable implements Viewable, Select
     if(abilityPointer >= abilities.size()){
     	abilityPointer = 0;
     }
+	System.out.println("in controllable: "+getSelectedAbility());
+
   }
   
   /**
@@ -144,6 +152,9 @@ public abstract class Controllable extends Locatable implements Viewable, Select
 	if(abilityPointer < 0){
 		abilityPointer = abilities.size() -1;
 	}
+	System.out.println("in controllable: "+getSelectedAbility());
+
+	
   }
   
   /**
@@ -151,8 +162,11 @@ public abstract class Controllable extends Locatable implements Viewable, Select
    */
   private void initAbilities(){
 	abilities = new ArrayList<Ability>();
+	abilities.add(new PowerDownAbility(this));
     abilities.add(new PowerUpAbility(this));
-    abilities.add(new PowerDownAbility(this));
+    abilities.add(new DecommissionAbility(this));
+    abilities.add(new ClearQueueAbility(this));
+    abilities.add(new WaitAbility(this));
     
   }
   
@@ -189,7 +203,27 @@ public abstract class Controllable extends Locatable implements Viewable, Select
     return commands.getCommandStrings();
   }
   
+  /**
+   * Clear current list of commands
+   */
+  public void clearQueue() {
+	 commands.clear();
+  }
+  
+  /**
+   * Convenience method that return current queue as one string
+   * @return
+   */
+  public String printQueue() {
+	  StringBuffer buff = new StringBuffer();
+	  for(String s: commands.getCommandStrings()){
+		  buff.append(s+",");
+	  }
+	  return buff.toString();
+  }
+  
   public void addCommand(Command c){
+	System.out.println(c.toString() +" added to " + getType());
     commands.addCommand(c);
   }
   

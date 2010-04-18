@@ -43,6 +43,10 @@ public class CommandQueue {
     	return commandList.isEmpty();
     }
     
+    public void clear(){
+    	commandList = new ArrayList<Command>();
+    }
+    
     public String[] getCommandStrings() {
     	String[] commands = new String[commandList.size()];
     	for(int i = 0; i < commandList.size(); i++){

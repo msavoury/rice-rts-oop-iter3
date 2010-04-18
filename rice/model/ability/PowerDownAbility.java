@@ -4,17 +4,17 @@ import rice.model.Controllable;
 import rice.model.command.PowerDown;
 
 public class PowerDownAbility extends Ability{
-	String name = "Power Down";
+	
 	
 	public PowerDownAbility(Controllable c) {
 		super(c);
-		// TODO Auto-generated constructor stub
+		setName("Power Down");
 	}
 
 
   
   public void acceptInput(String s){
-	  if(s.equals("enter")){
+	  if(s.equals("CONFIRM_SELECTION_NO_ARGS")){
 	    target.addCommand(new PowerDown(target));
 	  }
   }

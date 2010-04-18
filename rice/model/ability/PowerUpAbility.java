@@ -7,13 +7,11 @@ import rice.model.command.PowerUp;
 public class PowerUpAbility extends Ability{
   public PowerUpAbility(Controllable c) {
 		super(c);
-		// TODO Auto-generated constructor stub
+		setName("Power Up");
 	}
 
-String name = "Power Up";
-  
   public void acceptInput(String s){
-	  if(s.equals("enter")){
+	  if(s.equals("CONFIRM_SELECTION_NO_ARGS")){
 	    target.addCommand(new PowerUp(target));
 	  }
   }

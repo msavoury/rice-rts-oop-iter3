@@ -6,7 +6,7 @@ public class PowerDown extends Command {
 
 	public PowerDown(Controllable c) {
 		super(c);
-		// TODO Auto-generated constructor stub
+		setName("Power Down");
 	}
 
 	@Override

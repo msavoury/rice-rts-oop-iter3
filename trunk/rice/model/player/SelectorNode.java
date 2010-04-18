@@ -7,18 +7,38 @@ import java.util.List;
 
 public class SelectorNode<T>
 {
+	private String branchName;
 	private T element;
 	private LinkedList<SelectorNode<T>> children = new LinkedList<SelectorNode<T>>();
 	private SelectorNode<T> selection;
 	
-	public SelectorNode()
+	public SelectorNode(String branchName)
 	{
-		
+		this.branchName=branchName;
 	}
 	
 	public SelectorNode(T element)
 	{
 		this.element=element;
+	}
+	
+	public String getBranchName()
+	{
+		return this.branchName;
+	}
+	
+	public List<String> getBranchPath()
+	{
+		List<String> branchPath = new ArrayList<String>();
+		if(!this.isLeaf())
+		{
+			if(!this.getBranchName().isEmpty())
+			{
+				branchPath.add(this.getBranchName());
+			}
+			branchPath.addAll(this.selection.getBranchPath());
+		}		
+		return branchPath;
 	}
 	
 	//adds a new child node, if node already exists, does nothing

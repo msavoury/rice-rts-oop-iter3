@@ -43,7 +43,7 @@ public class RiceSelector extends Selector<Controllable> implements Tickable {
 		addNode("Main", "Army");
 		
 		
-		controllables=new SelectorNode<Controllable>();
+		controllables=new SelectorNode<Controllable>("");
 		controllables.addChild(unit);
 		controllables.addChild(structure);
 		controllables.addChild(rally);		

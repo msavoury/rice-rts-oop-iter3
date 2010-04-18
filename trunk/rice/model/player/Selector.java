@@ -1,6 +1,7 @@
 package rice.model.player;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Selector<T> {
 	private SelectorNode<T> mainNode;
@@ -8,42 +9,32 @@ public class Selector<T> {
 	
 	public Selector()
 	{
-		this.mainNode=new SelectorNode<T>();
+		this.mainNode=new SelectorNode<T>("");
 		this.branches.put("Main", this.mainNode);
 	}
 	
 	//add an empty node to a specific branch
 	public SelectorNode<T> addNode(String destBranch, String branch)
 	{
-		return this.addNode(destBranch, branch, null);
+		SelectorNode<T> parentNode = this.branches.get(destBranch);
+		SelectorNode<T> newNode=new SelectorNode<T>(branch);
+		parentNode.addChild(newNode);
+		this.branches.put(branch, newNode);
+		return newNode;
 	}
 	
 	public SelectorNode<T> addNode(String destBranch, T element)
 	{
 		if(this.branches.containsKey(destBranch))
 		{
-			//SelectorNode<T> parentNode = this.branches.get(destBranch);
-			//SelectorNode<T> newNode=new SelectorNode<T>(element);
-		//	parentNode.addChild(newNode);
-			//this.branches.put(branch, newNode);
-//			return newNode;
-		}
-		return null;
-	}
-	
-	//add a node to a specific branch
-	public SelectorNode<T> addNode(String destBranch, String branch, T element)
-	{
-		if(this.branches.containsKey(destBranch))
-		{
 			SelectorNode<T> parentNode = this.branches.get(destBranch);
 			SelectorNode<T> newNode=new SelectorNode<T>(element);
 			parentNode.addChild(newNode);
-			this.branches.put(branch, newNode);
 			return newNode;
 		}
 		return null;
 	}
+	
 	
 	//returns a specific node
 	public SelectorNode<T> getNode(String branch)
@@ -53,6 +44,11 @@ public class Selector<T> {
 			return this.branches.get(branch);
 		}
 		return null;
+	}
+	
+	public List<String> getBranchPath()
+	{
+		return this.mainNode.getBranchPath();
 	}
 	
 	//select next node at certain level

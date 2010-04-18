@@ -133,6 +133,7 @@ public class RiceSelector extends Selector<Controllable> implements Tickable {
 	public void tick(int tickNum)
 	{
 		List<Controllable> leafs = this.controllables.getAllLeafs();
+		//System.out.println("Leafs size "+ leafs.size());
 		Iterator<Controllable> iter = leafs.iterator();
 		while(iter.hasNext())
 		{

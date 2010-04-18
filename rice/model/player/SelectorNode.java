@@ -186,7 +186,7 @@ public class SelectorNode<T>
 	public List<T> getAllLeafs()
 	{
 		ArrayList<T> leafs = new ArrayList<T>();
-		if(this.isLeaf())
+		if(this.isLeaf() && this.getElement() != null)
 		{
 			leafs.add(this.getElement());
 		}

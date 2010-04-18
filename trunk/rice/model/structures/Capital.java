@@ -2,13 +2,17 @@ package rice.model.structures;
 
 import java.util.List;
 
+import rice.model.map.ATVisitorAcceptor;
 import rice.model.map.AreaTile;
+import rice.model.map.AreaTileVisitor;
 import rice.model.player.Player;
 import rice.model.unit.Unit;
 import rice.model.unit.UnitOwner;
 
 public class Capital extends HarvestingStructure implements UnitOwner, OreHarvester, FoodHarvester, EnergyHarvester 
 {
+	private int breadingWorkers;
+	
 	public Capital(int id, Player owner)
 	{
 	   super("Capital", id, owner);	
@@ -78,6 +82,17 @@ public class Capital extends HarvestingStructure implements UnitOwner, OreHarves
 	public int removeWorkers() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	//returns the number of breeding workers
+	public int getBreedingWorkers()
+	{
+		return this.breadingWorkers;
+	}
+
+	public void accept(AreaTileVisitor v)
+	{
+		v.visit(this);
 	}
 
 }

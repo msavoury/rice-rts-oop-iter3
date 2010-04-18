@@ -14,7 +14,7 @@ import rice.util.Position;
  */
 public interface ViewableTile extends ViewableLocatable{
     public abstract Position getLocation();
-    public abstract String getFlow();
+    public abstract double getFlow();
     public abstract String getItem();
     public abstract String getDecal();
     public abstract String getObstacle();

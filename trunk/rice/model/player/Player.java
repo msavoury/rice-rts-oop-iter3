@@ -1,8 +1,9 @@
 package rice.model.player;
 
+import rice.controller.Tickable;
 import rice.util.Position;
 
-public class Player {
+public class Player implements Tickable {
 
 	//static members
 	private static int playerCount = 1;
@@ -21,7 +22,8 @@ public class Player {
 		this.startingPostion = p;
 	}
 	
-	public void tick() {
+	public void tick(int tick) {
+
 		System.out.println("Player "+ id + " ticked");
 	}
 }

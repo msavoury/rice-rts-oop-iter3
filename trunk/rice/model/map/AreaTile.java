@@ -6,6 +6,7 @@
 package rice.model.map;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import rice.model.Controllable;
@@ -16,7 +17,7 @@ import rice.util.Position;
  *
  * @author Marcos
  */
-public class AreaTile extends Tile {
+public class AreaTile extends Tile implements ATVisitorAcceptor, ResourceVisitorAcceptor {
 	private int terrain;
 	private int passabilityLevel;
 	private ArrayList<Controllable> controllables = new ArrayList<Controllable>();
@@ -27,6 +28,12 @@ public class AreaTile extends Tile {
        this.terrain=terrainType;
        this.passabilityLevel=terrainType;
        //todo: set terraintype
+   }
+   
+   //returns the terrain type
+   public int getTerrainType()
+   {
+	   return this.terrain;
    }
    
    //return passability level
@@ -76,4 +83,30 @@ public class AreaTile extends Tile {
    {
 	   this.accessories.remove(a);
    }
+
+
+	public void accept(AreaTileVisitor v)
+	{
+		v.visit(this);	
+		Iterator<Controllable> cIter = this.controllables.iterator();
+		while(cIter.hasNext())
+		{
+			cIter.next().accept(v);
+		}
+		
+		Iterator<Accessory> aIter = this.accessories.iterator();
+		while(aIter.hasNext())
+		{
+			aIter.next().accept(v);
+		}
+	}
+
+	public void accept(ResourceVisitor v)
+	{
+		Iterator<Accessory> aIter = this.accessories.iterator();
+		while(aIter.hasNext())
+		{
+			aIter.next().accept(v);
+		}		
+	}
 }

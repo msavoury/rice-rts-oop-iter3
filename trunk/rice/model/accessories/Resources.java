@@ -2,6 +2,9 @@ package rice.model.accessories;
 
 import java.util.HashMap;
 
+import rice.model.map.AreaTileVisitor;
+import rice.model.map.ResourceVisitor;
+import rice.model.map.ResourceVisitorAcceptor;
 import rice.model.structures.HarvestingStructure;
 
 public class Resources extends TileEnrichement
@@ -100,6 +103,16 @@ public class Resources extends TileEnrichement
 		int workers=this.workerCount;
 		this.workerCount=0;
 		return workers;
+	}
+	
+	public void accept(AreaTileVisitor v)
+	{
+		v.visit(this);
+	}
+	
+	public void accept(ResourceVisitor v)
+	{
+		v.visit(this);
 	}
 	
 }

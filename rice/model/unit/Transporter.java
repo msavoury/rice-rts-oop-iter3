@@ -37,6 +37,7 @@ public class Transporter extends Vehicle {
 		  this.setSize(100);
 		  this.setCapacity(80);
 		  this.setSpeed(3);
+		  this.setPassability(3);
 	}
 
 	public void accept(UOVisitor u) {

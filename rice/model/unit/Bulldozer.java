@@ -36,6 +36,7 @@ public class Bulldozer extends COV {
 		  this.setSize(100);
 		  this.setCapacity(20);
 		  this.setSpeed(1);
+		  this.setPassability(2);
 	}
 
 	public void accept(UOVisitor u) {

@@ -41,7 +41,7 @@ public abstract class Unit extends Controllable implements ViewableUnit {
     
     protected void setSpeed(int speed)
     {
-    	this.speed=speed;
+    	this.speed=(speed>0 ? speed : 1);
     }
 
     public int getSize()
@@ -51,7 +51,7 @@ public abstract class Unit extends Controllable implements ViewableUnit {
     
     protected void setSize(int size)
     {
-    	this.size=size;
+    	this.size=(size>0 ? size : 1);
     }   
     
     public int getPassability()
@@ -61,7 +61,7 @@ public abstract class Unit extends Controllable implements ViewableUnit {
     
     protected void setPassability(int passabilityLevel)
     {
-    	this.passabilityLevel=passabilityLevel;
+    	this.passabilityLevel=(passabilityLevel>0 ? passabilityLevel : 1);
     }   
 
   	public void accept(AreaTileVisitor v)

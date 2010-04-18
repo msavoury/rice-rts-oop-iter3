@@ -105,6 +105,11 @@ public abstract class Controllable extends Locatable implements Viewable, Select
     return this.health;
   }
   
+  public boolean isAlive()
+  {
+	  return this.getHealth()>0;
+  }
+  
   public double getMaxHealth()
   {
     return this.maxHealth+this.getOwner().getTechBonus(this.getTypeName(),"Health");
@@ -122,16 +127,16 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   
   protected void setMaxHealth(double health)
   {
-	  if(health>0)
-	  {
-		  this.maxHealth=health;
-	  }
+	  this.maxHealth=(health>0 ? health : 1);
 	  this.setHealth(this.getHealth());
   }
   
   public void changeHealth(double value)
   {
-	  this.setHealth(this.getHealth()+value);
+	  if(this.isAlive())
+	  {
+		  this.setHealth(this.getHealth()+value);
+	  }
   }
   
   public void takeDamage(int value)
@@ -145,12 +150,17 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   
   protected void setArmor(int armor)
   {
-	  this.armor=armor;
+	  this.armor=(armor>0 ? armor : 0);
   }
   
   public int getArmor()
   {
 	  return this.armor+this.getOwner().getTechBonus(this.getTypeName(),"Armor");
+  }
+  
+  public void changeArmor(int value)
+  {
+	  this.setArmor(this.getArmor()+value);
   }
   
   public int getAttack()
@@ -170,7 +180,8 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   
   protected void setVisibilityRadius(int radius)
   {
-	  this.visibilityRadius=radius;
+	  this.visibilityRadius=(radius>0 ? radius : 0);
+
   }
   
   public int getOffensiveDamage()
@@ -180,7 +191,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   
   protected void setOffensiveDamage(int attack)
   {
-	  this.offensiveDamage=attack;
+	  this.offensiveDamage=(attack>0 ? attack : 0);
   }
   
   public int getDefensiveDamage()
@@ -190,7 +201,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   
   protected void setDefensiveDamage(int defense)
   {
-	  this.defensiveDamage=defense;
+	  this.defensiveDamage=(defense>0 ? defense : 0);
   }
   
   public HashMap<String,Integer> getUpkeep()

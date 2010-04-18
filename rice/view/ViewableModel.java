@@ -17,14 +17,16 @@ public interface ViewableModel {
     public abstract void receiveMainScreenVisitor(MSVisitor m);
     public abstract String getCurrentlySelectedMode();
     public abstract String getCurrentlySelectedType();
-    public abstract String getCurrentlySelectedInstance();
-    public abstract String getCurrentlySelectedCommand();
+    public abstract List<String> getCurrentSelectorPathToInstance();
+    public abstract ViewableControllable getCurrentlySelectedInstance();
     public abstract HashMap<String, Integer> getPlayerResources();
     public abstract ViewableRallyPoint getCurrentlySelectedRallyPoint();
     public abstract ViewableStructure getCurrentlySelectedStructure();
     public abstract ViewableUnit getCurrentlySelectedUnit();
     public abstract List<ViewableUnit> getAllUnits();
     public abstract List<ViewableStructure> getAllStructures();
-    public abstract List<ViewableTech> getAllTechnology();
+    public abstract String getSelectedTechNodeBranch();
+    public abstract List<ViewableTech> getSelectedTechNodeBranchAllNodes();
+    public abstract ViewableTech getCurrentlySelectedTech();
 
 }

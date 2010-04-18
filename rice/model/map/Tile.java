@@ -6,7 +6,7 @@ public abstract class Tile
 {
 	private Position position;
 	
-	Tile(Position position)
+	public Tile(Position position)
 	{
 		this.position=position;
 	}

@@ -42,6 +42,9 @@ public abstract class MapPositionTranslator
 	//return adjacent position depending on current position and angle
 	public abstract Position getAdjecentPosition(Position position, int direction);
 	
+	//return a list of valid positions in an area surrounding the origin with a certain radius
+	public abstract List<Position> getPositionArea(Position origin, int radius);
+	
 	//return a list of positions surrounding the origin with a certain radius
 	public abstract List<Position> getPositionRing(Position origin, int radius);
 }

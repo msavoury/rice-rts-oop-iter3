@@ -23,7 +23,7 @@ public abstract class Map {
 	}
 	
 	//Set the tiles
-	void setTiles(Tile[][] tiles)
+	protected void setTiles(Tile[][] tiles)
 	{
 		this.tiles=tiles;
 	}
@@ -39,12 +39,12 @@ public abstract class Map {
 		return this.height;
 	}
 	//set the width of the map
-	void setWidth(int width)
+	protected void setWidth(int width)
 	{
 		this.width=width;
 	}
 	//set the width of the map
-	void setHeight(int height)
+	protected void setHeight(int height)
 	{
 		this.height=height;
 	}

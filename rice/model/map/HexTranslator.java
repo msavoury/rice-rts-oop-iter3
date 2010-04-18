@@ -84,25 +84,43 @@ public class HexTranslator extends MapPositionTranslator
 		return newPosition;
 	}
 	
+	//return a list of valid positions in an area surrounding the origin with a certain radius
+	public List<Position> getPositionArea(Position origin, int radius)
+	{
+		List<Position> posiotions = new ArrayList<Position>();
+		for (int i=0; i<=radius; i++)
+		{
+			posiotions.addAll(this.getPositionRing(origin,i));
+		}
+		return posiotions;
+	}
+	
 	//return a list of valid positions surrounding the origin with a certain radius
 	public List<Position> getPositionRing(Position origin, int radius)
 	{
 		List<Position> posiotions = new ArrayList<Position>();
-		Position newPosition = new Position();
-		newPosition.setX(origin.getX());
-		newPosition.setY(origin.getY()+radius);
-		
-		for(int i=0;i<DIR_COUNT;i++)
-		{
-			for(int j=0;j<=radius;j++)
+		Position newPosition = new Position(origin);
+			if(radius>0)
 			{
-				newPosition = this.getAdjecentPosition(newPosition, i);
-				if(this.verifyLocation(newPosition))
+			newPosition.setX(origin.getX());
+			newPosition.setY(origin.getY()+radius);
+			
+			for(int i=0;i<DIR_COUNT;i++)
+			{
+				for(int j=0;j<=radius;j++)
 				{
-					posiotions.add(newPosition);
+					newPosition = this.getAdjecentPosition(newPosition, i);
+					if(this.verifyLocation(newPosition))
+					{
+						posiotions.add(newPosition);
+					}
 				}
-			}
-		}				
+			}			
+		}
+		else
+		{
+			posiotions.add(newPosition);
+		}
 		return posiotions;
 	}
 

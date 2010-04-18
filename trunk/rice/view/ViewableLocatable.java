@@ -4,8 +4,8 @@
  */
 
 package rice.view;
-import rice.util.Position;
 
+import rice.util.Position;
 
 /**
  *

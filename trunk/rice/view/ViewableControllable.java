@@ -4,15 +4,13 @@
  */
 
 package rice.view;
-import rice.util.Position;
-
 
 /**
  *
  * @author spock
  */
-public interface ViewableControllable extends Viewable{
-    public abstract Position getLocation();
+public interface ViewableControllable extends ViewableLocatable{
+    
     public abstract String getCommand();
     public abstract String getStatus();
 }

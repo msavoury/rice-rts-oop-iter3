@@ -107,7 +107,7 @@ public class HexTranslator extends MapPositionTranslator
 			
 			for(int i=0;i<DIR_COUNT;i++)
 			{
-				for(int j=0;j<=radius;j++)
+				for(int j=0;j<radius;j++)
 				{
 					newPosition = this.getAdjecentPosition(newPosition, i);
 					if(this.verifyLocation(newPosition))

@@ -182,10 +182,15 @@ class DefaultKeyConfiguration
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_RIGHT + 10000, "CYCLE_MODES_RIGHT" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
-		KeyEvent.VK_PLUS + 10000, "INCREASE_CLOCK_RATE" ) );
+		KeyEvent.VK_EQUALS + 10000, "INCREASE_CLOCK_RATE" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_MINUS + 10000, "DECREASE_CLOCK_RATE" ) );
-	
+
+	// CTRL key must be pressed for the following commands to work
+	//  (i.e. 10000 must be added in addition to the keyboard key value)
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_Q + 20000, "QUIT" ) );
+
 	// no key is required to be pressed for the following commands to work
 	// (i.e. nothing needs to be added to the keybaord key value )
 	defaultConfig.add( new KeyboardHashMapPair(
@@ -213,13 +218,15 @@ class DefaultKeyConfiguration
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_NUMPAD3, "SOUTHEAST" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
-		KeyEvent.VK_ESCAPE, "QUIT" ) );
-	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_PAUSE, "PAUSE" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
-		KeyEvent.VK_PLUS, "ZOOM_IN" ) );
+		KeyEvent.VK_EQUALS, "ZOOM_IN" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_MINUS, "ZOOM_OUT" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_PAGE_UP, "SWITCH_SCREEN_LEFT" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_PAGE_DOWN, "SWITCH_SCREEN_RIGHT" ) );
 
 	return defaultConfig;
     }

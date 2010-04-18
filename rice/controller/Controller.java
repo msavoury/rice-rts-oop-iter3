@@ -197,6 +197,11 @@ public class Controller extends KeyAdapter implements ActionListener
 	   curState = mainScreenState;
            views.get(0).switchMode( stateIDs.get( statesIndex ) );
        }
+
+	void processModelCommand( String command )
+	{
+	    model.processCommand( command );
+	}
        
 // accessor and mutator functions
 // -----------------------------------------------------------------------------

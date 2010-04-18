@@ -14,8 +14,8 @@ public abstract class Ability {
 	  return this.name;
   }
   
-  public void acceptInput(String input){
+  public abstract void acceptInput(String input);
 	  
-  }
+  //}
     
 }

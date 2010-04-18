@@ -8,12 +8,11 @@ package rice.controller;
 import java.io.File;
 import java.util.Scanner;
 import java.io.PrintWriter;
-import java.io.FileWriter;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import javax.swing.JFileChooser;
-import java.io.BufferedWriter;
+import javax.swing.JOptionPane;
 
 // START: Testing
 import javax.swing.JFrame;
@@ -38,12 +37,12 @@ class ConfigFileProcessor
 
 // initialization functions
 // -----------------------------------------------------------------------------
+    
+    // constructor
     ConfigFileProcessor()
     {
-	defaultConfigFilePath = "ConfigFiles/default.txt";
-
 	chooser = new JFileChooser();
-	chooser.setCurrentDirectory( new File("./ConfigFiles") );
+	chooser.setCurrentDirectory( new File("./rice/ConfigFiles") );
 
 	//START: testing
 	frame = new JFrame( "File Chooser Test" );
@@ -54,14 +53,10 @@ class ConfigFileProcessor
 
 // file loading functions
 // -----------------------------------------------------------------------------
-    List< KeyboardHashMapPair > loadDefaultConfigFile()
-    {
-	//call loadConfigFile with the default file name/path as the argument
-	File file = new File( defaultConfigFilePath );
 
-	return loadFile( file );
-    }
-
+    // calls the getFile method so that the user can specify which config file
+    //  he or she wants to load and passes the user selection into the loadFile
+    //  method for loading
     List< KeyboardHashMapPair > loadConfigFile()
     {
 	File file = getFile();
@@ -73,17 +68,37 @@ class ConfigFileProcessor
 	return null;
     }
 
+    // loads a JFileChooser for the user to select the config file he or she
+    //  wants the game to be using
+    //  - getFile() invariant: loaded files must have a .txt
+    //                          extension or be null.
     private File getFile()
     {
 	File file = null;
 
 	if( chooser.showOpenDialog( frame ) == JFileChooser.APPROVE_OPTION )
 	{
-	    file = chooser.getSelectedFile();
+	    //making sure the file is a txt file 
+	    Scanner scn = new Scanner( file.getName() ).useDelimiter(".");
+	    scn.next();
+	    String extension = scn.next();
+	    
+	    if( extension.equals( "txt") )
+		file = chooser.getSelectedFile();
+	    else
+	    {
+		file = null;
+		System.out.println( "File Loading Error: tried " +
+			"to load a file that is not a .txt file.");
+	    }
 	}
 	return file;
     }
 
+    // loads the file passed via the method argument and stores
+    //  its contents into a KeyboardHashMapPair list so that
+    //  the KeyboardHashMap can store the control configuration
+    //  information
     private List< KeyboardHashMapPair > loadFile( File file )
     {
 	List< KeyboardHashMapPair > keyboardKeysInfo = new ArrayList();
@@ -92,14 +107,14 @@ class ConfigFileProcessor
 	{
 	    scn = new Scanner( file );
 
-	    while( scn.hasNextLine() )
+	    while( scn.hasNext() )
 	    {
-		String tempString = scn.next();
-		Integer tempInteger = new Integer(
-			Integer.parseInt( scn.next() ) );
+		    Integer tempInteger = new Integer(
+			    Integer.parseInt( scn.next() ) );
+		    String tempString = scn.next();
 
-		keyboardKeysInfo.add( new KeyboardHashMapPair( tempString, 
-			tempInteger ) );
+		    keyboardKeysInfo.add( new KeyboardHashMapPair( tempInteger,
+			    tempString ) );
 	    }
 
 	    scn.close();
@@ -114,29 +129,30 @@ class ConfigFileProcessor
 
 // file saving functions
 // -----------------------------------------------------------------------------
+
+    // saves the current controller configuration to a text file at
+    //  rice/ConfigFiles/fileName.txt .
     void saveConfigFile( List< KeyboardHashMapPair > keyboardKeysInfo )
-    { //NOTE: A lot of saveConfigFile is currently under testing
-	/*File testFile = new File("./ConfigFiles/test.txt");
+    {
+	// dialogue box that requests user to enter a title for their
+	//  current control configuration
+	String fileName = JOptionPane.showInputDialog("Enter a name for this " +
+		"custom control configuration file:");
+
+	File file = new File("rice/ConfigFiles/" + fileName + ".txt");
 
 	try
 	{
-final FileWriter outputFile = new FileWriter(testFile);
-        final BufferedWriter outputBuffer = new BufferedWriter(outputFile);
-        final PrintWriter pwriter = new PrintWriter(outputBuffer);
-	    //FileWriter txtConfig = new FileWriter( testFile );
-	    //pWrite = new PrintWriter( txtConfig );
-	    //PrintWriter pwriter = new PrintWriter( testFile );
-	    pwriter.print(15);
-	    pwriter.write(17);
+	    PrintWriter pWriter = new PrintWriter( file );
+
+	    for( int i = 0; i < keyboardKeysInfo.size(); ++i )
+	    {
+		pWriter.print( keyboardKeysInfo.get( i ).getKey() + " ");
+		pWriter.println( keyboardKeysInfo.get( i ).getValue() );
+	    }
+
+	    pWriter.close();
 	}
-	catch( Exception e )
-	{
-	    System.out.println("Exception: failure during " +
-		    "config writing process: " + e);
-	}*/
-
-
+	catch( Exception e ){}
     }
 }
-
-//figure out how to "exit" a JFrame

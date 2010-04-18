@@ -16,14 +16,14 @@ class KeyboardHashMapPair
 {
 // variable declarations
 // -----------------------------------------------------------------------------
-    private String key;
-    private int value;
+    private String value;
+    private int key;
 
 // initialization functions
 // -----------------------------------------------------------------------------
 
     // constructor
-    KeyboardHashMapPair( String key, Integer value )
+    KeyboardHashMapPair( Integer key, String value )
     {
 	this.key = key;
 	this.value = value;
@@ -33,13 +33,13 @@ class KeyboardHashMapPair
 // -----------------------------------------------------------------------------
 
     // returns a String that will serve as a key to the KeyboardHashMap
-    String getKey()
+    Integer getKey()
     {
 	return key;
     }
 
     // returns an Integer that will serve as the value to the KeyboardHashMap
-    Integer getValue()
+    String getValue()
     {
 	return value;
     }

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import rice.controller.ControllableModel;
 import rice.controller.Tickable;
 import rice.model.map.AreaMap;
 import rice.model.player.Player;
@@ -25,7 +26,7 @@ import rice.view.ViewableUnit;
  *
  * @author spock
  */
-public class Model implements ViewableModel, Tickable, MSVisitorAcceptor {
+public class Model implements ViewableModel, ControllableModel, Tickable, MSVisitorAcceptor {
 
 	private Player[] players;
 	private Player mainPlayer;
@@ -153,6 +154,30 @@ public class Model implements ViewableModel, Tickable, MSVisitorAcceptor {
 	@Override
 	public void accept(MSVisitor v) {
 		mainPlayer.accept(v);
+	}
+
+	@Override
+	public void nextStructure() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void nextUnit() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void previousStructure() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void previousUnit() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

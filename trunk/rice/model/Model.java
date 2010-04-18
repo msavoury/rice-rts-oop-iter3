@@ -70,6 +70,8 @@ public class Model implements ViewableModel, Tickable, MSVisitorAcceptor {
     public void previousSubmode(){}
     public void nextInstance(){}
     public void previousInstance(){}
+    public void nextAbility(){}
+    public void previousAbility(){}
     
 	@Override
 	public List<ViewableStructure> getAllStructures() {

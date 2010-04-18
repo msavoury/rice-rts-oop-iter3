@@ -56,4 +56,8 @@ public abstract class Unit extends Controllable implements ViewableUnit {
 		v.visit(this);
 	}
 	
+	public String getViewableUnitOwner(){
+		return getOwner().toString();
+	}
+	
 }

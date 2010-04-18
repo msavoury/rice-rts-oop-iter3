@@ -396,4 +396,9 @@ public abstract class Controllable extends Locatable implements ViewableControll
 	  String[] coms = commands.getCommandStrings();
 	  return coms[0];
   }
+  
+  public String getAbility() {
+	  
+	  return abilities.get(0).toString();
+  }
 }

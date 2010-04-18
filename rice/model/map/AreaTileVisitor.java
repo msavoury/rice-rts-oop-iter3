@@ -1,14 +1,14 @@
 package rice.model.map;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import rice.model.Locatable;
 import rice.model.accessories.Decal;
 import rice.model.accessories.Flow;
+import rice.model.accessories.Item;
 import rice.model.accessories.Obstacle;
-import rice.model.accessories.Resources;
+import rice.model.controllable.RallyPoint;
 import rice.model.player.Player;
 import rice.model.structures.Capital;
 import rice.model.structures.Structure;
@@ -140,7 +140,7 @@ public class AreaTileVisitor
 
 	public void visit(RallyPoint rally)
 	{
-		if(this.owner.equals(rally.getOwner))
+		if(this.owner.equals(rally.getOwner()))
 		{
 			if(!this.ownedRallyPoints.contains(rally))
 			{

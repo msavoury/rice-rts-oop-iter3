@@ -181,4 +181,14 @@ public abstract class Controllable extends Locatable implements Viewable {
   public void addActionTile(Position p){
 	  
   }
+  
+  /**
+   * This method returns an Array of positions that indicate the current focus of the Controllable.
+   * For most cases, it will simply return it's current position.  For movement, it will return the
+   * currently selected path to be traveled.  The array should be in order, such that the final
+   * destination tile is the last tile in the array.
+   */
+  public void getActionTiles() {
+	  
+  }
 }

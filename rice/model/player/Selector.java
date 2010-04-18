@@ -18,6 +18,19 @@ public class Selector<T> {
 		return this.addNode(destBranch, branch, null);
 	}
 	
+	public SelectorNode<T> addNode(String destBranch, T element)
+	{
+		if(this.branches.containsKey(destBranch))
+		{
+			//SelectorNode<T> parentNode = this.branches.get(destBranch);
+			//SelectorNode<T> newNode=new SelectorNode<T>(element);
+		//	parentNode.addChild(newNode);
+			//this.branches.put(branch, newNode);
+//			return newNode;
+		}
+		return null;
+	}
+	
 	//add a node to a specific branch
 	public SelectorNode<T> addNode(String destBranch, String branch, T element)
 	{

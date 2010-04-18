@@ -30,8 +30,7 @@ class SplashScreenState extends ControllerState
 // -----------------------------------------------------------------------------
     void processCommand( String command )
     {
-	
-     if( command.equals( "CONFIRM_SELECTION_NO_ARGS" ) )
+	if( command.equals( "CONFIRM_SELECTION_NO_ARGS" ) )
 	{
 	    controller.activateDefaultScreenState();
 	}

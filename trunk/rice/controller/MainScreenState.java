@@ -36,6 +36,10 @@ class MainScreenState extends ControllerState
 	   controller.switchScreenLeft();
 	else if( command.equals( "SWITCH_SCREEN_RIGHT" ) )
 	    controller.switchScreenRight();
+	else if( command.equals( "CONFIRM_SELECTION_NO_ARGS" ) )
+	{
+	    controller.processModelCommand( command );
+	}
     }
 
 // accessor and mutator functions

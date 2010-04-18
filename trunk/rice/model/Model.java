@@ -144,7 +144,7 @@ public class Model implements ViewableModel, Tickable, MSVisitorAcceptor {
 	}
 	
 	public void processCommand(String command){
-		
+	    
 	}
 
 	@Override

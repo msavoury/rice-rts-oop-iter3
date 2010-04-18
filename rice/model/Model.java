@@ -16,6 +16,7 @@ import rice.model.player.Player;
 import rice.util.Position;
 import rice.view.MSVisitor;
 import rice.view.MSVisitorAcceptor;
+import rice.view.ViewableControllable;
 import rice.view.ViewableModel;
 import rice.view.ViewableRallyPoint;
 import rice.view.ViewableStructure;
@@ -92,25 +93,13 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 	}
 
 	@Override
-	public List<ViewableTech> getAllTechnology() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<ViewableUnit> getAllUnits() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String getCurrentlySelectedCommand() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getCurrentlySelectedInstance() {
+	public ViewableControllable getCurrentlySelectedInstance() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -189,6 +178,30 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 	public void previousUnit() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<String> getCurrentSelectorPathToInstance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ViewableTech getCurrentlySelectedTech() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getSelectedTechNodeBranch() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ViewableTech> getSelectedTechNodeBranchAllNodes() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

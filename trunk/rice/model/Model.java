@@ -62,6 +62,16 @@ public class Model implements ViewableModel, Tickable, MSVisitorAcceptor {
         }
     }
 
+    public void nextMode() {
+    	
+    }
+    
+    public void previousMode(){}
+    public void nextSubmode(){}
+    public void previousSubmode(){}
+    public void nextInstance(){}
+    public void previousInstance(){}
+    
 	@Override
 	public List<ViewableStructure> getAllStructures() {
 		// TODO Auto-generated method stub

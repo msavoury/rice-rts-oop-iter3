@@ -55,9 +55,7 @@ public class Player implements Tickable, MSVisitorAcceptor {
 		System.out.println("Player "+ id + " ticked");
 		vmap.updateTiles(new Position(2,2), 2);
 	}
-	
-	//public 
-
+		
 	@Override
 	public void accept(MSVisitor v) {
 		vmap.accept(v);

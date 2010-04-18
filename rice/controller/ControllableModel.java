@@ -14,6 +14,11 @@ public interface ControllableModel
     public void createRallyPoint();
     public void tick( int tickNum );
     public void nextMode();
+
+    public void nextTechnology();
+    public void previousTechnolgy();
+    public void nextTechnologyBranch();
+    public void previousTechnologyBranch();
     
     public void previousUnit();
     public void nextUnit();

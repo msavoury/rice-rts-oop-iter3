@@ -40,7 +40,7 @@ class MainScreenState extends ControllerState
 	    controller.switchScreenRight();
 	else if( command.equals( "CONFIRM_SELECTION_NO_ARGS" ) )
 	{
-	    
+	    model.processCommand( command );
 	}
 	else if( command.equals( "CYCLE_MODES_UP" ) )
 	{
@@ -70,9 +70,9 @@ class MainScreenState extends ControllerState
 	{
 	    model.nextAbility();
 	}
-	else if( command.equals( "CYCLE_COMMANDS_UP" ) )
+	else if( command.equals( "CYCLE_COMMANDS_DOWN" ) )
 	{
-	    model.nextAbility();
+	    model.previousAbility();
 	}
     }
 

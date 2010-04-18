@@ -177,7 +177,7 @@ public class Controller extends KeyAdapter implements ActionListener
 		   curState = states.get( i );
 	   }
 
-	   views.get(0).switchMode( stateIDs.get( statesIndex ) );
+	   tellViewToSwitchScreen();
        }
 
        void switchScreenRight()
@@ -194,13 +194,18 @@ public class Controller extends KeyAdapter implements ActionListener
 		   curState = states.get( i );
 	   }
 
-	   views.get(0).switchMode( stateIDs.get( statesIndex ) );
+	   tellViewToSwitchScreen();
        }
 
        void activateInitialGameplayState()
        {
 	   curState = mainScreenState;
-           views.get(0).switchMode( stateIDs.get( statesIndex ) );
+           tellViewToSwitchScreen();
+       }
+
+       private void tellViewToSwitchScreen()
+       {
+	   views.get(0).switchMode( stateIDs.get( statesIndex ) );
        }
        
 // accessor and mutator functions

@@ -180,7 +180,7 @@ class DefaultKeyConfiguration
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_LEFT + 10000, "CYCLE_TYPES_LEFT" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
-		KeyEvent.VK_RIGHT + 10000, "CYCLE_MODES_RIGHT" ) );
+		KeyEvent.VK_RIGHT + 10000, "CYCLE_TYPES_RIGHT" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_EQUALS + 10000, "INCREASE_CLOCK_RATE" ) );
 	defaultConfig.add( new KeyboardHashMapPair(

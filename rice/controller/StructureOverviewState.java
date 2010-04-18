@@ -9,18 +9,18 @@ package rice.controller;
  *
  * @author Chris
  */
-class TechnologyState extends ControllerState
+class StructureOverviewState extends ControllerState
 {
 // variable declarations
 // -----------------------------------------------------------------------------
-    final private String activeID = "TechnologyState";
+    final private String activeID = "StructureOverviewState";
     private boolean isActive;
 
     Controller controller;
 
 // initialization functions
 // -----------------------------------------------------------------------------
-    TechnologyState( Controller controller )
+    StructureOverviewState( Controller controller )
     {
 	this.controller = controller;
 	isActive = false;

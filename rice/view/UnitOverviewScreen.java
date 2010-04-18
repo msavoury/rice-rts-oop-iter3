@@ -10,5 +10,5 @@ package rice.view;
  * @author spock
  */
 class UnitOverviewScreen extends GameGraphic{
-
+    
 }

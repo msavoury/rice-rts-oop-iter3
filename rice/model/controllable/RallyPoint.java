@@ -71,4 +71,10 @@ public class RallyPoint extends Controllable implements ViewableRallyPoint {
 		s.addRallyPoint(this);		
 	}
 
+	@Override
+	public String getCommand() {
+		
+		return "default Rally Command";
+	}
+
 }

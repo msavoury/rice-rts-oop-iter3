@@ -161,6 +161,8 @@ public class Controller extends KeyAdapter implements ActionListener
 	   processGlobalCommand( command );
 
 	   curState.processCommand( command );
+
+	   views.get(0).refresh();
        }
 
        void switchScreenLeft()

@@ -128,13 +128,14 @@ class KeyboardHashMap
 	}
     }
 
-// control information saving functions
-// -----------------------------------------------------------------------------
-
-    // saves the current control configuration to a file
-    void saveControlConfig()
+    List< KeyboardHashMapPair > getUpdatedKeyConfig()
     {
-	List< KeyboardHashMapPair > keyboardKeysInfo = new ArrayList< KeyboardHashMapPair >();
+	return packCurKeyConfig();
+    }
+
+    List< KeyboardHashMapPair > packCurKeyConfig()
+    {
+	List< KeyboardHashMapPair > keyboardKeysInfo = new ArrayList();
 
 	Set< Integer > keysToCopy = keyboardHashMap.keySet();
 	Iterator< Integer > iter = keysToCopy.iterator();
@@ -144,7 +145,20 @@ class KeyboardHashMap
 	    Integer curKey = iter.next();
 	    String curValue = this.getKeyInfo( curKey.intValue() );
 	    keyboardKeysInfo.add( new KeyboardHashMapPair( curKey, curValue ) );
+
 	}
+	return keyboardKeysInfo;
+    }
+
+// control information saving functions
+// -----------------------------------------------------------------------------
+
+    // saves the current control configuration to a file
+    void saveControlConfig()
+    {
+	List< KeyboardHashMapPair > keyboardKeysInfo = new ArrayList< KeyboardHashMapPair >();
+
+	keyboardKeysInfo = packCurKeyConfig();
 
 	configFileProcessor.saveConfigFile( keyboardKeysInfo );
     }
@@ -229,6 +243,26 @@ class DefaultKeyConfiguration
 		KeyEvent.VK_PAGE_DOWN, "SWITCH_SCREEN_RIGHT" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_R, "CREATE_RALLY_POINT" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_1, "HOTKEY_1" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_2, "HOTKEY_2" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_3, "HOTKEY_3" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_4, "HOTKEY_4" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_5, "HOTKEY_5" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_6, "HOTKEY_6" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_7, "HOTKEY_7" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_8, "HOTKEY_8" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_9, "HOTKEY_9" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_0, "HOTKEY_0" ) );
 
 	return defaultConfig;
     }

@@ -231,7 +231,10 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   protected void refreshModifiers()
   {
 	ModifierVisitor newModifiers=new ModifierVisitor(this);
-	this.getTile().accept(newModifiers);
+	if(this.getTile()!=null)
+	{
+		this.getTile().accept(newModifiers);
+	}
 	this.modifiers=newModifiers;
   }
   

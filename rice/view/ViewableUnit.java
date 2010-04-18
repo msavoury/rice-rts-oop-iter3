@@ -18,6 +18,7 @@ public interface ViewableUnit extends ViewableLocatable{
     public abstract String getStatus();
     public abstract int getSize();
     public abstract int getID();
+    public abstract String getViewableUnitOwner();
     public abstract void accept(UOVisitor u);
     public abstract void accept(MSVisitor m);
 }

@@ -142,6 +142,10 @@ public class Model implements ViewableModel, Tickable, MSVisitorAcceptor {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void processCommand(String command){
+		
+	}
 
 	@Override
 	public void accept(MSVisitor v) {

@@ -7,6 +7,7 @@ package rice.controller;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.List;
 import javax.swing.Timer;
 import java.util.ArrayList;
 import java.awt.event.KeyAdapter;
@@ -16,7 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 import rice.model.Model;
-import rice.view.View;
+import rice.view.ControllableView;
 
 /**
  *
@@ -28,17 +29,40 @@ public class Controller extends KeyAdapter implements ActionListener
 // -----------------------------------------------------------------------------
        Timer t;
        Model model;
-       ArrayList<View> views = new ArrayList<View>();
+       ArrayList<ControllableView> views = new ArrayList<ControllableView>();
 
        InputDecoder inputDecoder;
        SplashScreenState splashScreenState;
        MainScreenState mainScreenState;
-       OverviewState overviewState;
+       UnitOverviewState unitOverviewState;
+       StructureOverviewState structureOverviewState;
        TechnologyState technologyState;
        KeyBindingState keyBindingState;
 
        int tickCounter = 0;
        boolean pauseToggle = false;
+
+       // indicates the current ControllerState that is considered active
+       ControllerState curState;
+
+       // stateIDs are the Strings associated with their respective
+       //  controllerStates. When used, they are passed into the
+       //  states ArrayList to activate whatever state matches
+       //  the currently selected stateID. This is done so that
+       //  only states that are to be "switched" between can be
+       //  switched to, while all states can be stored inside of
+       //  the ArrayList named "states"
+       List< String > stateIDs;
+
+       // states are used so that whenever the program is trying to switch
+       //  states it passes the current stateID to all ControllerStates in this
+       //  ArrayList named "states". Whichever state returns that it matches
+       //  that stateID becomes the curState
+       List< ControllerState > states;
+
+       // statesIndex keeps track of the currently selected stateID inside of
+       //  stateIDs.
+       int statesIndex = 0;
 
 // initialization functions
 // -----------------------------------------------------------------------------
@@ -46,11 +70,34 @@ public class Controller extends KeyAdapter implements ActionListener
        {
            t = new Timer(1000, this);
 	   inputDecoder = new InputDecoder( this );
-	   splashScreenState = new SplashScreenState();
-	   mainScreenState = new MainScreenState();
-	   overviewState = new OverviewState();
-	   technologyState = new TechnologyState();
-	   keyBindingState = new KeyBindingState();
+	   splashScreenState = new SplashScreenState( this );
+	   mainScreenState = new MainScreenState( this );
+	   unitOverviewState = new UnitOverviewState( this );
+	   structureOverviewState = new StructureOverviewState( this );
+	   technologyState = new TechnologyState( this );
+	   keyBindingState = new KeyBindingState( this );
+	   curState = splashScreenState;
+
+	   // adding all available states to the ArrayList named "states"
+	   states = new ArrayList();
+	   states.add( splashScreenState );
+	   states.add( mainScreenState );
+	   states.add( unitOverviewState );
+	   states.add( structureOverviewState );
+	   states.add( technologyState );
+	   states.add( keyBindingState );
+
+	   //adding all available stateIDs to the ArrayList named "stateIDs"
+	   stateIDs = new ArrayList();
+	   stateIDs.add( mainScreenState.getActiveID() );
+	   stateIDs.add( unitOverviewState.getActiveID() );
+	   stateIDs.add( structureOverviewState.getActiveID() );
+	   stateIDs.add( technologyState.getActiveID() );
+	   stateIDs.add( keyBindingState.getActiveID() );
+
+	   // creating an index for the ArrayList named "stateIDs" to keep
+	   // track of the currently selected stateID
+	   statesIndex = 0;
        }
 
        public void start()
@@ -63,7 +110,7 @@ public class Controller extends KeyAdapter implements ActionListener
            this.model = model;
        }
 
-       public void registerView(View view)
+       public void registerView(ControllableView view)
        {
            views.add(view);
 	   view.addKeyListener( inputDecoder );
@@ -108,8 +155,49 @@ public class Controller extends KeyAdapter implements ActionListener
        {
 	   processGlobalCommand( command );
 
+	   curState.processCommand( command );
        }
-// accessor functions
+
+       void switchScreenLeft()
+       {
+	   if ( statesIndex == 0 )
+	       statesIndex = stateIDs.size() - 1;
+	   else
+	       --statesIndex;
+
+	   for( int i = 0; i < states.size(); ++i )
+	   {
+	       if( states.get( i ).activated(
+		       stateIDs.get( statesIndex ) ) )
+		   curState = states.get( i );
+	   }
+
+	   views.get(0).switchMode( stateIDs.get( statesIndex ) );
+       }
+
+       void switchScreenRight()
+       {
+	   if ( statesIndex == stateIDs.size() - 1 )
+	       statesIndex = 0;
+	   else
+	       ++statesIndex;
+
+	   for( int i = 0; i < states.size(); ++i )
+	   {
+	       if( states.get( i ).activated(
+		       stateIDs.get( statesIndex ) ) )
+		   curState = states.get( i );
+	   }
+
+	   views.get(0).switchMode( stateIDs.get( statesIndex ) );
+       }
+
+       void activateDefaultScreenState()
+       {
+	   curState = mainScreenState;
+       }
+       
+// accessor and mutator functions
 // -----------------------------------------------------------------------------
        private int getTickNum()
        {
@@ -132,7 +220,7 @@ public class Controller extends KeyAdapter implements ActionListener
        {
 	   ++tickCounter;
            model.tick( getTickNum() );
-           for(View v: views)
+           for(ControllableView v: views)
 	   {
                v.refresh();
            }

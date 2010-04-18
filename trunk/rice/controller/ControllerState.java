@@ -11,13 +11,14 @@ package rice.controller;
  */
 abstract class ControllerState
 {
-    void processCommand( String command )
-    {
+// variable declarations
+// -----------------------------------------------------------------------------
+    
+// command processing functions
+// -----------------------------------------------------------------------------
+    abstract void processCommand( String command );
 
-    }
-
-    void activated( String command )
-    {
-	
-    }
+// class state status functions
+// -----------------------------------------------------------------------------
+    abstract boolean activated( String activeID );
 }

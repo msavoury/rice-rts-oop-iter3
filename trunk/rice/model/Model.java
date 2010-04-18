@@ -35,17 +35,8 @@ public class Model implements ViewableModel {
       
       AreaMap.setTerrain(mi.getTerrain());
       AreaMap.setTranslator(mi.getTranslator());
-      
-      //start debug
-      //this should be changed so that the area map gets its position
-      //list from the initializer as well
-      List list = new ArrayList<Position>();
-      list.add(new Position());
-      list.add(new Position());
-      AreaMap.setPositions(list);
-      //end debug
-            
-      
+      AreaMap.setPositions(mi.getStartingPositions());
+     
 	  //make players
       players = new Player[2];
       players[0] = new Player();

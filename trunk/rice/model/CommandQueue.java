@@ -27,6 +27,22 @@ public class CommandQueue {
     	commandList.add(c);
     }
     
+    public int executeCommand() {
+    	return commandList.get(0).execute();
+    }
+    
+    public Command peek() {
+    	return commandList.get(0);
+    }
+    
+    public void pop() {
+    	commandList.remove(0);
+    }
+    
+    public boolean isEmpty() {
+    	return commandList.isEmpty();
+    }
+    
     public String[] getCommandStrings() {
     	String[] commands = new String[commandList.size()];
     	for(int i = 0; i < commandList.size(); i++){

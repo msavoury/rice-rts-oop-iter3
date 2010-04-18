@@ -1,12 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-//test by msavoury
 /**
  *
  * @author spock
  */
+
+package rice;
 
 import rice.controller.Controller;
 import rice.model.Model;

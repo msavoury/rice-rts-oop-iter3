@@ -33,10 +33,15 @@ public class Model implements ViewableModel {
       MapInitializer mi = new MapInitializer();
       mi.parse();
       
+      //probably should just call getInstance instead of having 
+      //these static methods
       AreaMap.setTerrain(mi.getTerrain());
       AreaMap.setTranslator(mi.getTranslator());
       AreaMap.setPositions(mi.getStartingPositions());
      
+      //AreaMap.getInstance().
+      
+      
 	  //make players
       players = new Player[2];
       players[0] = new Player();

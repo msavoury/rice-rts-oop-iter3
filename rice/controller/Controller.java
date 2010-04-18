@@ -206,6 +206,7 @@ public class Controller extends KeyAdapter implements ActionListener
        private void tellViewToSwitchScreen()
        {
 	   views.get(0).switchMode( stateIDs.get( statesIndex ) );
+	   views.get(0).refresh();
        }
        
 // accessor and mutator functions

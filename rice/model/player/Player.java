@@ -4,6 +4,7 @@ package rice.model.player;
 import java.util.Iterator;
 import java.util.List;
 
+import rice.model.map.AreaMap;
 import rice.model.unit.Colonist;
 import rice.controller.Tickable;
 
@@ -18,12 +19,12 @@ public class Player implements Tickable, MSVisitorAcceptor {
 		
 	//instance members
 	private int id;
-	private Position startingPostion;
+	private Position startingPosition;
 	private RiceSelector selector;
 	private VisibilityMap vmap;
 	
 	public Player(Position startingPosition){
-		this.startingPostion = startingPosition;
+		this.startingPosition = startingPosition;
 		this.id = playerCount;
 		this.selector = new RiceSelector();
 		this.vmap = new VisibilityMap(this);
@@ -33,12 +34,14 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	public void initialize() {
 		
 	  //this.addControllable(new Colonist(1, this));
-	  //TODO: remove hardcoded ID
-      selector.addColonist(new Colonist(1, this));
+	  //TODO: remove hardcoded ID\
+	  Colonist c = new Colonist(1, this);
+      selector.addColonist(c);
+      AreaMap.getInstance().putControllable(c, startingPosition);
 	}
 	
 	public void setStartingPosition(Position p){
-		this.startingPostion = p;
+		this.startingPosition = p;
 	}
 	
 	public void updateTiles(Position origin, int radius)

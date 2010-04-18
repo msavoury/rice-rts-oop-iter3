@@ -54,5 +54,9 @@ public class CommandQueue {
     	}
     	return commands;
     }
+    
+    public int size(){
+    	return commandList.size();
+    }
 
 }

@@ -1,5 +1,6 @@
 package rice.model.command;
 
+import rice.model.CombatManager;
 import rice.model.unit.Unit;
 
 /**
@@ -19,7 +20,7 @@ public class Defend extends Command {
 
 	@Override
 	public int execute() {
-		
+		CombatManager.Defend(target, defendDirection);
 		return CONTINUOUS;
 	}
 

@@ -244,25 +244,19 @@ public abstract class Controllable extends Locatable implements ViewableControll
 	  return this.modifiers;
   }
   
-  public void tick()
-  	{
-	  this.refreshModifiers();
-	  
-	  // System.out.println("Controllable: " +this.getType() +" tick. Powered status: " + powered);
-	  //TODO: stuff with temp direction and speed and what not here
-	  //if(powered){
-		  if(!commands.isEmpty()){
-			  if(commands.executeCommand() == Command.FINISHED){
-				  commands.pop();
-			  }
-		  }
-		  else {
+  public void tick() {
+  	this.refreshModifiers();
+	//TODO: stuff with temp direction and speed and what not here
+	if(!commands.isEmpty()){
+	  int result = commands.executeCommand();
+	  if( result == Command.FINISHED ||(result == Command.CONTINUOUS && commands.size() > 1)){
+	      commands.pop();
+	  }
+	}
+	else {
 			  
-		  }
-		 // System.out.println(toString() + "PowerStatus: " + powered + printQueue());
-		  
-	 // }
-	  //TODO: stuff with applyables here
+	}
+		 
   }
   
   public void destroy() {
@@ -308,7 +302,7 @@ public abstract class Controllable extends Locatable implements ViewableControll
   /**
    * Initialize the abilities that the controllable is born with
    */
-  private void initAbilities(){
+  public void initAbilities(){
 	abilities = new ArrayList<Ability>();
 	abilities.add(new PowerDownAbility(this));
     abilities.add(new PowerUpAbility(this));
@@ -316,6 +310,10 @@ public abstract class Controllable extends Locatable implements ViewableControll
     abilities.add(new ClearQueueAbility(this));
     abilities.add(new WaitAbility(this));
     
+  }
+  
+  public void addAbility(Ability a) {
+	  abilities.add(a);
   }
   
   /**
@@ -362,6 +360,7 @@ public abstract class Controllable extends Locatable implements ViewableControll
    * Convenience method that return current queue as one string
    * @return
    */
+  
   public String printQueue() {
 	  StringBuffer buff = new StringBuffer();
 	  for(String s: commands.getCommandStrings()){

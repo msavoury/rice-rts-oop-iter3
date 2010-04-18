@@ -139,7 +139,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
 	  }
   }
   
-  public void takeDamage(int value)
+  public void takeDamage(double value)
   {
 	  if(value<0)
 	  {

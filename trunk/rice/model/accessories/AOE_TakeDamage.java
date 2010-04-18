@@ -4,7 +4,7 @@ import rice.model.Controllable;
 
 public class AOE_TakeDamage extends AreaOfEffect
 {
-	private int value;
+	private double value;
 	
 	public AOE_TakeDamage()
 	{

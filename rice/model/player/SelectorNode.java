@@ -26,6 +26,10 @@ public class SelectorNode<T>
 	{
 		if(!this.children.contains(child))
 		{
+			if(this.selection==null)
+			{
+				this.selection=child;
+			}
 			this.children.add(child);
 		}
 	}
@@ -33,6 +37,10 @@ public class SelectorNode<T>
 	//removes a child node
 	public void removeChild(SelectorNode<T> child)
 	{
+		if(this.selection.equals(child))
+		{
+			this.selectPrev();
+		}
 		this.children.remove(child);
 	}
 	
@@ -44,6 +52,7 @@ public class SelectorNode<T>
 		{
 			if(iter.next().getElement().equals(element))
 			{
+				this.selectPrev();
 				iter.remove();
 				return true;
 			}
@@ -181,6 +190,11 @@ public class SelectorNode<T>
 			}
 		}
 		return false;
+	}
+	
+	private int getAllLeafCount()
+	{
+		return this.getAllLeafs().size();
 	}
 	
 	public List<T> getAllLeafs()

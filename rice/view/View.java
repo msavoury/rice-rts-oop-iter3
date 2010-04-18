@@ -32,7 +32,9 @@ public class View implements ControllableView{
            screenManager.start();
            first = true;
         }
+        //long time = System.currentTimeMillis();
         screenManager.refresh();
+        //
     }
 
     public void switchMode(String type){

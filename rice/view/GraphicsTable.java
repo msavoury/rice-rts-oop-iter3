@@ -23,6 +23,8 @@ public class GraphicsTable {
         graphics = new HashMap<String, Texture>();
         try{
             graphics.put( "rice", TextureIO.newTexture(ImageIO.read(new File("rice/images/testImage.jpg")), true));
+            graphics.put( "hud", TextureIO.newTexture(ImageIO.read(new File("rice/images/hud.png")), true));
+            graphics.put( "marblecake", TextureIO.newTexture(ImageIO.read(new File("rice/images/marblecake.jpg")), true));
             graphics.put( "Terrain_1", TextureIO.newTexture(ImageIO.read(new File("rice/images/testImage.jpg")), true));
             graphics.put( "Terrain_2", TextureIO.newTexture(ImageIO.read(new File("rice/images/RandomAngle.png")), true));
             graphics.put( "Terrain_3", TextureIO.newTexture(ImageIO.read(new File("rice/images/snail.jpg")), true));

@@ -14,6 +14,7 @@ import rice.model.map.AreaMap;
 import rice.model.player.Player;
 import rice.util.Position;
 import rice.view.MSVisitor;
+import rice.view.MSVisitorAcceptor;
 import rice.view.ViewableModel;
 import rice.view.ViewableRallyPoint;
 import rice.view.ViewableStructure;
@@ -24,7 +25,7 @@ import rice.view.ViewableUnit;
  *
  * @author spock
  */
-public class Model implements ViewableModel, Tickable {
+public class Model implements ViewableModel, Tickable, MSVisitorAcceptor {
 
 	private Player[] players;
 	private Player mainPlayer;
@@ -131,6 +132,11 @@ public class Model implements ViewableModel, Tickable {
 	public void receiveMainScreenVisitor(MSVisitor m) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void accept(MSVisitor v) {
+		mainPlayer.accept(v);
 	}
 
 	

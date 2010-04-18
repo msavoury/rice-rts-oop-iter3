@@ -5,6 +5,7 @@
 
 package rice.controller;
 
+import rice.model.Model;
 /**
  *
  * @author Chris
@@ -17,6 +18,7 @@ class MainScreenState extends ControllerState
     private boolean isActive;
 
     Controller controller;
+    Model model;
 
 // initialization functions
 // -----------------------------------------------------------------------------
@@ -38,12 +40,49 @@ class MainScreenState extends ControllerState
 	    controller.switchScreenRight();
 	else if( command.equals( "CONFIRM_SELECTION_NO_ARGS" ) )
 	{
-	    controller.processModelCommand( command );
+	    
+	}
+	else if( command.equals( "CYCLE_MODES_UP" ) )
+	{
+	    model.nextMode();
+	}
+	else if( command.equals( "CYCLE_MODES_DOWN" ) )
+	{
+	    model.previousMode();
+	}
+	else if( command.equals( "CYCLE_TYPES_LEFT" ) )
+	{
+	    model.previousSubmode();
+	}
+	else if( command.equals( "CYCLE_MODES_RIGHT" ) )
+	{
+	    model.nextSubmode();
+	}
+	else if( command.equals( "CYCLE_INSTANCES_LEFT" ) )
+	{
+	    model.previousInstance();
+	}
+	else if( command.equals( "CYCLE_MODES_RIGHT" ) )
+	{
+	    model.nextInstance();
+	}
+	else if( command.equals( "CYCLE_COMMANDS_UP" ) )
+	{
+	    model.nextAbility();
+	}
+	else if( command.equals( "CYCLE_COMMANDS_UP" ) )
+	{
+	    model.nextAbility();
 	}
     }
 
 // accessor and mutator functions
 // -----------------------------------------------------------------------------
+    void setModel( Model model )
+    {
+	this.model = model;
+    }
+
     String getActiveID()
     {
 	return activeID;

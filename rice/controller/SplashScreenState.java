@@ -5,6 +5,7 @@
 
 package rice.controller;
 
+import rice.model.Model;
 /**
  *
  * @author Chris
@@ -17,6 +18,7 @@ class SplashScreenState extends ControllerState
     private boolean isActive;
 
     Controller controller;
+    Model model;
 
 // initialization functions
 // -----------------------------------------------------------------------------
@@ -32,12 +34,17 @@ class SplashScreenState extends ControllerState
     {
 	if( command.equals( "CONFIRM_SELECTION_NO_ARGS" ) )
 	{
-	    controller.activateDefaultScreenState();
+	    controller.activateInitialGameplayState();
 	}
     }
 
 // accessor and mutator functions
 // -----------------------------------------------------------------------------
+    void setModel( Model model )
+    {
+	this.model = model;
+    }
+
     String getActiveID()
     {
 	return activeID;

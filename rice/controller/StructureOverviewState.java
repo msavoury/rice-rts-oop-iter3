@@ -5,6 +5,7 @@
 
 package rice.controller;
 
+import rice.model.Model;
 /**
  *
  * @author Chris
@@ -17,6 +18,7 @@ class StructureOverviewState extends ControllerState
     private boolean isActive;
 
     Controller controller;
+    Model model;
 
 // initialization functions
 // -----------------------------------------------------------------------------
@@ -40,6 +42,11 @@ class StructureOverviewState extends ControllerState
 
 // accessor and mutator functions
 // -----------------------------------------------------------------------------
+    void setModel( Model model )
+    {
+	this.model = model;
+    }
+    
     String getActiveID()
     {
 	return activeID;

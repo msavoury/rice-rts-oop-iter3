@@ -31,7 +31,9 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	}
 	
 	public void initialize() {
-		//TODO: remove hardcoded ID
+		
+	  //this.addControllable(new Colonist(1, this));
+	  //TODO: remove hardcoded ID
       selector.addColonist(new Colonist(1, this));
 	}
 	
@@ -51,7 +53,10 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	
 	public void tick(int tick) {
 		System.out.println("Player "+ id + " ticked");
+		vmap.updateTiles(new Position(2,2), 2);
 	}
+	
+	//public 
 
 	@Override
 	public void accept(MSVisitor v) {

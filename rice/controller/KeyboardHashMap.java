@@ -228,7 +228,7 @@ class DefaultKeyConfiguration
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_PAGE_DOWN, "SWITCH_SCREEN_RIGHT" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
-		KeyEvent.VK_ASTERISK, "CREATE_RALLY_POINT" ) );
+		KeyEvent.VK_R, "CREATE_RALLY_POINT" ) );
 
 	return defaultConfig;
     }

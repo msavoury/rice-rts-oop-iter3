@@ -17,14 +17,15 @@ import javax.media.opengl.GLAutoDrawable;
  * @author spock
  */
 class MainScreen extends GameGraphic{
-    ViewableModel model;
+    ViewableModel vm;
     MSVisitorAcceptor msa;
     MainScreenVisitor msv;
     boolean resourceMode;
 
-    MainScreen(MSVisitorAcceptor model){
+    MainScreen(MSVisitorAcceptor model, ViewableModel vm){
         this.msa = model;
-        msv = new MainScreenVisitor(5, 5, this.model);
+        this.vm = vm;
+        msv = new MainScreenVisitor(5, 5, vm);
         resourceMode = false;
         //msv.preDraw();
         
@@ -270,11 +271,70 @@ class MainScreen extends GameGraphic{
                 }
             }
 
+            /*for(int v = 0; v< vm.getCurrentSelectorPathToInstance().size(); ++v){
+                System.out.println(vm.getCurrentSelectorPathToInstance().get(v));
+            }*/
+
             thingsToDraw.add(new SelfDrawingImage( "hud",
                                                    0,
                                                    .75,
                                                    1,
                                                    1));
+
+            //MODE BOX
+            thingsToDraw.add(new SelfDrawingImage(  "cat", //comm1
+                                                    1-.15626,
+                                                    0,
+                                                    1,
+                                                    .08125));
+            thingsToDraw.add(new SelfDrawingText(  /*"Mode"*/ vm.getCurrentSelectorPathToInstance().get(0), //comm1
+                                                    1-.12,
+                                                    1-.08125 + .035));
+
+            //TYPE BOX
+            thingsToDraw.add(new SelfDrawingImage(  "cat", //comm2
+                                                    1-.15626,
+                                                    0+.08125*1,
+                                                    1,
+                                                    .08125*2));
+            if(vm.getCurrentSelectorPathToInstance().size()>1){
+                thingsToDraw.add(new SelfDrawingText(  /*"Type"*/vm.getCurrentSelectorPathToInstance().get(1), //comm2
+                                                        1-.12,
+                                                        1-.08125*2 + .035));
+            }
+
+            //INSTANCE BOX
+            thingsToDraw.add(new SelfDrawingImage(  "cat", //comm3
+                                                    1-.15626,
+                                                    0+.08125*2,
+                                                    1,
+                                                    .08125*3));
+            thingsToDraw.add(new SelfDrawingText(  /*"Colonist 1"*/vm.getCurrentlySelectedInstance().getType() + vm.getCurrentlySelectedInstance().getID(), //comm3
+                                                    1-.12,
+                                                    1-.08125*3 + .035));
+
+            //ABILITY BOX
+            thingsToDraw.add(new SelfDrawingImage(  "cat", //comm4
+                                                    1-.15626,
+                                                    0+.08125*3,
+                                                    1,
+                                                    .08125*4));
+            thingsToDraw.add(new SelfDrawingText(  /*"Ability"*/ vm.getCurrentlySelectedInstance().getAbility(), //comm4
+                                                    1-.12,
+                                                    1-.08125*4 + .035));
+
+            //STATUS BOX
+            thingsToDraw.add(new SelfDrawingImage(  "cat", //comm5
+                                                    1-.15626,
+                                                    0+.08125*4,
+                                                    1,
+                                                    .08125*5));
+            thingsToDraw.add(new SelfDrawingText(  /*"Status"*/ vm.getCurrentlySelectedInstance().getStatus(), //comm5
+                                                    1-.12,
+                                                    1-.08125*5 + .035));
+
+            /*if()
+            thingsToDraw.add(new SelfDrawingImage(  ));*/
             
 
         }

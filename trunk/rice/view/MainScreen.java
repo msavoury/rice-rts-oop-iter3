@@ -89,6 +89,8 @@ class MainScreen extends GameGraphic{
         }
 
         void preDraw(){
+            //thingsToDraw = new ArrayList<SelfDrawingObject>();
+            thingsToDraw.clear();
             if(!resourceMode){
                 for(int i = 0; i < map.length; ++i){
                     for(int j = 0; j < map[0].length; ++j){
@@ -267,6 +269,12 @@ class MainScreen extends GameGraphic{
                     }
                 }
             }
+
+            thingsToDraw.add(new SelfDrawingImage( "hud",
+                                                   0,
+                                                   .75,
+                                                   1,
+                                                   1));
             
 
         }

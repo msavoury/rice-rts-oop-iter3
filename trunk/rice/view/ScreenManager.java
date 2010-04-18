@@ -97,8 +97,9 @@ class ScreenManager extends JFrame{
         public void display(GLAutoDrawable drawable) {
             GL gl = drawable.getGL();
             gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
-
+            //long time = System.currentTimeMillis();
             currentScreen.render(gl, drawable, renderer);
+            //System.err.println("display " + (System.currentTimeMillis() - time));
         }
 
         public void displayChanged(GLAutoDrawable drawable, boolean arg1, boolean arg2) {
@@ -123,16 +124,16 @@ class ScreenManager extends JFrame{
                 gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
                 graphics = GraphicsTable.getInstance();
 
-                renderer = new TextRenderer(new Font("SansSerif", Font.BOLD, 30));
+                renderer = new TextRenderer(new Font("Serif", Font.BOLD, 22));
 
                 screens = new ArrayList<GameGraphic>();
 
                 screens.add(new TitleScreen());
                 screens.add(new MainScreen(msa));
-                screens.add(new UnitOverviewScreen());
+                screens.add(new UnitOverviewScreen(model));
                 screens.add(new StructureOverviewScreen());
                 screens.add(new TechOverviewScreen());
-                screens.add(new KeyBindingScreen());
+                screens.add(new KeyBindingScreen(model));
 
                 screenSelector = new HashMap<String, GameGraphic>();
 

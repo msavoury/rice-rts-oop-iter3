@@ -236,7 +236,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
 		  else {
 			  
 		  }
-		  System.out.println(toString() + "PowerStatus: " + powered + printQueue());
+		 // System.out.println(toString() + "PowerStatus: " + powered + printQueue());
 		  
 	 // }
 	  //TODO: stuff with applyables here

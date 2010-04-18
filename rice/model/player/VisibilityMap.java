@@ -49,8 +49,8 @@ public class VisibilityMap extends Map implements MSVisitorAcceptor, Tickable
 		List<Position> area = this.getMapPositionTranslator().getPositionArea(origin,radius);
 		Iterator<Position> iter = area.iterator();
 		while(iter.hasNext())
-		{
-			this.getTile(iter.next()).updateTile(this.currentTick);
+		{   System.err.println(iter.next().toString());
+			//this.getTile(iter.next()).updateTile(this.currentTick);
 		}
 	}
 	

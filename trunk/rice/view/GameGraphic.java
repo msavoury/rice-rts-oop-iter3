@@ -31,6 +31,10 @@ abstract class GameGraphic {
     void refresh(){
     }
 
+    void auxillaryCommand(String command){
+        
+    }
+
     void render(GL gl, GLAutoDrawable drawable, TextRenderer render){
         
     }

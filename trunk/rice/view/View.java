@@ -30,6 +30,10 @@ public class View implements ControllableView{
         screenManager.setMode(type);
     }
 
+    public void toggleMainScreenMode(){
+        screenManager.toggleMainScreenMode();
+    }
+
     public void setModel(ViewableModel model){
         this.model = model;
     }

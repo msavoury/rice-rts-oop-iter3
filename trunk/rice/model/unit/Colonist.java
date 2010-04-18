@@ -34,6 +34,7 @@ public class Colonist extends Unit {
 		  this.setUpkeep(newUpkeep);
 		  this.setSize(30);
 		  this.setSpeed(1);
+		  this.setPassability(1);
 		
 	}
     

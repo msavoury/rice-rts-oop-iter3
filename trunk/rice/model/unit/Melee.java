@@ -33,6 +33,7 @@ public class Melee extends Unit {
 		  this.setUpkeep(newUpkeep);
 		  this.setSize(10);
 		  this.setSpeed(1);
+		  this.setPassability(1);
 	}
 public void accept(MSVisitor v){
 

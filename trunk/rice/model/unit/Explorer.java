@@ -34,6 +34,7 @@ public class Explorer extends Unit{
 		  this.setUpkeep(newUpkeep);
 		  this.setSize(10);
 		  this.setSpeed(2);
+		  this.setPassability(1);
 	}
 
 	public void accept(UOVisitor u) {

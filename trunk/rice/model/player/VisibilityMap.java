@@ -14,10 +14,10 @@ public class VisibilityMap extends Map implements MSVisitorAcceptor, Tickable
 {	
 	private int currentTick;
 	
-	public VisibilityMap(AreaMap areaMap, Player owner)
+	public VisibilityMap(Player owner)
 	{
-
-		super(areaMap.getMapPositionTranslator());
+		super(AreaMap.getInstance().getMapPositionTranslator());
+		AreaMap areaMap = AreaMap.getInstance();
 		VisibilityTile[][] tiles = new VisibilityTile[areaMap.getHeight()][areaMap.getWidth()];
 		int w=areaMap.getWidth();
 		int h=areaMap.getHeight();
@@ -44,7 +44,7 @@ public class VisibilityMap extends Map implements MSVisitorAcceptor, Tickable
 		this.currentTick=tick;
 	}
 	
-	public void UpdateTiles(Position origin, int radius)
+	public void updateTiles(Position origin, int radius)
 	{
 		List<Position> area = this.getMapPositionTranslator().getPositionArea(origin,radius);
 		Iterator<Position> iter = area.iterator();
@@ -54,7 +54,7 @@ public class VisibilityMap extends Map implements MSVisitorAcceptor, Tickable
 		}
 	}
 	
-	public void UpdateResources(Position origin, int radius)
+	public void updateResources(Position origin, int radius)
 	{
 		List<Position> area = this.getMapPositionTranslator().getPositionArea(origin,radius);
 		Iterator<Position> iter = area.iterator();

@@ -5,16 +5,16 @@
 
 package rice.view;
 
-import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.List;
+import util.Position;
 
 /**
  *
  * @author spock
  */
 public interface ViewableTile extends ViewableLocatable{
-    public abstract Dimension getLocation();
+    public abstract Position getLocation();
     public abstract String getFlow();
     public abstract String getItem();
     public abstract String getDecal();

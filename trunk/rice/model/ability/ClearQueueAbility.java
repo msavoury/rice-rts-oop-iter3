@@ -1,18 +1,21 @@
 package rice.model.ability;
 
 import rice.model.Controllable;
+import rice.model.command.Decommission;
 
 public class ClearQueueAbility extends Ability{
 
+	
 	public ClearQueueAbility(Controllable c) {
 		super(c);
-		// TODO Auto-generated constructor stub
+		setName("Clear Queue");
 	}
 
 	@Override
 	public void acceptInput(String input) {
-		// TODO Auto-generated method stub
-		
+		if(input.equals("CONFIRM_SELECTION_NO_ARGS")){
+		    target.clearQueue();
+	  }
 	}
 
 }

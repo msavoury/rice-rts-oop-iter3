@@ -56,7 +56,7 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	}
 	
 	public void tick(int tick) {
-		System.out.println("Player "+ id + " ticked");
+		//System.out.println("Player "+ id + " ticked");
 		selector.tick(tick);
 		vmap.updateTiles(new Position(2,2), 3);
 	}
@@ -66,6 +66,20 @@ public class Player implements Tickable, MSVisitorAcceptor {
 		vmap.accept(v);
 		
 	}
+    public void nextMode() {
+    	
+    }
+    public void previousMode(){}
+    public void nextSubmode(){}
+    public void previousSubmode(){}
+    public void nextInstance(){}
+    public void previousInstance(){}
+    public void nextAbility(){
+    	selector.getSelected().nextAbility();
+    }
+    public void previousAbility(){
+    	selector.getSelected().previousAbility();
+    }
 
 	public void processCommand(String command) {
 		// TODO Auto-generated method stub

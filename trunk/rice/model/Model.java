@@ -71,8 +71,12 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
     public void previousSubmode(){}
     public void nextInstance(){}
     public void previousInstance(){}
-    public void nextAbility(){}
-    public void previousAbility(){}
+    public void nextAbility(){
+      mainPlayer.nextAbility();	
+    }
+    public void previousAbility(){
+    	mainPlayer.previousAbility();
+    }
     public void createRallyPoint(){}
     
 	@Override

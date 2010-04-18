@@ -17,7 +17,7 @@ import rice.util.Position;
  *
  * @author Marcos
  */
-public class AreaTile extends Tile implements ATVisitorAcceptor, ResourceVisitorAcceptor {
+public class AreaTile extends Tile implements ATVisitorAcceptor, ResourceVisitorAcceptor, MVAcceptor {
 	private int terrain;
 	private int passabilityLevel;
 	private ArrayList<Controllable> controllables = new ArrayList<Controllable>();
@@ -108,5 +108,14 @@ public class AreaTile extends Tile implements ATVisitorAcceptor, ResourceVisitor
 		{
 			aIter.next().accept(v);
 		}		
+	}
+
+	public void accept(ModifierVisitor v)
+	{
+		Iterator<Accessory> aIter = this.accessories.iterator();
+		while(aIter.hasNext())
+		{
+			aIter.next().accept(v);
+		}	
 	}
 }

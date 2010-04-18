@@ -7,6 +7,8 @@ package rice.model.accessories;
 
 import rice.model.Locatable;
 import rice.model.map.AreaTile;
+import rice.model.map.MVAcceptor;
+import rice.model.map.ModifierVisitor;
 import rice.model.map.ResourceVisitor;
 import rice.model.map.ResourceVisitorAcceptor;
 
@@ -14,7 +16,7 @@ import rice.model.map.ResourceVisitorAcceptor;
  *
  * @author Marcos
  */
-public abstract class Accessory extends Locatable implements ResourceVisitorAcceptor {
+public abstract class Accessory extends Locatable implements ResourceVisitorAcceptor, MVAcceptor {
 
 	public Accessory(String typeName)
 	{
@@ -41,4 +43,8 @@ public abstract class Accessory extends Locatable implements ResourceVisitorAcce
 		v.visit(this);
 	}
 
+	public void accept(ModifierVisitor v)
+	{
+		v.visit(this);
+	}	
 }

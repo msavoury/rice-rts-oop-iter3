@@ -1,15 +1,25 @@
 package rice.model.structures;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
+import rice.model.Controllable;
+import rice.model.accessories.AreaBonus;
+import rice.model.accessories.BonusGiver;
+import rice.model.map.AreaMap;
 import rice.model.player.Player;
 import rice.model.player.RiceSelector;
 import rice.model.unit.Unit;
 import rice.model.unit.UnitOwner;
+import rice.util.Position;
 
-public class Fort extends Structure implements UnitOwner
+public class Fort extends Structure implements UnitOwner, BonusGiver
 {
+	private ArrayList<AreaBonus> bonuses = new ArrayList<AreaBonus>();
+	private int bonusRadius = 0;
+	
 	public Fort(int id, Player owner)
 	{
 		super("Fort", id, owner);
@@ -26,6 +36,34 @@ public class Fort extends Structure implements UnitOwner
 		  newUpkeep.put("Energy", 15);
 		  this.setUpkeep(newUpkeep);
 	}
+	
+	private void addBonuses(int radius)
+	{
+		for(int i=this.bonusRadius;i<radius;i++)
+		{
+			List<Position> positions = AreaMap.getInstance().getPositionRing(this.getLocation(), i);
+			Iterator<Position> iter = positions.iterator();
+			while(iter.hasNext())
+			{
+				Position position = iter.next();
+				AreaBonus newBonus = new AreaBonus("Armor", this, i);
+				this.bonuses.add(newBonus);
+				AreaMap.getInstance().putAccessory(newBonus, position);
+			}			
+		}
+		this.bonusRadius=radius;
+	}
+	
+	public int getVisibilityRadius()
+	{
+		int radius=super.getVisibilityRadius();
+		if(radius>this.bonusRadius)
+		{
+			this.addBonuses(radius);
+		}		
+		return radius;
+	}
+	
 
 	@Override
 	public void addUnit(Unit u) {
@@ -91,5 +129,27 @@ public class Fort extends Structure implements UnitOwner
 	public void accept(RiceSelector s)
 	{
 		s.addFort(this);
+	}
+
+	public int getBonus(String bonus, int radius, Controllable c)
+	{
+		if(this.getPowerStatus() && this.getOwner().equals(c.getOwner()) && (radius<=this.getVisibilityRadius()))
+		{
+			return (this.getVisibilityRadius()/(this.getVisibilityRadius()+radius))*5;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	
+	public void destroy()
+	{
+		Iterator<AreaBonus> iter = this.bonuses.iterator();
+		while(iter.hasNext())
+		{
+			iter.next().removeFromTile();
+		}
+		super.destroy();
 	}
 }

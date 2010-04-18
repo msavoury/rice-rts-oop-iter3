@@ -1,6 +1,7 @@
 package rice.model.accessories;
 
 import rice.model.map.AreaTileVisitor;
+import rice.model.map.ModifierVisitor;
 
 public class Flow extends Modifier
 {
@@ -30,4 +31,8 @@ public class Flow extends Modifier
 		v.visit(this);
 	}
 	
+	public void accept(ModifierVisitor v)
+	{
+		v.visit(this);
+	}		
 }

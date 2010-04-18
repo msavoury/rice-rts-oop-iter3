@@ -19,6 +19,7 @@ import rice.model.ability.PowerUpAbility;
 import rice.model.ability.WaitAbility;
 import rice.model.command.Command;
 import rice.model.map.AreaTile;
+import rice.model.map.ModifierVisitor;
 import rice.model.player.Player;
 import rice.model.player.SelectorAcceptor;
 import rice.util.Position;
@@ -43,6 +44,8 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   private String status = "I'm Chillin";
   private boolean powered = true;
   private CommandQueue commands;
+  
+  private ModifierVisitor modifiers;
   
   private int abilityPointer = 0; 
   
@@ -155,7 +158,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   
   public int getArmor()
   {
-	  return this.armor+this.getOwner().getTechBonus(this.getTypeName(),"Armor");
+	  return this.armor+this.getOwner().getTechBonus(this.getTypeName(),"Armor")+this.getModifiers().getBonus("Armor");
   }
   
   public void changeArmor(int value)
@@ -224,7 +227,23 @@ public abstract class Controllable extends Locatable implements Viewable, Select
 	  this.upkeep=upkeep;
   }
   
-  public void tick(){
+  
+  protected void refreshModifiers()
+  {
+	ModifierVisitor newModifiers=new ModifierVisitor(this);
+	this.getTile().accept(newModifiers);
+	this.modifiers=newModifiers;
+  }
+  
+  protected ModifierVisitor getModifiers()
+  {
+	  return this.modifiers;
+  }
+  
+  public void tick()
+  	{
+	  this.refreshModifiers();
+	  
 	  // System.out.println("Controllable: " +this.getType() +" tick. Powered status: " + powered);
 	  //TODO: stuff with temp direction and speed and what not here
 	  //if(powered){

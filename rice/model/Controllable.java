@@ -5,6 +5,7 @@
 
 package rice.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -132,6 +133,7 @@ public abstract class Controllable extends Locatable implements Viewable {
    * Initialize the abilities that the controllable is born with
    */
   private void initAbilities(){
+	abilities = new ArrayList<Ability>();
     abilities.add(new PowerUpAbility(this));
     abilities.add(new PowerDownAbility(this));
     

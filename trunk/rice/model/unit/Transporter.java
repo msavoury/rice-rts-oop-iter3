@@ -5,10 +5,12 @@
 
 package rice.model.unit;
 
+import java.util.HashMap;
 import java.util.List;
 
 import rice.model.player.Player;
 import rice.model.player.RiceSelector;
+import rice.util.Position;
 import rice.view.MSVisitor;
 import rice.view.UOVisitor;
 
@@ -18,9 +20,23 @@ import rice.view.UOVisitor;
  */
 public class Transporter extends Vehicle {
 
-    public Transporter(String typeName, int id, Player owner) {
-		super(typeName, id, owner);
-		// TODO Auto-generated constructor stub
+    public Transporter(int id, Player owner) {
+		super("Transporter", id, owner);
+		//default initializations
+		  this.setMaxHealth(100.00);
+		  this.setHealth(100.00);
+		  this.setArmor(10);
+		  this.setOffensiveDamage(1);
+		  this.setDefensiveDamage(1);
+		  this.setVisibilityRadius(1);
+		  HashMap<String,Integer> newUpkeep = new HashMap<String,Integer>();
+		  newUpkeep.put("Ore", 10);
+		  newUpkeep.put("Food", 0);
+		  newUpkeep.put("Energy", 10);
+		  this.setUpkeep(newUpkeep);
+		  this.setSize(100);
+		  this.setCapacity(80);
+		  this.setSpeed(3);
 	}
 
 	public void accept(UOVisitor u) {

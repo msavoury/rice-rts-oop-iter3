@@ -28,7 +28,7 @@ public class Controller extends KeyAdapter implements ActionListener
 // variable declarations
 // -----------------------------------------------------------------------------
        Timer t;
-       Model model;
+       ControllableModel model;
        ArrayList<ControllableView> views = new ArrayList<ControllableView>();
 
        InputDecoder inputDecoder;
@@ -75,7 +75,7 @@ public class Controller extends KeyAdapter implements ActionListener
 	   unitOverviewState = new UnitOverviewState( this );
 	   structureOverviewState = new StructureOverviewState( this );
 	   technologyState = new TechnologyState( this );
-	   keyBindingState = new KeyBindingState( this );
+	   keyBindingState = new KeyBindingState( this, inputDecoder );
 	   curState = splashScreenState;
 
 	   // adding all available states to the ArrayList named "states"

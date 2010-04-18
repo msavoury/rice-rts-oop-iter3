@@ -5,7 +5,6 @@
 
 package rice.controller;
 
-import rice.model.Model;
 /**
  *
  * @author Chris
@@ -17,8 +16,8 @@ class MainScreenState extends ControllerState
     final private String activeID = "MainScreenState";
     private boolean isActive;
 
-    Controller controller;
-    Model model;
+    private Controller controller;
+    private ControllableModel model;
 
 // initialization functions
 // -----------------------------------------------------------------------------
@@ -86,7 +85,7 @@ class MainScreenState extends ControllerState
 
 // accessor and mutator functions
 // -----------------------------------------------------------------------------
-    void setModel( Model model )
+    void setModel( ControllableModel model )
     {
 	this.model = model;
     }

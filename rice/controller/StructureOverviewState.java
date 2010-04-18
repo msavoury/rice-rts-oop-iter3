@@ -17,8 +17,8 @@ class StructureOverviewState extends ControllerState
     final private String activeID = "StructureOverviewState";
     private boolean isActive;
 
-    Controller controller;
-    Model model;
+    private Controller controller;
+    private ControllableModel model;
 
 // initialization functions
 // -----------------------------------------------------------------------------
@@ -32,7 +32,7 @@ class StructureOverviewState extends ControllerState
 // -----------------------------------------------------------------------------
     void processCommand( String command )
     {
-	System.out.println("Woohoo! " + activeID);
+	//System.out.println("Woohoo! " + activeID);
 
 	if( command.equals( "SWITCH_SCREEN_LEFT" ) )
 	   controller.switchScreenLeft();
@@ -42,7 +42,7 @@ class StructureOverviewState extends ControllerState
 
 // accessor and mutator functions
 // -----------------------------------------------------------------------------
-    void setModel( Model model )
+    void setModel( ControllableModel model )
     {
 	this.model = model;
     }

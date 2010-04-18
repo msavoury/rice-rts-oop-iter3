@@ -9,6 +9,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.MouseListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.List;
 /**
  *
  * @author Chris
@@ -64,36 +65,43 @@ class InputDecoder extends KeyAdapter implements MouseListener
 
     }
 
+// retrieve current key configuration
+// -----------------------------------------------------------------------------
+    List< KeyboardHashMapPair > getUpdatedKeyConfig()
+    {
+	return keyboardHashMap.getUpdatedKeyConfig();
+    }
+
 // keyboard input event handlers
 // -----------------------------------------------------------------------------
-       @Override
-       public void keyPressed( KeyEvent e )
-       {
-	   // keyPressedModifier indicates whether or not a modifier key
-	   //  (Ctrl, Alt, or Shift) has been pressed. If one of the
-	   //  modifier keys is pressed, keyPressedModifier receives
-	   //  a value to indicate what key has been pressed. This allows,
-	   //  for example, a VK_UP key to be stored twice in keyboardHashMap
-	   //  where a CTRL + UP key combination would be entered into
-	   //  keyboardHashMap as VK_UP + 10000 and just the UP key being stored
-	   //  as VK_UP.
-	   int keyPressedModifier = 0;
+   @Override
+   public void keyPressed( KeyEvent e )
+   {
+       // keyPressedModifier indicates whether or not a modifier key
+       //  (Ctrl, Alt, or Shift) has been pressed. If one of the
+       //  modifier keys is pressed, keyPressedModifier receives
+       //  a value to indicate what key has been pressed. This allows,
+       //  for example, a VK_UP key to be stored twice in keyboardHashMap
+       //  where a CTRL + UP key combination would be entered into
+       //  keyboardHashMap as VK_UP + 10000 and just the UP key being stored
+       //  as VK_UP.
+       int keyPressedModifier = 0;
 
-	   if( e.isControlDown() )
-	       keyPressedModifier += 10000;
-	   else if( e.isAltDown() )
-	       keyPressedModifier += 20000;
-	   else if( e.isShiftDown() )
-	       keyPressedModifier += 30000;
-	   System.out.println( keyPressedModifier );
-	   String command = keyboardHashMap.getKeyInfo( e.getKeyCode() +
-						       keyPressedModifier );
-	   if( command != null )
-	   {
-	       controller.processCommand( command );
-	   }
-	   System.out.println( command );
+       if( e.isControlDown() )
+	   keyPressedModifier += 10000;
+       else if( e.isAltDown() )
+	   keyPressedModifier += 20000;
+       else if( e.isShiftDown() )
+	   keyPressedModifier += 30000;
+       //System.out.println( keyPressedModifier );
+       String command = keyboardHashMap.getKeyInfo( e.getKeyCode() +
+						   keyPressedModifier );
+       if( command != null )
+       {
+	   controller.processCommand( command );
        }
+       //System.out.println( command );
+   }
 
 // mouse input event handlers
 // -----------------------------------------------------------------------------

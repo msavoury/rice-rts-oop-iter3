@@ -12,6 +12,8 @@ public interface ControllableModel
     public void processCommand(String command);
 
     public void createRallyPoint();
+    public void tick( int tickNum );
+    public void nextMode();
     
     public void previousUnit();
     public void nextUnit();

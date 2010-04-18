@@ -5,7 +5,6 @@
 
 package rice.controller;
 
-import rice.model.Model;
 /**
  *
  * @author Chris
@@ -17,8 +16,8 @@ class SplashScreenState extends ControllerState
     final private String activeID = "SplashScreenState";
     private boolean isActive;
 
-    Controller controller;
-    Model model;
+    private Controller controller;
+    private ControllableModel model;
 
 // initialization functions
 // -----------------------------------------------------------------------------
@@ -40,7 +39,7 @@ class SplashScreenState extends ControllerState
 
 // accessor and mutator functions
 // -----------------------------------------------------------------------------
-    void setModel( Model model )
+    void setModel( ControllableModel model )
     {
 	this.model = model;
     }

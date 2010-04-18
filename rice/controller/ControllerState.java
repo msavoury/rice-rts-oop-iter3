@@ -26,5 +26,5 @@ abstract class ControllerState
 
 // accessor and mutator functions
 // -----------------------------------------------------------------------------
-    abstract void setModel( Model model );
+    abstract void setModel( ControllableModel model );
 }

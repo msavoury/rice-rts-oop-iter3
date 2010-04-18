@@ -13,7 +13,7 @@ public class CombatManager
 	public static void Attack(Controllable c, double direction)
 	{		
 		double dmg=c.getAttack();
-		if(dmg>0)
+		if((dmg>0) && (c.getLocation()!=null))
 		{
 			Position targetPosition = AreaMap.getInstance().getAdjecentPosition(c.getLocation(), direction);
 			if(AreaMap.getInstance().verifyLocation(targetPosition))
@@ -27,7 +27,7 @@ public class CombatManager
 	public static void Defend(Controllable c, double direction)
 	{		
 		double dmg=c.getDefense();
-		if(dmg>0)
+		if((dmg>0) && (c.getLocation()!=null))
 		{
 			Position targetPosition = AreaMap.getInstance().getAdjecentPosition(c.getLocation(), direction);
 			if(AreaMap.getInstance().verifyLocation(targetPosition))
@@ -60,17 +60,20 @@ public class CombatManager
 		for(int i=1; i<=radius;i++)
 		{
 			double dmg=c.getAttack()*(radius/(radius+i-1));
-			List<Position> targetPositions = AreaMap.getInstance().getPositionRing(c.getLocation(), i);
-			Iterator<Position> iter = targetPositions.iterator();
-			while(iter.hasNext())
-			{
-				Position targetPosition = iter.next();
-				double defDmg=dealDamage(c, targetPosition, dmg);
-				if(i==0)
+			if((dmg>0) && (c.getLocation()!=null))
+			{			
+				List<Position> targetPositions = AreaMap.getInstance().getPositionRing(c.getLocation(), i);
+				Iterator<Position> iter = targetPositions.iterator();
+				while(iter.hasNext())
 				{
-					c.takeDamage(defDmg);		
-				}
-			}			
+					Position targetPosition = iter.next();
+					double defDmg=dealDamage(c, targetPosition, dmg);
+					if(i==0)
+					{
+						c.takeDamage(defDmg);		
+					}
+				}			
+			}
 		}
 	}
 	

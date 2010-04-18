@@ -182,8 +182,8 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 
 	@Override
 	public List<String> getCurrentSelectorPathToInstance() {
-		// TODO Auto-generated method stub
-		return null;
+		return mainPlayer.getSelectedPath();
+		
 	}
 
 	@Override

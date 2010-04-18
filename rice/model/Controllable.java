@@ -393,6 +393,7 @@ public abstract class Controllable extends Locatable implements ViewableControll
   }
   
   public String getCommand() {
-	  return "command";
+	  String[] coms = commands.getCommandStrings();
+	  return coms[0];
   }
 }

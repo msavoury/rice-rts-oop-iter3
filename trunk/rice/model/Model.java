@@ -65,7 +65,6 @@ public class Model implements ViewableModel, Tickable, MSVisitorAcceptor {
     public void nextMode() {
     	
     }
-    
     public void previousMode(){}
     public void nextSubmode(){}
     public void previousSubmode(){}

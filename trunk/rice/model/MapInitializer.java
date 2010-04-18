@@ -100,6 +100,15 @@ public class MapInitializer {
 			terrains[i] = terrainRows.get(i);
 		}
 		
+		System.out.println("here comes the map!");
+		for(int i = 0; i < terrains[0].length; i++){
+			for(int k = 0; k < terrains.length; k++){
+				System.out.print(terrains[i][k]);
+				System.out.print(",");
+			}
+			System.out.println("");	
+		}
+		
 		return terrains;
 	}
 	

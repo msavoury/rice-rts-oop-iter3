@@ -132,6 +132,62 @@ public class RiceSelector extends Selector<Controllable> implements Tickable {
 	public void addRallyPoint(RallyPoint r){
 		rallyPoint.addChild(new SelectorNode<Controllable>(r));
 	}
+	
+	public void removeRanged(Ranged r){
+		ranged.removeChild(r);
+	}
+	
+	public void removeColonist(Colonist c){
+		colonist.removeChild(c);
+	}
+	
+	public void removeExplorer(Explorer e){
+		explorer.removeChild(e);
+	}
+	
+	public void removeMelee(Melee m){
+		melee.removeChild(m);
+	}
+	
+	public void removeTransporter(Transporter t){
+		transporter.removeChild(t);
+	}
+	
+	public void removeBulldozer(Bulldozer b){
+		bulldozer.removeChild(b);
+	}
+	
+	public void removeCapital(Capital c){
+		capital.removeChild(c);;
+	}
+	
+	public void removeMine(Mine m){
+		mine.removeChild(m);
+	}
+	
+	public void removeFarm(Farm f){
+		farm.removeChild(f);
+	}
+	
+	public void removePowerPlant(PowerPlant p){
+		powerPlant.removeChild(p);
+	}
+	
+	public void removeFort(Fort f){
+		fort.removeChild(f);
+	}
+	
+	public void removeObservatoryTower(ObservatoryTower o){
+		observatoryTower.removeChild(o);
+	}
+	
+	public void removeUniversity(University u){
+		university.removeChild(u);
+	}
+	
+	public void removeRallyPoint(RallyPoint r){
+		rallyPoint.removeChild(r);
+	}
 
 	public void tick(int tickNum)
 	{
@@ -142,6 +198,21 @@ public class RiceSelector extends Selector<Controllable> implements Tickable {
 		{
 			iter.next().tick();
 		}
+	}
+	
+	public List<Controllable> getAllUnits()
+	{
+		return this.unit.getAllLeafs();
+	}
+	
+	public List<Controllable> getAllStructures()
+	{
+		return this.structure.getAllLeafs();
+	}
+	
+	public List<Controllable> getAllRally()
+	{
+		return this.rallyPoint.getAllLeafs();
 	}
 
 	public void processCommand(String command) {

@@ -63,7 +63,9 @@ class UnitOverviewScreen extends GameGraphic{
                                                     0,
                                                     1,
                                                     1));
-            for(int i = 0; i < 25; ++i){
+            int g = 25/*unitList.size()*/;
+
+            for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingBar(.05,
                                                     .10 + i * .035,
                                                     .95,
@@ -73,101 +75,76 @@ class UnitOverviewScreen extends GameGraphic{
                 
             }
 
-            for(int i = 0; i < 25; ++i){
-                thingsToDraw.add(new SelfDrawingText("UnitName  ID  Owner  h10  ar10  at10  de99 si34  sp20  status",
-                                                     0.06,
-                                                     .036 + i *.035));
-
-            }
             thingsToDraw.add(new SelfDrawingBar(.05,
                                                 .10 + selectedIndex * .035,
                                                 .95,
                                                 .135 + selectedIndex * .035,
-                                                new Color(255, 255, 0, 30),
+                                                new Color(0, 255, 255, 255),
                                                 Color.GREEN));
-            /*
-            for(int i = 0; i < 25; ++i){
+            
+            for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingText("UnitName",
                                                      0.06,
-                                                     .036 + i *.035,
-                                                     "Serif",
-                                                     22));
+                                                     .036 + i *.035));
 
             }
-            for(int i = 0; i < 25; ++i){
+            for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingText("ID",
                                                      0.15,
-                                                     .036 + i *.035,
-                                                     "Serif",
-                                                     22));
+                                                     .036 + i *.035));
 
             }
-            for(int i = 0; i < 25; ++i){
+            for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingText("Owner",
                                                      0.20,
-                                                     .036 + i *.035,
-                                                     "Serif",
-                                                     22));
+                                                     .036 + i *.035));
 
             }
-            for(int i = 0; i < 25; ++i){
+            for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingText("h10",
                                                      0.30,
-                                                     .036 + i *.035,
-                                                     "Serif",
-                                                     22));
+                                                     .036 + i *.035));
 
             }
-            for(int i = 0; i < 25; ++i){
+            for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingText("ar10",
                                                      0.37,
-                                                     .036 + i *.035,
-                                                     "Serif",
-                                                     22));
+                                                     .036 + i *.035));
 
             }
-            for(int i = 0; i < 25; ++i){
+            for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingText("at10",
                                                      0.43,
-                                                     .036 + i *.035,
-                                                     "Serif",
-                                                     22));
+                                                     .036 + i *.035));
 
             }
-            for(int i = 0; i < 25; ++i){
+            for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingText("de99",
                                                      0.50,
-                                                     .036 + i *.035,
-                                                     "Serif",
-                                                     22));
+                                                     .036 + i *.035));
 
             }
-            for(int i = 0; i < 25; ++i){
+            for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingText("si34",
                                                      0.60,
-                                                     .036 + i *.035,
-                                                     "Serif",
-                                                     22));
+                                                     .036 + i *.035));
 
             }
-            for(int i = 0; i < 25; ++i){
+            for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingText("sp20",
                                                      0.70,
-                                                     .036 + i *.035,
-                                                     "Serif",
-                                                     22));
+                                                     .036 + i *.035));
 
             }
-            for(int i = 0; i < 25; ++i){
+            for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingText("status",
                                                      0.80,
-                                                     .036 + i *.035,
-                                                     "Serif",
-                                                     22));
+                                                     .036 + i *.035));
 
             }
-             * 
-             */
+
+            
+            
         }
 
         void render(GL gl, GLAutoDrawable drawable, TextRenderer render){

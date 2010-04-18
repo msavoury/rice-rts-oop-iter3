@@ -129,7 +129,7 @@ class ScreenManager extends JFrame{
                 screens = new ArrayList<GameGraphic>();
 
                 screens.add(new TitleScreen());
-                screens.add(new MainScreen(msa));
+                screens.add(new MainScreen(msa, model));
                 screens.add(new UnitOverviewScreen(model));
                 screens.add(new StructureOverviewScreen());
                 screens.add(new TechOverviewScreen());

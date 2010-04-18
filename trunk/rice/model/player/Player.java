@@ -1,6 +1,8 @@
 package rice.model.player;
 
 
+import java.util.List;
+
 import rice.controller.Tickable;
 import rice.model.Controllable;
 import rice.model.map.AreaMap;
@@ -114,5 +116,9 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	
 	public Controllable getSelected() {
 		return selector.getSelected();
+	}
+	
+	public List<String> getSelectedPath() {
+		return selector.getBranchPath();
 	}
 }

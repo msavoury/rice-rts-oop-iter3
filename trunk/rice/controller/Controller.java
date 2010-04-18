@@ -195,6 +195,7 @@ public class Controller extends KeyAdapter implements ActionListener
        void activateDefaultScreenState()
        {
 	   curState = mainScreenState;
+           views.get(0).switchMode( stateIDs.get( statesIndex ) );
        }
        
 // accessor and mutator functions

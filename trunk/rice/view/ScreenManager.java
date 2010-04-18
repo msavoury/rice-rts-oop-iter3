@@ -136,14 +136,14 @@ class ScreenManager extends JFrame{
 
                 screenSelector = new HashMap<String, GameGraphic>();
 
-                screenSelector.put("TitleScreen", screens.get(0));
-                screenSelector.put("MainScreen", screens.get(1));
-                screenSelector.put("UnitOverviewScreen", screens.get(2));
-                screenSelector.put("StructureOverviewScreen", screens.get(3));
-                screenSelector.put("TechOverviewScreen", screens.get(4));
-                screenSelector.put("KeyBindingScreen", screens.get(5));
+                screenSelector.put("SplashScreenState", screens.get(0));
+                screenSelector.put("MainScreenState", screens.get(1));
+                screenSelector.put("UnitOverviewState", screens.get(2));
+                screenSelector.put("StructureOverviewState", screens.get(3));
+                screenSelector.put("TechOverviewState", screens.get(4));
+                screenSelector.put("KeyBindingState", screens.get(5));
 
-                currentScreen = screens.get(1);
+                currentScreen = screens.get(0);
                 
             }
             catch (GLException e) {

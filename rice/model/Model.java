@@ -71,6 +71,12 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
     public void previousSubmode(){}
     public void nextInstance(){}
     public void previousInstance(){}
+
+    public void nextTechnology(){}
+    public void previousTechnology(){}
+    public void nextTechnoogyBranch(){}
+    public void previousTechnologyBranch(){}
+
     public void nextAbility(){
       mainPlayer.nextAbility();	
     }

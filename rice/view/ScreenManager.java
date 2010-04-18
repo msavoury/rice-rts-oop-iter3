@@ -67,7 +67,7 @@ class ScreenManager extends JFrame{
         canvas.addGLEventListener(listener);
         getContentPane().add(canvas);
 
-        //getContentPane().getComponents()[0].setFocusable(false);
+        getContentPane().getComponents()[0].setFocusable(false);
         fpsanim = new FPSAnimator(canvas, 60);
         setVisible(true);
         this.validate();

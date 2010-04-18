@@ -1,10 +1,16 @@
 package rice.model.structures;
 
 import rice.model.Controllable;
+import rice.model.map.ATVisitorAcceptor;
+import rice.model.map.AreaTileVisitor;
 import rice.model.player.Player;
 import rice.model.unit.WorkerOwner;
+import rice.util.Position;
+import rice.view.MSVisitor;
+import rice.view.SOVisitor;
+import rice.view.ViewableStructure;
 
-public abstract class Structure extends Controllable implements WorkerOwner, Allocatable
+public abstract class Structure extends Controllable implements WorkerOwner, Allocatable, ViewableStructure
 {
 
 	public Structure(String typeName, int id, Player owner) {
@@ -47,5 +53,29 @@ public abstract class Structure extends Controllable implements WorkerOwner, All
 		return 0;	
 	}
 
+	public void accept(AreaTileVisitor v)
+	{
+		v.visit(this);
+	}
+
+	public void accept(SOVisitor s)
+	{
+		s.visit(this);		
+	}
+
+	public void accept(MSVisitor m)
+	{
+		m.visit(this);		
+	}
+
+	public int getID()
+	{
+		return this.getId();
+	}
+
+	public Position getLocation()
+	{
+		return this.getLocation();
+	}
 	
 }

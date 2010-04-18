@@ -3,19 +3,18 @@ package rice.model.player;
 import java.util.Iterator;
 import java.util.List;
 
+import rice.controller.Tickable;
 import rice.model.map.AreaMap;
-import rice.model.map.AreaTile;
 import rice.model.map.Map;
-import rice.model.map.MapPositionTranslator;
 import rice.util.Position;
 import rice.view.MSVisitor;
 import rice.view.MSVisitorAcceptor;
 
-public class VisibilityMap extends Map implements MSVisitorAcceptor
+public class VisibilityMap extends Map implements MSVisitorAcceptor, Tickable
 {	
 	private int currentTick;
 	
-	public VisibilityMap(AreaMap areaMap)
+	public VisibilityMap(AreaMap areaMap, Player owner)
 	{
 
 		super(areaMap.getMapPositionTranslator());
@@ -26,7 +25,7 @@ public class VisibilityMap extends Map implements MSVisitorAcceptor
 		{
 			for (int j=0;j<w;j++)
 			{
-				tiles[i][j]= new VisibilityTile(new Position(j,i), areaMap.getTile(new Position(j,i)));
+				tiles[i][j]= new VisibilityTile(new Position(j,i), areaMap.getTile(new Position(j,i)),owner);
 			}
 		}
 		this.setTiles(tiles);

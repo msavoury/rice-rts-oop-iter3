@@ -4,13 +4,15 @@
  */
 
 package rice.model;
+import rice.model.map.ATVisitorAcceptor;
 import rice.model.map.AreaTile;
+import rice.model.map.AreaTileVisitor;
 
 /**
  *
  * @author Marcos
  */
-public abstract class Locatable {
+public abstract class Locatable implements ATVisitorAcceptor {
     private AreaTile areaTile;
     private String typeName;
 
@@ -32,5 +34,10 @@ public abstract class Locatable {
     {
     	this.areaTile=areaTile;
     }
+    
+	public void accept(AreaTileVisitor v)
+	{
+		v.visit(this);
+	}
  
 }

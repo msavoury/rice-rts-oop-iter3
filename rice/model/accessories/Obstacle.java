@@ -1,6 +1,7 @@
 package rice.model.accessories;
 
 import rice.model.map.AreaTile;
+import rice.model.map.AreaTileVisitor;
 
 public class Obstacle extends TileEnrichement
 {
@@ -14,5 +15,10 @@ public class Obstacle extends TileEnrichement
     	super.setTile(areaTile);
     	areaTile.changePassabilityLevel(1000);
     }
+    
+	public void accept(AreaTileVisitor v)
+	{
+		v.visit(this);
+	}
 
 }

@@ -5,9 +5,9 @@
 
 package rice.model.unit;
 
-import java.awt.Dimension;
-
 import rice.model.Controllable;
+import rice.model.map.ATVisitorAcceptor;
+import rice.model.map.AreaTileVisitor;
 import rice.model.player.Player;
 import rice.util.Position;
 import rice.view.ViewableUnit;
@@ -50,4 +50,10 @@ public abstract class Unit extends Controllable implements ViewableUnit {
         throw new UnsupportedOperationException("Not supported yet.");
 
     }
+    
+	public void accept(AreaTileVisitor v)
+	{
+		v.visit(this);
+	}
+	
 }

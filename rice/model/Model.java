@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import rice.controller.Tickable;
 import rice.model.map.AreaMap;
 import rice.model.player.Player;
 import rice.util.Position;
@@ -23,7 +24,7 @@ import rice.view.ViewableUnit;
  *
  * @author spock
  */
-public class Model implements ViewableModel {
+public class Model implements ViewableModel, Tickable {
 
 	private Player[] players;
 	private Player mainPlayer;
@@ -50,14 +51,10 @@ public class Model implements ViewableModel {
 	  //set player stuff
 	}
 
-    public void tick(){
+    public void tick(int tick){
         for(Player p : players){
-        	p.tick();
+        	p.tick(tick);
         }
-    }
-    
-    public void tick(int tickNum){
-    	tick();
     }
 
 	@Override

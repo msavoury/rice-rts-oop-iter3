@@ -1,41 +1,59 @@
 package rice.model.player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import rice.controller.Tickable;
+import rice.model.accessories.Resources;
 import rice.model.map.AreaTile;
+import rice.model.map.AreaTileVisitor;
+import rice.model.map.ResourceVisitor;
 import rice.model.map.Tile;
 import rice.util.Position;
 import rice.view.MSVisitor;
 import rice.view.ViewableRallyPoint;
-import rice.view.ViewableResource;
 import rice.view.ViewableTile;
 
-public class VisibilityTile extends Tile implements ViewableTile
+public class VisibilityTile extends Tile implements ViewableTile, Tickable
 {
-	private AreaTile areaTile;
+	public static final int NONVISIBLE=0;
+	public static final int SHROUDED=1;
+	public static final int VISIBLE=2;
 	
-	private String flow;
+	private AreaTile areaTile;
+	private Player owner;
+	
+	private double flow;
 	private String decal;
 	private String item;
 	private String obstacle;
 	private String terrainType;
-	private String rallyPoint;
 	private String structure;
-	private HashMap<String,Integer> resourceValues = new HashMap<String,Integer>();
-	private String harvestingResource;
-	private int harvestingWorkers;
 	private int breedingWorkers;
 	private int idleWorkers;
 	private int numUnitsNotInRPI;
-	private int visibilityLevel;
+	private List<ViewableRallyPoint> ownedRallyPoints = new ArrayList<ViewableRallyPoint>();
+	private List<ViewableRallyPoint> enemyRallyPoints = new ArrayList<ViewableRallyPoint>();
+	
+	private HashMap<String,Integer> resourceValues = new HashMap<String,Integer>();
+	private String harvestingResource;
+	private int harvestingWorkers;
+	
+	private boolean discovered=false;
 	private int lastSeenTick;
+	private int currentTick;
 	
 	
-	public VisibilityTile(Position position, AreaTile areaTile)
+	public VisibilityTile(Position position, AreaTile areaTile, Player owner)
 	{
 		super(position);
 		this.areaTile=areaTile;
+	}
+	
+	public void tick(int tick)
+	{
+		this.currentTick=tick;
 	}
 
 	//accept visitor
@@ -56,7 +74,7 @@ public class VisibilityTile extends Tile implements ViewableTile
 		return this.decal;
 	}
 
-	public String getFlow()
+	public double getFlow()
 	{
 		return this.flow;
 	}
@@ -76,9 +94,6 @@ public class VisibilityTile extends Tile implements ViewableTile
 	{
 		return this.item;
 	}
-	
-	
-	
 
 	public Position getLocation()
 	{
@@ -97,8 +112,13 @@ public class VisibilityTile extends Tile implements ViewableTile
 
 	public List<ViewableRallyPoint> getRallyPoints()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<ViewableRallyPoint> rallyPoints = new ArrayList<ViewableRallyPoint>();
+		rallyPoints.addAll(this.ownedRallyPoints);
+		if(this.getVisibilityMode()==VISIBLE)
+		{
+			rallyPoints.addAll(this.enemyRallyPoints);			
+		}	
+		return rallyPoints;
 	}
 
 	public HashMap<String, Integer> getResourceValues()
@@ -116,10 +136,24 @@ public class VisibilityTile extends Tile implements ViewableTile
 		return this.terrainType;
 	}
 
-	@Override
-	public int getVisibilityMode() {
-		// TODO Auto-generated method stub
-		return 0;
+	//returns the visibility mode
+	public int getVisibilityMode()
+	{
+		if(this.discovered)
+		{
+			if(this.currentTick==this.lastSeenTick)
+			{
+				return VISIBLE;
+			}
+			else
+			{
+				return SHROUDED;
+			}
+		}
+		else
+		{
+			return NONVISIBLE;
+		}
 	}
 
 	@Override
@@ -130,13 +164,36 @@ public class VisibilityTile extends Tile implements ViewableTile
 
 	public void updateTile(int tick)
 	{
-		// TODO Auto-generated method stub
+		this.discovered=true;
+		this.lastSeenTick=tick;
+		AreaTileVisitor aTV = new AreaTileVisitor(this.owner);
+		this.areaTile.accept(aTV);
 		
+		this.decal=aTV.getDecal();
+		this.obstacle=aTV.getObstacle();
+		this.structure=aTV.getStructure();
+		this.item=aTV.getItem();
+		this.flow=aTV.getFlow();
+		this.terrainType=aTV.getTerrain();
+		this.numUnitsNotInRPI=aTV.getNumUnitsNotInRPI();
+		this.idleWorkers=aTV.getIdleWorkers();
+		this.breedingWorkers=aTV.getBreedingWorkers();
+		this.enemyRallyPoints=aTV.getEnemyRallyPoints();
+		this.ownedRallyPoints=aTV.getOwnedRallyPoints();
 	}
 
 	public void updateResources(int tick)
 	{
-		// TODO Auto-generated method stub
+		this.discovered=true;
+		this.lastSeenTick=tick;
+		ResourceVisitor rV=new ResourceVisitor();
+		Resources resources=rV.getResources();
+		if(resources!=null)
+		{
+			this.resourceValues=resources.getResources();
+			this.harvestingResource=resources.getHarvestedType();
+			this.harvestingWorkers=resources.getWorkerCount();
+		}
 		
 	}
 

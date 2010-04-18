@@ -1,5 +1,7 @@
 package rice.model.accessories;
 
+import rice.model.map.AreaTileVisitor;
+
 public class Flow extends Modifier
 {
 	private double direction;
@@ -21,6 +23,11 @@ public class Flow extends Modifier
 	public double getFlowRate()
 	{
 		return this.flowRate;
+	}
+	
+	public void accept(AreaTileVisitor v)
+	{
+		v.visit(this);
 	}
 	
 }

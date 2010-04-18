@@ -10,7 +10,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import rice.model.accessories.Accessory;
 import rice.model.accessories.Decal;
+import rice.model.map.AreaMap;
 import rice.model.map.HexTranslator;
 import rice.model.map.MapPositionTranslator;
 import rice.util.Position;
@@ -23,6 +25,9 @@ import rice.util.Position;
  *
  */
 public class MapInitializer {
+	
+	AreaMap map;
+	
 	InitializerState state;
 	/**
 	 * The name of the default map to be used
@@ -31,26 +36,48 @@ public class MapInitializer {
 	private String userFile;
 	
 	List<int[]> terrainRows;
+	
 	/**
 	 * List of starting positions for all players
 	 */
 	List<Position> positions;
 	
 	/**
-	 * LIst of decals on the map
+	 * List of positions for accessories
 	 */
-	List<Decal> decals;
+	List<Position> aPositions;
 	
+	/**
+	 * List of positions for controllables
+	 */
+	List<Position> cPositions;
+	
+	/**
+	 * List of accessories on the map
+	 */
+	List<Accessory> accessories;
+	
+	/**
+	 * List of controllables on the map
+	 */
+	List<Controllable> controllables;
 	
 	public MapInitializer() {
 		this.state = new TerrainState(this);
 		terrainRows = new ArrayList<int[]>();
 		positions = new ArrayList<Position>();
-		decals = new ArrayList<Decal>();
+		accessories = new ArrayList<Accessory>();
+		controllables = new ArrayList<Controllable>();
+		cPositions = new ArrayList<Position>();
+		aPositions = new ArrayList<Position>();
 	}
 		
 	public void setFile(String filename){
       this.userFile = filename;
+	}
+	
+	public void setMap(AreaMap map){
+		this.map = map;
 	}
 	
 	public void addTerrainRow(int[] row){
@@ -62,8 +89,8 @@ public class MapInitializer {
 		positions.add(p);
 	}
 	
-	public void addDecal(Decal d){
-		decals.add(d);
+	public void addAccessory(Accessory d){
+		accessories.add(d);
 	}
 	
 	public int [][] getTerrain() {
@@ -79,6 +106,21 @@ public class MapInitializer {
 	public List<Position> getStartingPositions(){
 		//Position p = new Position();
 		return positions;
+	}
+	
+	public void addAccessoryPosition(Position position) {
+		aPositions.add(position);
+		
+	}
+
+	public void addControllable(Controllable c) {
+		
+		controllables.add(c);
+	}
+
+	public void addControllablePosition(Position position) {
+		
+		cPositions.add(position);
 	}
 	
 	//
@@ -115,8 +157,12 @@ public class MapInitializer {
 				   state = new LocationState(this);
 				   continue;
 			   }
-			   else if(strLine.startsWith("decal")){
-				   state = new DecalState(this);
+			   else if(strLine.startsWith("decal")
+					  || strLine.startsWith("flow")
+					  || strLine.startsWith("resource")
+			   )
+			   {
+				   state = new AccessoryState(this);
 				   continue;
 			   }
 			   else if(strLine.startsWith("/*") || strLine.startsWith("*/")){
@@ -149,6 +195,8 @@ public class MapInitializer {
 		
 			
 	}
+
+	
 	
 }
 
@@ -213,17 +261,39 @@ class LocationState extends InitializerState {
 }
 
 /**
- * Parse location for decal
+ * Parse location for accessory
  */
-class DecalState extends InitializerState {
+class AccessoryState extends InitializerState {
 
-	public DecalState(MapInitializer m) {
+	public AccessoryState(MapInitializer m) {
 	  super(m);
 	}
 
 	@Override
 	void processLine(String s) {
-	  m.addDecal(new Decal(s));
+	  String [] num = s.split(",");
+	  m.addAccessory(new Decal(s));
+	  m.addAccessoryPosition(new Position(Integer.parseInt(num[0]), Integer.parseInt(num[1])));
+	  
+	}
+	
+}
+
+/**
+ * Parse location for controllable
+ */
+class ControllableState extends InitializerState {
+
+	public ControllableState(MapInitializer m) {
+	  super(m);
+	}
+
+	@Override
+	void processLine(String s) {
+	  String [] num = s.split(",");
+	  //m.addControllable(new Controllable(s));
+	  //m.addControllablePosition(new Position(Integer.parseInt(num[0]), Integer.parseInt(num[1])));
+	  
 	}
 	
 }

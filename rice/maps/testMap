@@ -6,10 +6,15 @@
 /*
   Map files should be partitioned into the following sections
   -terrain:
-    * uses comma separated list to define terrain types, make sure that
-      it's an n by n square
+    * uses comma separated list to define terrain types,
+    * each row is a row on the map
+    * make sure that it's an n by n square
   -location:
-       
+    
+  -decal:
+  -flow:
+    * represented as a comma-separated triplet
+    * name, x, y  (ex: water,2,3)
 */
 //
 terrain:
@@ -29,5 +34,6 @@ location:
   These should be comments!
 */
 decal:
-90
+1,2,1
+0,2,3
 //Last line

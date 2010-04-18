@@ -2,6 +2,7 @@ package rice.model.structures;
 
 import rice.model.map.AreaTile;
 import rice.model.player.Player;
+import rice.model.player.RiceSelector;
 
 public class Mine extends HarvestingStructure implements OreHarvester 
 {
@@ -14,5 +15,10 @@ public class Mine extends HarvestingStructure implements OreHarvester
 	public void harvestOre(AreaTile tile, int workers) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void accept(RiceSelector s)
+	{
+		s.addMine(this);
 	}
 }

@@ -1,7 +1,9 @@
 package rice.model.player;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Iterator;
+import java.util.List;
 
 public class SelectorNode<T>
 {
@@ -179,6 +181,24 @@ public class SelectorNode<T>
 			}
 		}
 		return false;
+	}
+	
+	public List<T> getAllLeafs()
+	{
+		ArrayList<T> leafs = new ArrayList<T>();
+		if(this.isLeaf())
+		{
+			leafs.add(this.getElement());
+		}
+		else
+		{
+			Iterator<SelectorNode<T>> iter = this.children.iterator();
+			while(iter.hasNext())
+			{
+				leafs.addAll(iter.next().getAllLeafs());
+			}			
+		}
+		return leafs;
 	}
 	
 	//gets the current selection

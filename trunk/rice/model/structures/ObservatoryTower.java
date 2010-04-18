@@ -1,6 +1,7 @@
 package rice.model.structures;
 
 import rice.model.player.Player;
+import rice.model.player.RiceSelector;
 
 public class ObservatoryTower extends Structure {
 
@@ -49,6 +50,11 @@ public class ObservatoryTower extends Structure {
 	public void setAlocation(double percentage) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void accept(RiceSelector s)
+	{
+		s.addObservatoryTower(this);
 	}
 
 }

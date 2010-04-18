@@ -6,6 +6,7 @@
 package rice.model.unit;
 
 import rice.model.player.Player;
+import rice.model.player.RiceSelector;
 import rice.view.MSVisitor;
 import rice.view.UOVisitor;
 
@@ -30,6 +31,11 @@ public class Explorer extends Unit{
     
     public boolean isSoldier() {
 		return false;
+	}
+    
+	public void accept(RiceSelector s)
+	{
+		s.addExplorer(this);
 	}
 
 }

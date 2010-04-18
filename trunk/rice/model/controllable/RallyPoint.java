@@ -4,6 +4,7 @@ import java.util.List;
 
 import rice.model.Controllable;
 import rice.model.player.Player;
+import rice.model.player.RiceSelector;
 import rice.util.Position;
 import rice.view.MSVisitor;
 import rice.view.ViewableRallyPoint;
@@ -62,6 +63,12 @@ public class RallyPoint extends Controllable implements ViewableRallyPoint {
 	public Position getLocation() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void accept(RiceSelector s)
+	{
+		s.addRallyPoint(this);		
 	}
 
 }

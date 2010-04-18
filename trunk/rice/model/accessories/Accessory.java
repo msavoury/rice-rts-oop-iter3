@@ -6,6 +6,7 @@
 package rice.model.accessories;
 
 import rice.model.Locatable;
+import rice.model.map.AreaTile;
 import rice.model.map.ResourceVisitor;
 import rice.model.map.ResourceVisitorAcceptor;
 
@@ -18,6 +19,21 @@ public abstract class Accessory extends Locatable implements ResourceVisitorAcce
 	public Accessory(String typeName)
 	{
 		super(typeName);
+	}
+	
+	public void setTile(AreaTile areaTile)
+	{
+	  	this.removeFromTile();
+	  	areaTile.putAccessory(this);
+		super.setTile(areaTile);
+	}
+	
+	public void removeFromTile()
+	{
+		if(this.getTile()!=null)
+		{
+			this.getTile().removeAccessory(this);
+		}
 	}
 	
 	public void accept(ResourceVisitor v)

@@ -13,7 +13,9 @@ import rice.model.ability.Ability;
 import rice.model.ability.PowerDownAbility;
 import rice.model.ability.PowerUpAbility;
 import rice.model.command.Command;
+import rice.model.map.AreaTile;
 import rice.model.player.Player;
+import rice.model.player.SelectorAcceptor;
 import rice.util.Position;
 import rice.view.Viewable;
 
@@ -22,7 +24,7 @@ import rice.view.Viewable;
  *
  * @author Marcos
  */
-public abstract class Controllable extends Locatable implements Viewable {
+public abstract class Controllable extends Locatable implements Viewable, SelectorAcceptor {
   private int id;
   private Player owner;
   private double health = 10;
@@ -45,6 +47,21 @@ public abstract class Controllable extends Locatable implements Viewable {
 	  this.owner=owner;
 	  this.commands = new CommandQueue();
 	  initAbilities();
+  }
+  
+  public void removeFromTile()
+  {
+	if(this.getTile()!=null)
+	{
+		this.getTile().removeControllable(this);
+	}
+  }
+  
+  public void setTile(AreaTile areaTile)
+  {
+  	this.removeFromTile();
+  	areaTile.putControllable(this);
+	super.setTile(areaTile);
   }
 
   public String getType() {

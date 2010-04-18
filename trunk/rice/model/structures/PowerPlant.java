@@ -2,6 +2,7 @@ package rice.model.structures;
 
 import rice.model.map.AreaTile;
 import rice.model.player.Player;
+import rice.model.player.RiceSelector;
 
 public class PowerPlant extends HarvestingStructure implements EnergyHarvester 
 {
@@ -56,5 +57,10 @@ public class PowerPlant extends HarvestingStructure implements EnergyHarvester
 	public void setAlocation(double percentage) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void accept(RiceSelector s)
+	{
+		s.addPowerPlant(this);
 	}
 }

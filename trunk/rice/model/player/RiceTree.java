@@ -36,21 +36,21 @@ public class RiceTree extends TechnologyTree
 		this.addTechNode("Melee", new TechNode("Health", 0, 10, 5));
 		this.addTechNode("Melee",new TechNode( "Efficiency", 0, 10, 5));
 		
-		this.addTechNode("Range", new TechNode("Visibility Radius", 0, 10, 1));
-		this.addTechNode("Range", new TechNode("Attack", 0, 10, 5));
-		this.addTechNode("Range", new TechNode("Defense", 0, 10, 5));
-		this.addTechNode("Range", new TechNode("Armor", 0, 10, 5));
-		this.addTechNode("Range", new TechNode("Movement Speed", 0, 10, 5));
-		this.addTechNode("Range", new TechNode("Health", 0, 10, 5));
-		this.addTechNode("Range",new TechNode( "Efficiency", 0, 10, 5));
+		this.addTechNode("Ranged", new TechNode("Visibility Radius", 0, 10, 1));
+		this.addTechNode("Ranged", new TechNode("Attack", 0, 10, 5));
+		this.addTechNode("Ranged", new TechNode("Defense", 0, 10, 5));
+		this.addTechNode("Ranged", new TechNode("Armor", 0, 10, 5));
+		this.addTechNode("Ranged", new TechNode("Movement Speed", 0, 10, 5));
+		this.addTechNode("Ranged", new TechNode("Health", 0, 10, 5));
+		this.addTechNode("Ranged",new TechNode( "Efficiency", 0, 10, 5));
 		
-		this.addTechNode("Buldozer", new TechNode("Visibility Radius", 0, 10, 1));
-		this.addTechNode("Buldozer", new TechNode("Attack", 0, 10, 5));
-		this.addTechNode("Buldozer", new TechNode("Defense", 0, 10, 5));
-		this.addTechNode("Buldozer", new TechNode("Armor", 0, 10, 5));
-		this.addTechNode("Buldozer", new TechNode("Movement Speed", 0, 10, 5));
-		this.addTechNode("Buldozer", new TechNode("Health", 0, 10, 5));
-		this.addTechNode("Buldozer",new TechNode( "Efficiency", 0, 10, 5));
+		this.addTechNode("Bulldozer", new TechNode("Visibility Radius", 0, 10, 1));
+		this.addTechNode("Bulldozer", new TechNode("Attack", 0, 10, 5));
+		this.addTechNode("Bulldozer", new TechNode("Defense", 0, 10, 5));
+		this.addTechNode("Bulldozer", new TechNode("Armor", 0, 10, 5));
+		this.addTechNode("Bulldozer", new TechNode("Movement Speed", 0, 10, 5));
+		this.addTechNode("Bulldozer", new TechNode("Health", 0, 10, 5));
+		this.addTechNode("Bulldozer",new TechNode( "Efficiency", 0, 10, 5));
 		
 		this.addTechNode("Transporter", new TechNode("Visibility Radius", 0, 10, 1));
 		this.addTechNode("Transporter", new TechNode("Attack", 0, 10, 5));

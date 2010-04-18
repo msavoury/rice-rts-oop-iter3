@@ -6,6 +6,7 @@
 package rice.model.unit;
 
 import rice.model.player.Player;
+import rice.model.player.RiceSelector;
 import rice.view.MSVisitor;
 import rice.view.UOVisitor;
 
@@ -26,5 +27,10 @@ public void accept(MSVisitor v){
   }
   public boolean isSoldier() {
 		return true;
+	}
+  
+	public void accept(RiceSelector s)
+	{
+		s.addMelee(this);
 	}
 }

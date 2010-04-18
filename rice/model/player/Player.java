@@ -18,12 +18,14 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	private int id;
 	private Position startingPosition;
 	private RiceSelector selector;
+	private RiceTree techs;
 	private VisibilityMap vmap;
 	
 	public Player(Position startingPosition){
 		this.startingPosition = startingPosition;
 		this.id = playerCount;
 		this.selector = new RiceSelector();
+		this.techs = new RiceTree();
 		this.vmap = new VisibilityMap(this);
 		playerCount++;
 	}
@@ -66,6 +68,13 @@ public class Player implements Tickable, MSVisitorAcceptor {
 		vmap.accept(v);
 		
 	}
+
+	//returns specific research bonus
+	public int getTechBonus(String branch, String tech)
+	{
+		return this.techs.getBonus(branch, tech);
+	}
+
     public void nextMode() {
     	
     }

@@ -7,7 +7,9 @@ package rice.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import rice.model.ability.Ability;
 import rice.model.ability.ClearQueueAbility;
@@ -31,12 +33,13 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   private int id;
   private Player owner;
   private double health = 10;
+  private double maxHealth = 10;
   private int armor = 10;
   private int visibilityRadius = 2;
   private List<Ability> abilities;
   private int offensiveDamage = 2;
   private int defensiveDamage = 1;
-  private HashMap upkeep;
+  private HashMap<String,Integer> upkeep;
   private String status = "I'm Chillin";
   private boolean powered = true;
   private CommandQueue commands;
@@ -83,20 +86,112 @@ public abstract class Controllable extends Locatable implements Viewable, Select
 	  return this.owner;
   }
   
-  public double getHealth() {
+  public double getHealth()
+  {
     return this.health;
   }
   
-  public int getArmor() {
-	  return this.armor;
+  public double getMaxHealth()
+  {
+    return this.maxHealth+this.owner.getTechBonus(this.getTypeName(),"Health");
   }
   
-  public int getAttack() {
-      return this.offensiveDamage;
+  protected void setHealth(double health)
+  {
+	  this.health=Math.min(health, this.getMaxHealth());
+	  if(this.health<=0)
+	  {
+		  this.health=0;
+		  this.destroy();
+	  }
+  }
+  
+  protected void setMaxHealth(double health)
+  {
+	  if(health>0)
+	  {
+		  this.maxHealth=health;
+	  }
+	  this.setHealth(this.getHealth());
+  }
+  
+  public void changeHealth(double value)
+  {
+	  this.setHealth(this.getHealth()+value);
+  }
+  
+  public void takeDamage(int value)
+  {
+	  if(value<0)
+	  {
+		  value=value*(-1);
+	  }
+	  this.changeHealth((double)this.getArmor()-value);
+  }
+  
+  public int getArmor()
+  {
+	  return this.armor+this.owner.getTechBonus(this.getTypeName(),"Armor");
+  }
+  
+  public int getAttack()
+  {
+      return this.offensiveDamage+this.owner.getTechBonus(this.getTypeName(),"Attack");
   }
 
-  public int getDefense() {
-      return this.defensiveDamage;
+  public int getDefense()
+  {
+      return this.defensiveDamage+this.owner.getTechBonus(this.getTypeName(),"Defense");
+  }
+  
+  public int getVisibilityRadius()
+  {
+	  return this.visibilityRadius+this.owner.getTechBonus(this.getTypeName(),"Visibility Radius");
+  }
+  
+  protected void setVisibilityRadius(int radius)
+  {
+	  this.visibilityRadius=radius;
+  }
+  
+  public int getOffensiveDamage()
+  {
+	  return this.offensiveDamage+this.owner.getTechBonus(this.getTypeName(),"Attack");
+  }
+  
+  protected void setOffensiveDamage(int attack)
+  {
+	  this.offensiveDamage=attack;
+  }
+  
+  public int getDefensiveDamage()
+  {
+	  return this.defensiveDamage+this.owner.getTechBonus(this.getTypeName(),"Defense");
+  }
+  
+  protected void setDefensiveDamage(int defense)
+  {
+	  this.defensiveDamage=defense;
+  }
+  
+  public HashMap<String,Integer> getUpkeep()
+  {
+	  HashMap<String,Integer> newUpkeep = new HashMap<String,Integer>();
+	  int efficiency=this.owner.getTechBonus(this.getTypeName(),"Efficiency");
+	  Set<String> keys = this.upkeep.keySet();
+	  Iterator<String> iter = keys.iterator();
+	  while(iter.hasNext())
+	  {
+		  String key=iter.next();
+		  int value=(int)(this.upkeep.get(key)*(this.powered ? 1 : 0.25)*(1/(efficiency+1)));
+		  newUpkeep.put(key, value);
+	  }
+	  return newUpkeep;
+  }
+  
+  protected void setUpkeep(HashMap<String,Integer> upkeep)
+  {
+	  this.upkeep=upkeep;
   }
   
   public void tick(){

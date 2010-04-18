@@ -6,10 +6,9 @@
 package rice.model.unit;
 
 import rice.model.Controllable;
-import rice.model.map.ATVisitorAcceptor;
+import rice.model.ability.DefendAbility;
 import rice.model.map.AreaTileVisitor;
 import rice.model.player.Player;
-import rice.util.Position;
 import rice.view.ViewableUnit;
 
 /**
@@ -33,6 +32,13 @@ public abstract class Unit extends Controllable implements ViewableUnit {
 	 }
 
     public abstract boolean isSoldier();
+    
+    public void initAbilities(){
+    	super.initAbilities();
+    	addAbility(new DefendAbility(this));
+    	//attack
+    	//
+    }
     
     public int getSpeed()
     {

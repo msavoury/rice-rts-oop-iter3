@@ -74,6 +74,11 @@ public class AreaMap extends Map
 		this.getTile(destination).putControllable(c);
 	}
 	
+	public List<Controllable> getControllableList(Position position)
+	{
+		return this.getTile(position).getControllables();
+	}
+	
 	//places a controllable on a tile
 	public void putAccessory(Accessory a, Position destination)
 	{

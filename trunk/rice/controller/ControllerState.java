@@ -5,6 +5,8 @@
 
 package rice.controller;
 
+import rice.model.Model;
+
 /**
  *
  * @author Chris
@@ -21,4 +23,8 @@ abstract class ControllerState
 // class state status functions
 // -----------------------------------------------------------------------------
     abstract boolean activated( String activeID );
+
+// accessor and mutator functions
+// -----------------------------------------------------------------------------
+    abstract void setModel( Model model );
 }

@@ -5,6 +5,7 @@
 
 package rice.controller;
 
+import rice.model.Model;
 /**
  *
  * @author Chris
@@ -17,6 +18,7 @@ class KeyBindingState extends ControllerState
     private boolean isActive;
 
     Controller controller;
+    Model model;
 
 // initialization functions
 // -----------------------------------------------------------------------------
@@ -33,13 +35,22 @@ class KeyBindingState extends ControllerState
 	System.out.println("Woohoo! " + activeID);
 
 	if( command.equals( "SWITCH_SCREEN_LEFT" ) )
+	{
 	   controller.switchScreenLeft();
+	}
 	else if( command.equals( "SWITCH_SCREEN_RIGHT" ) )
+	{
 	    controller.switchScreenRight();
+	}
     }
 
 // accessor and mutator functions
 // -----------------------------------------------------------------------------
+    void setModel( Model model )
+    {
+	this.model = model;
+    }
+
     String getActiveID()
     {
 	return activeID;

@@ -108,6 +108,11 @@ public class Controller extends KeyAdapter implements ActionListener
        public void registerModel(Model model)
        {
            this.model = model;
+
+	   for( int i = 0; i < states.size(); ++i )
+	   {
+	       states.get( i ).setModel( model );
+	   }
        }
 
        public void registerView(ControllableView view)
@@ -192,16 +197,11 @@ public class Controller extends KeyAdapter implements ActionListener
 	   views.get(0).switchMode( stateIDs.get( statesIndex ) );
        }
 
-       void activateDefaultScreenState()
+       void activateInitialGameplayState()
        {
 	   curState = mainScreenState;
            views.get(0).switchMode( stateIDs.get( statesIndex ) );
        }
-
-	void processModelCommand( String command )
-	{
-	    model.processCommand( command );
-	}
        
 // accessor and mutator functions
 // -----------------------------------------------------------------------------

@@ -23,10 +23,11 @@ public interface ViewableTile extends ViewableLocatable{
     public abstract List<ViewableRallyPoint> getRallyPoints();
     public abstract String getStructure();
     public abstract HashMap<String, Integer> getResourceValues();
-    public abstract ViewableResource getHarvestingResource();
+    public abstract String getHarvestingResource();
     public abstract int getBreedingWorkers();
     public abstract int getIdleWorkers();
     public abstract int getNumUnitsNotInRP();
     public abstract int getVisibilityMode();
+    public abstract int getHarvestingWorkers();
     public abstract void accept(MSVisitor v);
 }

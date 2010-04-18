@@ -73,6 +73,7 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
     public void previousInstance(){}
     public void nextAbility(){}
     public void previousAbility(){}
+    public void createRallyPoint(){}
     
 	@Override
 	public List<ViewableStructure> getAllStructures() {

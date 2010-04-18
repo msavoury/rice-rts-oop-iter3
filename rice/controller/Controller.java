@@ -230,6 +230,7 @@ public class Controller extends KeyAdapter implements ActionListener
 // -----------------------------------------------------------------------------
        public void actionPerformed(ActionEvent e)
        {
+           //long time = System.currentTimeMillis();
 	   ++tickCounter;
            model.tick( getTickNum() );
            for(ControllableView v: views)

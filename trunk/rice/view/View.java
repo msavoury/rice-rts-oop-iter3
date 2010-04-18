@@ -15,15 +15,24 @@ import java.awt.event.KeyListener;
 public class View implements ControllableView{
 
     ViewableModel model;
+    MSVisitorAcceptor msa;
+    boolean first = false;
+
     private ScreenManager screenManager;
 
-    public View(boolean fs, ViewableModel model){
+    public View(boolean fs, ViewableModel model, MSVisitorAcceptor msa){
         this.model = model;
-        screenManager = new ScreenManager(fs, this.model);
+        this.msa = msa;
+        screenManager = new ScreenManager(fs, this.model, this.msa);
         screenManager.requestFocusInWindow();
     }
 
     public void refresh(){
+        if(!first){
+           screenManager.start();
+           first = true;
+        }
+        screenManager.refresh();
     }
 
     public void switchMode(String type){

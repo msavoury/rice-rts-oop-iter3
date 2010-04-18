@@ -97,7 +97,7 @@ public class VisibilityTile extends Tile implements ViewableTile, Tickable
 
 	public Position getLocation()
 	{
-		return this.getLocation();
+		return this.getPosition();
 	}
 
 	public int getNumUnitsNotInRP()

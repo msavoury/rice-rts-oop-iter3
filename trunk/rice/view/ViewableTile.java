@@ -4,10 +4,9 @@
  */
 
 package rice.view;
-
 import java.util.HashMap;
 import java.util.List;
-import util.Position;
+import rice.util.Position;
 
 /**
  *

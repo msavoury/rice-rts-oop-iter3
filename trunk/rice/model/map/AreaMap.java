@@ -42,6 +42,11 @@ public class AreaMap extends Map
 		this.setHeight(h);
 	}
 	
+	public AreaTile getTile(Position position)
+	{
+		return (AreaTile)super.getTile(position);
+	}
+	
 	public static void setTranslator(MapPositionTranslator m){
 		mpt = m;
 	}
@@ -66,18 +71,18 @@ public class AreaMap extends Map
 	//places a controllable on a tile
 	public void putControllable(Controllable c, Position destination)
 	{
-		((AreaTile)this.getTile(destination)).putControllable(c);
+		this.getTile(destination).putControllable(c);
 	}
 	
 	//places a controllable on a tile
 	public void putAccessory(Accessory a, Position destination)
 	{
-		((AreaTile)this.getTile(destination)).putAccessory(a);
+		this.getTile(destination).putAccessory(a);
 	}
 	
 	private boolean isPassable(Position position, Player player, int passabilityLevel)
 	{
-		AreaTile tile = (AreaTile)this.getTile(position);
+		AreaTile tile = this.getTile(position);
 		if(tile.getPassabilityLevel()>=passabilityLevel)
 		{
 			return false;

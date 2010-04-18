@@ -53,7 +53,7 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	
 	public void tick(int tick) {
 		System.out.println("Player "+ id + " ticked");
-		vmap.updateTiles(new Position(2,2), 2);
+		vmap.updateTiles(new Position(2,2), 1);
 	}
 		
 	@Override

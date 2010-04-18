@@ -22,7 +22,11 @@ public class GraphicsTable {
     private GraphicsTable(){
         graphics = new HashMap<String, Texture>();
         try{
-            graphics.put( "rice", TextureIO.newTexture(ImageIO.read(new File("rice/images/testImage.jpg")), true));
+            graphics.put( "Terrain_1", TextureIO.newTexture(ImageIO.read(new File("rice/images/testImage.jpg")), true));
+            graphics.put( "Terrain_2", TextureIO.newTexture(ImageIO.read(new File("rice/images/testImage.jpg")), true));
+            graphics.put( "Terrain_3", TextureIO.newTexture(ImageIO.read(new File("rice/images/grass.jpg")), true));
+            graphics.put( "Terrain_4", TextureIO.newTexture(ImageIO.read(new File("rice/images/grass.jpg")), true));
+            graphics.put( "Terrain_5", TextureIO.newTexture(ImageIO.read(new File("rice/images/grass.jpg")), true));
             graphics.put( "iceTest", TextureIO.newTexture(ImageIO.read(new File("rice/images/iceTiletest.jpg")), true));
             graphics.put( "arrowRedN", TextureIO.newTexture(ImageIO.read(new File("rice/images/arrowRedN.png")), true));
             graphics.put( "arrowRedNW", TextureIO.newTexture(ImageIO.read(new File("rice/images/arrowRedNW.png")), true));
@@ -42,6 +46,16 @@ public class GraphicsTable {
             graphics.put( "arrowGreenS", TextureIO.newTexture(ImageIO.read(new File("rice/images/arrowGreenS.png")), true));
             graphics.put( "arrowGreenSW", TextureIO.newTexture(ImageIO.read(new File("rice/images/arrowGreenSW.png")), true));
             graphics.put( "arrowGreenSE", TextureIO.newTexture(ImageIO.read(new File("rice/images/arrowGreenSE.png")), true));
+            graphics.put( "0", TextureIO.newTexture(ImageIO.read(new File("rice/images/0.png")), true));
+            graphics.put( "1", TextureIO.newTexture(ImageIO.read(new File("rice/images/1.png")), true));
+            graphics.put( "2", TextureIO.newTexture(ImageIO.read(new File("rice/images/2.png")), true));
+            graphics.put( "3", TextureIO.newTexture(ImageIO.read(new File("rice/images/3.png")), true));
+            graphics.put( "4", TextureIO.newTexture(ImageIO.read(new File("rice/images/4.png")), true));
+            graphics.put( "5", TextureIO.newTexture(ImageIO.read(new File("rice/images/5.png")), true));
+            graphics.put( "6", TextureIO.newTexture(ImageIO.read(new File("rice/images/6.png")), true));
+            graphics.put( "7", TextureIO.newTexture(ImageIO.read(new File("rice/images/7.png")), true));
+            graphics.put( "8", TextureIO.newTexture(ImageIO.read(new File("rice/images/8.png")), true));
+            graphics.put( "9", TextureIO.newTexture(ImageIO.read(new File("rice/images/9.png")), true));
         }
         catch(Exception d){
             d.printStackTrace();

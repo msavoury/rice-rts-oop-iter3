@@ -37,11 +37,13 @@ class ScreenManager extends JFrame{
     private GameGraphic currentScreen;
     private GraphicsTable graphics;
     private ViewableModel model;
+    private MSVisitorAcceptor msa;
     private HashMap<String, GameGraphic> screenSelector;
 
-    ScreenManager(boolean fullScreen, ViewableModel model){
+    ScreenManager(boolean fullScreen, ViewableModel model, MSVisitorAcceptor msa){
         
         this.model = model;
+        this.msa = msa;
 
         if(fullScreen){
             GraphicsEnvironment ge = GraphicsEnvironment
@@ -65,10 +67,19 @@ class ScreenManager extends JFrame{
         canvas.addGLEventListener(listener);
         getContentPane().add(canvas);
 
-        getContentPane().getComponents()[0].setFocusable(false);
+        //getContentPane().getComponents()[0].setFocusable(false);
         fpsanim = new FPSAnimator(canvas, 60);
         setVisible(true);
         this.validate();
+    }
+
+    void start(){
+        fpsanim.start();
+        this.validate();
+    }
+
+    void refresh(){
+        currentScreen.refresh();
     }
 
     void setMode(String mode){
@@ -88,7 +99,6 @@ class ScreenManager extends JFrame{
             gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
 
             currentScreen.render(gl, drawable, renderer);
-
         }
 
         public void displayChanged(GLAutoDrawable drawable, boolean arg1, boolean arg2) {
@@ -118,7 +128,7 @@ class ScreenManager extends JFrame{
                 screens = new ArrayList<GameGraphic>();
 
                 screens.add(new TitleScreen());
-                screens.add(new MainScreen(model));
+                screens.add(new MainScreen(msa));
                 screens.add(new UnitOverviewScreen());
                 screens.add(new StructureOverviewScreen());
                 screens.add(new TechOverviewScreen());

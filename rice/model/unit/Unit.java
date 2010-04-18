@@ -9,6 +9,7 @@ import java.awt.Dimension;
 
 import rice.model.Controllable;
 import rice.model.player.Player;
+import rice.util.Position;
 import rice.view.ViewableUnit;
 
 /**
@@ -45,7 +46,7 @@ public abstract class Unit extends Controllable implements ViewableUnit {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Dimension getLocation() {
+    public Position getLocation() {
         throw new UnsupportedOperationException("Not supported yet.");
 
     }

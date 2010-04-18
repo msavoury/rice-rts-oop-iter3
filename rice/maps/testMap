@@ -1,16 +1,33 @@
-//comments in map files start with character "/"
-//there should be no blank lines in map files
-//Initializer uses the following keywords to change state:
-// terrain location
+//Line comments in map files start with the character "/"
+/*
+  Block comments are placed like this
+*/
+//
+/*
+  Map files should be partitioned into the following sections
+  -terrain:
+    * uses comma separated list to define terrain types, make sure that
+      it's an n by n square
+  -location:
+       
+*/
+//
 terrain:
 1,2,3
 1,4,5
 1,3,4
 5,2,4
 1,5,2
-//
+
+//starting location of players
 location:
-//
+3,2
+1,4
+
+
+/*
+  These should be comments!
+*/
 decal:
 90
-//end map
+//Last line

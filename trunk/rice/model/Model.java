@@ -62,6 +62,11 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
         for(Player p : players){
         	p.tick(tick);
         }
+        
+        
+        
+    	System.out.println("elements: "+mainPlayer.getSelectedPath().size());
+
     }
 
     public void nextMode() {
@@ -181,9 +186,8 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 	}
 
 	@Override
-	public List<String> getCurrentSelectorPathToInstance() {
-		return mainPlayer.getSelectedPath();
-		
+	public List<String> getCurrentSelectorPathToInstance() {	
+		return mainPlayer.getSelectedPath();		
 	}
 
 	@Override

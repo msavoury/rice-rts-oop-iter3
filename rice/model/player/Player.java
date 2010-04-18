@@ -1,13 +1,10 @@
 package rice.model.player;
 
 
-import java.util.Iterator;
-import java.util.List;
-
-import rice.model.map.AreaMap;
-import rice.model.unit.Colonist;
 import rice.controller.Tickable;
-
+import rice.model.map.AreaMap;
+import rice.model.structures.Capital;
+import rice.model.unit.Colonist;
 import rice.util.Position;
 import rice.view.MSVisitor;
 import rice.view.MSVisitorAcceptor;
@@ -56,6 +53,10 @@ public class Player implements Tickable, MSVisitorAcceptor {
       Colonist c7 = new Colonist(7, this);
       selector.addColonist(c7);
       AreaMap.getInstance().putControllable(c7, new Position(2,2));
+      
+      Capital cap = new Capital(4, this);
+      selector.addCapital(cap);
+      AreaMap.getInstance().putControllable(cap, new Position(1,2));
 	}
 	
 	public void setStartingPosition(Position p){

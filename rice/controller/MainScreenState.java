@@ -32,7 +32,7 @@ class MainScreenState extends ControllerState
 // -----------------------------------------------------------------------------
     void processCommand( String command )
     {
-	System.out.println("Woohoo! " + activeID);
+	//System.out.println("Woohoo! " + activeID);
 
 	if( command.equals( "SWITCH_SCREEN_LEFT" ) )
 	   controller.switchScreenLeft();
@@ -77,6 +77,10 @@ class MainScreenState extends ControllerState
 	else if( command.equals( "CREATE_RALLY_POINT" ) )
 	{
 	    model.createRallyPoint();
+	}
+	else // all other keys end up here: model will be concerned with hotkeys and numpad movement keys (speaking from the default key configuration)
+	{
+	    model.processCommand( command );
 	}
     }
 

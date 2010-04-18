@@ -140,4 +140,8 @@ public class RiceSelector extends Selector<Controllable> implements Tickable {
 		}
 	}
 
+	public void processCommand(String command) {
+		this.getSelected().performSelectedAbility(command);
+	}
+
 }

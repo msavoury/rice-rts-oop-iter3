@@ -144,7 +144,8 @@ public class Model implements ViewableModel, Tickable, MSVisitorAcceptor {
 	}
 	
 	public void processCommand(String command){
-	    
+	  System.out.println("Model got command: " +command);
+	  mainPlayer.processCommand(command);
 	}
 
 	@Override

@@ -9,7 +9,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.MouseListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 /**
  *
  * @author Chris
@@ -18,7 +17,7 @@ class InputDecoder extends KeyAdapter implements MouseListener
 {
 // variable declarations
 // -----------------------------------------------------------------------------
-    KeyboardHashMap keyboardHashMap;
+    private KeyboardHashMap keyboardHashMap;
 
 // initialization functions
 // -----------------------------------------------------------------------------
@@ -62,6 +61,42 @@ class InputDecoder extends KeyAdapter implements MouseListener
     {
 
     }
+
+// keyboard input event handlers
+// -----------------------------------------------------------------------------
+       @Override
+       public void keyPressed( KeyEvent e )
+       {
+	   if( e.isControlDown() )
+	   {
+	       if( e.getKeyCode() == KeyEvent.VK_UP )
+	       {
+		   String command = keyboardHashMap.getKeyInfo( e.getKeyCode() );
+		   //String command = keyboardHashMap.getKeyInfo( e.getKeyCode() );
+		   //TEST TO SEE WHAT HAPPENS WHEN YOU PASS OSMETHING INTO THE HASHMAP THAT DOESN'T EXIST THERE (like pass in keycode -3535 or something)
+		   System.out.println( "You just cycled modes up and got this command blarh blarghs: " + command );
+	       }
+	       if( e.getKeyCode() == KeyEvent.VK_DOWN )
+	       {
+		   String command = keyboardHashMap.getKeyInfo( e.getKeyCode() );
+		   //String command = keyboardHashMap.getKeyInfo( e.getKeyCode() );
+		   //TEST TO SEE WHAT HAPPENS WHEN YOU PASS OSMETHING INTO THE HASHMAP THAT DOESN'T EXIST THERE (like pass in keycode -3535 or something)
+		   System.out.println( "You just cycled modes up and got this command: " + command );
+	       }
+	   }
+	   else if( e.isAltDown() )
+	   {
+
+	   }
+	   else if( e.isShiftDown() )
+	   {
+
+	   }
+	   else
+	   {
+
+	   }
+       }
 
 // mouse input event handlers
 // -----------------------------------------------------------------------------

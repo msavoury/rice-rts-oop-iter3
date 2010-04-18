@@ -7,7 +7,6 @@
  *
  * @author spock
  */
-package rice;
 
 import rice.controller.Controller;
 import rice.model.Model;

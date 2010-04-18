@@ -18,9 +18,6 @@ import java.awt.event.MouseMotionListener;
 import rice.model.Model;
 import rice.view.View;
 
-// START: Controller testing - packages
-import javax.swing.JFrame;
-// END: Controller testing - packages
 /**
  *
  * @author Chris
@@ -42,10 +39,6 @@ public class Controller extends KeyAdapter implements ActionListener
 
        int tickCounter = 0;
 
-       // START: Controller testing - variables
-       JFrame frame;
-       // END: Controller testing - variables
-
 // initialization functions
 // -----------------------------------------------------------------------------
        public Controller()
@@ -58,19 +51,6 @@ public class Controller extends KeyAdapter implements ActionListener
 	   overviewState = new OverviewState();
 	   technologyState = new TechnologyState();
 	   keyBindingState = new KeyBindingState();
-
-	   // when Controller is created, have it tell InputDecoder
-	   //  to initialize the HashMap, and InputDecoder will
-	   //  tell the HashMap to initialize itself, and it will
-	   //  then tell the FileLoader to load the default file
-
-	   // START: Controller testing - registering listenrs with jframe
-	   frame = new JFrame( "Controller Test" );
-	   frame.addKeyListener(this);
-	   frame.setSize(800, 800);
-	   frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-	   //frame.setVisible(true);
-	   // END: Controller testing - registering listeners with jframe
        }
 
        public void start()
@@ -86,18 +66,12 @@ public class Controller extends KeyAdapter implements ActionListener
        public void registerView(View view)
        {
            views.add(view);
+	   view.addKeyListener( inputDecoder );
        }
 
 // global commands input processing
 // -----------------------------------------------------------------------------
-       @Override
-       public void keyReleased( KeyEvent e )
-       {
-	   if( e.getKeyCode() == KeyEvent.VK_DOWN)
-	   {
-	       System.out.println("You pressed down!");
-	   }
-       }
+
 
 // accessor functions
 // -----------------------------------------------------------------------------

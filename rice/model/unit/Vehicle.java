@@ -13,11 +13,27 @@ import rice.view.ViewableVehicle;
  * @author Marcos
  */
 public abstract class Vehicle extends Unit implements ViewableVehicle, UnitOwner {
-
-	public Vehicle(String typeName, int id, Player owner) {
+	private int capacity;
+	
+	public Vehicle(String typeName, int id, Player owner)
+	{
 		super(typeName, id, owner);
-		// TODO Auto-generated constructor stub
+		
+		//default vehicle stat initialization
+		this.setSize(50);
+		this.setCapacity(40);
+		
 	}
+	
+	public int getCapacity()
+    {
+        return this.capacity;
+    }
+    
+    protected void setCapacity(int capacity)
+    {
+    	this.capacity=capacity;
+    }   
 
 	public boolean isSoldier() {
 		return false;

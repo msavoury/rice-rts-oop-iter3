@@ -32,13 +32,13 @@ import rice.view.Viewable;
 public abstract class Controllable extends Locatable implements Viewable, SelectorAcceptor {
   private int id;
   private Player owner;
-  private double health = 10;
-  private double maxHealth = 10;
-  private int armor = 10;
-  private int visibilityRadius = 2;
+  private double health;
+  private double maxHealth;
+  private int armor;
+  private int visibilityRadius;
   private List<Ability> abilities;
-  private int offensiveDamage = 2;
-  private int defensiveDamage = 1;
+  private int offensiveDamage;
+  private int defensiveDamage;
   private HashMap<String,Integer> upkeep;
   private String status = "I'm Chillin";
   private boolean powered = true;
@@ -51,6 +51,20 @@ public abstract class Controllable extends Locatable implements Viewable, Select
 	  super(typeName);
 	  this.id=id;
 	  this.owner=owner;
+	  
+	  //default stats initializations
+	  this.setMaxHealth(50.00);
+	  this.setHealth(50.00);
+	  this.setArmor(5);
+	  this.setOffensiveDamage(10);
+	  this.setDefensiveDamage(10);
+	  this.setVisibilityRadius(1);
+	  HashMap<String,Integer> newUpkeep = new HashMap<String,Integer>();
+	  newUpkeep.put("Ore", 10);
+	  newUpkeep.put("Food", 10);
+	  newUpkeep.put("Energy", 10);
+	  this.setUpkeep(newUpkeep);
+	  
 	  this.commands = new CommandQueue();
 	  initAbilities();
   }
@@ -75,7 +89,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   }
   
   //return the controllables id
-  public int getId()
+  public int getID()
   {
 	  return this.id;
   }
@@ -93,7 +107,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   
   public double getMaxHealth()
   {
-    return this.maxHealth+this.owner.getTechBonus(this.getTypeName(),"Health");
+    return this.maxHealth+this.getOwner().getTechBonus(this.getTypeName(),"Health");
   }
   
   protected void setHealth(double health)
@@ -129,24 +143,29 @@ public abstract class Controllable extends Locatable implements Viewable, Select
 	  this.changeHealth((double)this.getArmor()-value);
   }
   
+  protected void setArmor(int armor)
+  {
+	  this.armor=armor;
+  }
+  
   public int getArmor()
   {
-	  return this.armor+this.owner.getTechBonus(this.getTypeName(),"Armor");
+	  return this.armor+this.getOwner().getTechBonus(this.getTypeName(),"Armor");
   }
   
   public int getAttack()
   {
-      return this.offensiveDamage+this.owner.getTechBonus(this.getTypeName(),"Attack");
+      return this.offensiveDamage+this.getOwner().getTechBonus(this.getTypeName(),"Attack");
   }
 
   public int getDefense()
   {
-      return this.defensiveDamage+this.owner.getTechBonus(this.getTypeName(),"Defense");
+      return this.defensiveDamage+this.getOwner().getTechBonus(this.getTypeName(),"Defense");
   }
   
   public int getVisibilityRadius()
   {
-	  return this.visibilityRadius+this.owner.getTechBonus(this.getTypeName(),"Visibility Radius");
+	  return this.visibilityRadius+this.getOwner().getTechBonus(this.getTypeName(),"Visibility Radius");
   }
   
   protected void setVisibilityRadius(int radius)
@@ -156,7 +175,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   
   public int getOffensiveDamage()
   {
-	  return this.offensiveDamage+this.owner.getTechBonus(this.getTypeName(),"Attack");
+	  return this.offensiveDamage+this.getOwner().getTechBonus(this.getTypeName(),"Attack");
   }
   
   protected void setOffensiveDamage(int attack)
@@ -166,7 +185,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   
   public int getDefensiveDamage()
   {
-	  return this.defensiveDamage+this.owner.getTechBonus(this.getTypeName(),"Defense");
+	  return this.defensiveDamage+this.getOwner().getTechBonus(this.getTypeName(),"Defense");
   }
   
   protected void setDefensiveDamage(int defense)
@@ -177,7 +196,7 @@ public abstract class Controllable extends Locatable implements Viewable, Select
   public HashMap<String,Integer> getUpkeep()
   {
 	  HashMap<String,Integer> newUpkeep = new HashMap<String,Integer>();
-	  int efficiency=this.owner.getTechBonus(this.getTypeName(),"Efficiency");
+	  int efficiency=this.getOwner().getTechBonus(this.getTypeName(),"Efficiency");
 	  Set<String> keys = this.upkeep.keySet();
 	  Iterator<String> iter = keys.iterator();
 	  while(iter.hasNext())

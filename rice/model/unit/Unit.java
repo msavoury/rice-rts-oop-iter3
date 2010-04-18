@@ -19,39 +19,52 @@ import rice.view.ViewableUnit;
 public abstract class Unit extends Controllable implements ViewableUnit {
      private int speed;
      private int size;
+     private int passabilityLevel;
 	
-     public Unit(String typeName, int id, Player owner) {
-		super("Unit", id, owner);
-		// TODO Auto-generated constructor stub
+     public Unit(String typeName, int id, Player owner)
+     {
+		super(typeName, id, owner);
+		
+		//default unit stat initialization
+		this.setSize(10);
+		this.setSpeed(2);
+		this.setPassability(1);
+		
 	 }
 
     public abstract boolean isSoldier();
     
-    public int getSpeed() {
-        return this.speed;
-    }
-
-   
-   
-
-    public String getStatus() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public int getSize() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public int getID() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public Position getLocation() {
-        throw new UnsupportedOperationException("Not supported yet.");
-
+    public int getSpeed()
+    {
+        return this.speed+this.getOwner().getTechBonus(this.getTypeName(),"Movement Speed");
     }
     
-	public void accept(AreaTileVisitor v)
+    protected void setSpeed(int speed)
+    {
+    	this.speed=speed;
+    }
+
+    public int getSize()
+    {
+        return this.size;
+    }
+    
+    protected void setSize(int size)
+    {
+    	this.size=size;
+    }   
+    
+    public int getPassability()
+    {
+        return this.passabilityLevel;
+    }
+    
+    protected void setPassability(int passabilityLevel)
+    {
+    	this.passabilityLevel=passabilityLevel;
+    }   
+
+  	public void accept(AreaTileVisitor v)
 	{
 		v.visit(this);
 	}

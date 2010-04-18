@@ -5,6 +5,8 @@
 
 package rice.model.unit;
 
+import java.util.HashMap;
+
 import rice.model.player.Player;
 import rice.model.player.RiceSelector;
 import rice.view.MSVisitor;
@@ -16,14 +18,25 @@ import rice.view.UOVisitor;
  */
 public class Colonist extends Unit {
 
-    public Colonist(String typeName, int id, Player owner) {
-		super(typeName, id, owner);
+    public Colonist(int id, Player owner) {
+		super("Colonist", id, owner);
+		//default initializations
+		  this.setMaxHealth(20.00);
+		  this.setHealth(20.00);
+		  this.setArmor(5);
+		  this.setOffensiveDamage(1);
+		  this.setDefensiveDamage(2);
+		  this.setVisibilityRadius(1);
+		  HashMap<String,Integer> newUpkeep = new HashMap<String,Integer>();
+		  newUpkeep.put("Ore", 0);
+		  newUpkeep.put("Food", 10);
+		  newUpkeep.put("Energy", 0);
+		  this.setUpkeep(newUpkeep);
+		  this.setSize(30);
+		  this.setSpeed(1);
 		
 	}
     
-    public Colonist(int id, Player owner){
-    	this("Colonist", id, owner);
-    }
     public boolean isSoldier() {
 		return false;
 	}

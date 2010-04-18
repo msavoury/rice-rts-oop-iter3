@@ -5,6 +5,8 @@
 
 package rice.model.unit;
 
+import java.util.HashMap;
+
 import rice.model.player.Player;
 import rice.model.player.RiceSelector;
 import rice.view.MSVisitor;
@@ -16,9 +18,22 @@ import rice.view.UOVisitor;
  */
 public class Explorer extends Unit{
 
-    public Explorer(String typeName, int id, Player owner) {
-		super(typeName, id, owner);
-		// TODO Auto-generated constructor stub
+    public Explorer(int id, Player owner) {
+		super("Explorer", id, owner);
+		//default initializations
+		  this.setMaxHealth(15.00);
+		  this.setHealth(15.00);
+		  this.setArmor(3);
+		  this.setOffensiveDamage(1);
+		  this.setDefensiveDamage(2);
+		  this.setVisibilityRadius(2);
+		  HashMap<String,Integer> newUpkeep = new HashMap<String,Integer>();
+		  newUpkeep.put("Ore", 0);
+		  newUpkeep.put("Food", 15);
+		  newUpkeep.put("Energy", 0);
+		  this.setUpkeep(newUpkeep);
+		  this.setSize(10);
+		  this.setSpeed(2);
 	}
 
 	public void accept(UOVisitor u) {

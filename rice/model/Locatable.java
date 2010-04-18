@@ -7,6 +7,7 @@ package rice.model;
 import rice.model.map.ATVisitorAcceptor;
 import rice.model.map.AreaTile;
 import rice.model.map.AreaTileVisitor;
+import rice.util.Position;
 
 /**
  *
@@ -23,6 +24,18 @@ public abstract class Locatable implements ATVisitorAcceptor {
     
     public String getTypeName() {
         return typeName;
+    }
+    
+    public Position getLocation()
+    {
+    	if(this.getTile()!=null)
+    	{
+    		return this.getTile().getPosition();
+    	}
+    	else
+    	{
+    		return null;
+    	}
     }
     
     public AreaTile getTile()

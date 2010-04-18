@@ -75,14 +75,30 @@ public class Player implements Tickable, MSVisitorAcceptor {
 		return this.techs.getBonus(branch, tech);
 	}
 
-    public void nextMode() {
-    	
+    public void nextMode()
+    {
+    	selector.selectNext(0);
     }
-    public void previousMode(){}
-    public void nextSubmode(){}
-    public void previousSubmode(){}
-    public void nextInstance(){}
-    public void previousInstance(){}
+    public void previousMode()
+    {
+    	selector.selectPrev(0);
+    }
+    public void nextSubmode()
+    {
+    	selector.selectNext(1);
+    }
+    public void previousSubmode()
+    {
+    	selector.selectPrev(1);
+    }
+    public void nextInstance()
+    {
+    	selector.selectNext(2);
+    }
+    public void previousInstance()
+    {
+    	selector.selectPrev(2);
+    }
     public void nextAbility(){
     	selector.getSelected().nextAbility();
     }

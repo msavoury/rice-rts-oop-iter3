@@ -12,5 +12,7 @@ package rice.view;
 public interface ViewableControllable extends ViewableLocatable{
     
     public abstract String getCommand();
+    public abstract String getAbility();
     public abstract String getStatus();
+    public abstract int getID();
 }

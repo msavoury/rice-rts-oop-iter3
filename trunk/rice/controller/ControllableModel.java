@@ -10,6 +10,8 @@ public interface ControllableModel
     public void nextAbility();
     public void previousAbility();
     public void processCommand(String command);
+
+    public void createRallyPoint();
     
     public void previousUnit();
     public void nextUnit();

@@ -74,6 +74,10 @@ class MainScreenState extends ControllerState
 	{
 	    model.previousAbility();
 	}
+	else if( command.equals( "CREATE_RALLY_POINT" ) )
+	{
+	    model.createRallyPoint();
+	}
     }
 
 // accessor and mutator functions
@@ -98,3 +102,12 @@ class MainScreenState extends ControllerState
 	    return false;
     }
 }
+
+
+//for move: have it take in CONFIRM_SELECTION
+// which will activate boolean moveMode or something
+// which can be checked before ANY OTHER commands are
+// pressed. Then for the only movements you're concerned
+// with, have them in a separate "MoveMovements" command
+// that will keep shipping movement information
+// to the model until enter is pressed.

@@ -17,7 +17,7 @@ public class Defend extends Command {
 		super(c);
 		this.defendDirection = direction;
 		this.directionString = sdirection;
-		//setName("Defend");
+		setName("Defend");
 		
 	}
 

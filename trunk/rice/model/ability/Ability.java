@@ -31,6 +31,7 @@ public abstract class Ability {
    * @return
    */
   static boolean isDirection(String direction) {
+	  boolean result = false;
 	  if(direction.equals("NORTH")
 		||direction.equals("NORTHWEST")
 		||direction.equals("NORTHEAST")
@@ -39,9 +40,11 @@ public abstract class Ability {
 		||direction.equals("SOUTH")
 		
 	  ){
-		  return true;
+		  result = true;
 	  }
-	  return false;
+	  
+	  System.out.println(direction + " direction? " + result);
+	  return result;
   }
   
   public abstract String getDefaultName();

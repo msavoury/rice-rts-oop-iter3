@@ -63,6 +63,10 @@ public class AreaMap extends Map
 		staticPositions = list;
 	}
 	
+	public int convertToDirection(String input){
+		return this.mpt.convertToDirection(input);
+	}
+	
 	//returns the instance of the AreaMap
 	public static AreaMap getInstance()
 	{

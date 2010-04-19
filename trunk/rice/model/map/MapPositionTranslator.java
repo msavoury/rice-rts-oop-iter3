@@ -16,22 +16,23 @@ public abstract class MapPositionTranslator
 	public static double convertDirection(String direction) {
 		double result = 0.0;
 		
-		if (direction.equals("NORTH"))
+		if (direction.equals("NORTHEAST"))
 		  result = 30.0;
-		else if (direction.equals("NORTHWEST"))
+		else if (direction.equals("NORTH"))
 		  result = 90.0;
-		else if (direction.equals("NORTHEAST"))
+		else if (direction.equals("NORTHWEST"))
 		  result = 150.0;
 		else if (direction.equals("SOUTHWEST"))
 		  result = 210.0;
-		else if (direction.equals("SOUTHEAST"))
-		  result = 270.0;
 		else if (direction.equals("SOUTH"))
+		  result = 270.0;
+		else if (direction.equals("SOUTHEAST"))
 		  result = 330.0;
 		
 		return result;
 	}
 	
+	public abstract int convertToDirection(String s);	
 	
 	public MapPositionTranslator()
 	{

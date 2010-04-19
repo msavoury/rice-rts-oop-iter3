@@ -51,6 +51,7 @@ public class HexTranslator extends MapPositionTranslator
 	//return adjacent position depending on current position and direction
 	public Position getAdjecentPosition(Position position, int direction)
 	{
+		//System.out.println("Old position is " + position.getX() + "," + position.getY()+ ". Direction is " + direction);
 		Position newPosition = new Position();
 		switch (direction)
 		{
@@ -59,6 +60,7 @@ public class HexTranslator extends MapPositionTranslator
 			newPosition.setY(((position.getX() % 2)==0 ? position.getY()-1 : position.getY()));
 			break;
 		case UP:
+			//System.out.println("case up");
 			newPosition.setX(position.getX());
 			newPosition.setY(position.getY()-1);
 			break;
@@ -81,6 +83,25 @@ public class HexTranslator extends MapPositionTranslator
 		default:
 			newPosition.set(position);
 		}
+		//System.out.println("New position is " + newPosition.getX() + "," + newPosition.getY());
+
+		return newPosition;
+	}
+	
+	public Position getAdjacentPosition(Position position, int direction)
+	{
+		//System.out.println("Old position is " + position.getX() + "," + position.getY()+ ". Direction is " + direction);
+		Position newPosition = new Position();
+		String help = "none";
+		switch (direction){
+		
+		}
+		switch (direction)
+		{
+		
+		}
+		//System.out.println("New position is " + newPosition.getX() + "," + newPosition.getY());
+
 		return newPosition;
 	}
 	
@@ -122,6 +143,31 @@ public class HexTranslator extends MapPositionTranslator
 			posiotions.add(newPosition);
 		}
 		return posiotions;
+	}
+
+	/**
+	 * Convert string like NORTH to the necessary constant
+	 * @param s
+	 * @return
+	 */
+	public int convertToDirection(String direction) {
+        int result = UP;
+		
+		if (direction.equals("NORTH"))
+		  result = UP;
+		else if (direction.equals("NORTHWEST"))
+		  result = UP_LEFT;
+		else if (direction.equals("NORTHEAST"))
+		  result = UP_RIGHT;
+		else if (direction.equals("SOUTHWEST"))
+		  result = DOWN_LEFT;
+		else if (direction.equals("SOUTHEAST"))
+		  result = DOWN_RIGHT;
+		else if (direction.equals("SOUTH"))
+		  result = DOWN;
+		System.out.println("translated " + direction + "to " + result);
+		
+		return result;
 	}
 
 }

@@ -150,6 +150,61 @@ class KeyboardHashMap
 	return keyboardKeysInfo;
     }
 
+    void assignNewKeyConfig( int keyValue, String commandName )
+    {
+	List< KeyboardHashMapPair > curKeyConfig = packCurKeyConfig();
+
+	// if keyboardHashMap.get( keyValue ) != null, then that key is stored
+	//  in the map with a command and must be addressed
+	if( keyboardHashMap.get( keyValue ) != null && !keyboardHashMap.get( keyValue ).equals(commandName) )
+	{
+	    // if: checking to see if keyboardHashMap is currently using the passed in keyValue
+	    if( keyboardHashMap.get( keyValue ) != null )
+	    {
+		String tempCommandName = keyboardHashMap.get( keyValue );
+
+		for( int i = 0; i < curKeyConfig.size(); ++i )
+		{
+		    if( curKeyConfig.get( i ).getValue().equals( "commandName" ) )
+		    {
+			keyboardHashMap.put( curKeyConfig.get( i ).getKey(), tempCommandName );
+			break;
+		    }
+		}
+
+		keyboardHashMap.put( keyValue, commandName );
+	    }
+	    else // keyboardHashMap is not using keyValue anywhere
+	    {
+		for( int i = 0; i < curKeyConfig.size(); ++i )
+		{
+		    if( curKeyConfig.get( i ).getValue().equals( "commandName") )
+		    {
+			keyboardHashMap.remove( curKeyConfig.get( i ).getKey() );
+			keyboardHashMap.put( keyValue, commandName);
+			break;
+		    }
+		}
+	    }
+	}
+
+	// I want to assign this keyValue to this commandName
+	//  if the hashmap returns a command by passing in keyValue
+	//  that means a command is already assigned to it.
+	//  get that command, give it the keyvalue that the passed
+	//  in commandname is currently assigned to inside of keyboardHashMap, then give the keyvalue passed in
+	//  to the passed in commandname.
+	// if that keyValue has not been used,
+	//  add in the current command name with the passed in keyValue
+
+	// remove the pair from the map then add in the current
+	// command name
+	//  be careful of the case where the user enters the same key
+	//  as is already assigned to the commandName3
+
+
+    }
+
 // control information saving functions
 // -----------------------------------------------------------------------------
 
@@ -200,8 +255,8 @@ class DefaultKeyConfiguration
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_MINUS + 10000, "DECREASE_CLOCK_RATE" ) );
 
-	// CTRL key must be pressed for the following commands to work
-	//  (i.e. 10000 must be added in addition to the keyboard key value)
+	// ALT key must be pressed for the following commands to work
+	//  (i.e. 20000 must be added in addition to the keyboard key value)
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_Q + 20000, "QUIT" ) );
 
@@ -218,13 +273,13 @@ class DefaultKeyConfiguration
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_ENTER, "CONFIRM_SELECTION_NO_ARGS" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
-		KeyEvent.VK_NUMPAD5, "CONFIRM SELECTION" ) );
+		KeyEvent.VK_NUMPAD5, "CONFIRM_SELECTION" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_NUMPAD7, "NORTHWEST" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_NUMPAD8, "NORTH" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
-		KeyEvent.VK_NUMPAD9, "NORHTEAST" ) );
+		KeyEvent.VK_NUMPAD9, "NORTHEAST" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_NUMPAD1, "SOUTHWEST" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
@@ -263,6 +318,10 @@ class DefaultKeyConfiguration
 		KeyEvent.VK_9, "HOTKEY_9" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_0, "HOTKEY_0" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_NUMPAD4, "WEST") );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_NUMPAD6, "EAST") );
 
 	return defaultConfig;
     }

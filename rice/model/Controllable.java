@@ -18,6 +18,7 @@ import rice.model.ability.PowerDownAbility;
 import rice.model.ability.PowerUpAbility;
 import rice.model.ability.WaitAbility;
 import rice.model.command.Command;
+import rice.model.map.AreaMap;
 import rice.model.map.AreaTile;
 import rice.model.map.ModifierVisitor;
 import rice.model.player.Player;
@@ -70,7 +71,7 @@ public abstract class Controllable extends Locatable implements ViewableControll
 	  newUpkeep.put("Food", 10);
 	  newUpkeep.put("Energy", 10);
 	  this.setUpkeep(newUpkeep);
-	  
+	  this.setTile(AreaMap.getInstance().getTile(owner.getStartingPosition()));
 	  this.commands = new CommandQueue();
 	  resetActionTiles();
 	  initAbilities();

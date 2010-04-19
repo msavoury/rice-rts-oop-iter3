@@ -233,7 +233,9 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 	}
 	
 	public List<Position> getActionTiles() {
-		return mainPlayer.getActionTiles();
+		//if(mainPlayer != null){
+		  return mainPlayer.getActionTiles();
+		//}
 	}
 
 }

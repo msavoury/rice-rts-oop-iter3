@@ -122,6 +122,10 @@ public class Player implements Tickable, MSVisitorAcceptor {
 		this.startingPosition = p;
 	}
 	
+	public Position getStartingPosition(){
+		return this.startingPosition;
+	}
+	
 	public void updateTiles(Position origin, int radius)
 	{
 		vmap.updateTiles(origin, radius);

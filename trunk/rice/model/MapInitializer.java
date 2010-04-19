@@ -294,7 +294,7 @@ class AccessoryState extends InitializerState {
 	@Override
 	void processLine(String s) {
 	  String [] num = s.split(",");
-	  m.addAccessory(new Decal(s));
+	  m.addAccessory(new Decal(""+Integer.parseInt(num[0])));
 	  m.addAccessoryPosition(new Position(Integer.parseInt(num[0]), Integer.parseInt(num[1])));
 	  
 	}

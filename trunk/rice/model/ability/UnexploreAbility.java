@@ -14,5 +14,9 @@ public class UnexploreAbility extends Ability {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String getDefaultName() {
+		return "Unexplore";
+	}
 
 }

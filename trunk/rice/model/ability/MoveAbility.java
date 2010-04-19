@@ -14,5 +14,9 @@ public class MoveAbility extends Ability {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String getDefaultName() {
+		return "Move";
+	}
 
 }

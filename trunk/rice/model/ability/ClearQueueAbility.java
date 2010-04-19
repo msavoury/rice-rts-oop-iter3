@@ -8,7 +8,7 @@ public class ClearQueueAbility extends Ability{
 	
 	public ClearQueueAbility(Controllable c) {
 		super(c);
-		setName("Clear Queue");
+		//setName("Clear Queue");
 	}
 
 	@Override
@@ -16,6 +16,11 @@ public class ClearQueueAbility extends Ability{
 		if(input.equals("CONFIRM_SELECTION_NO_ARGS")){
 		    target.clearQueue();
 	  }
+	}
+
+	@Override
+	public String getDefaultName() {
+		return "Clear Queue";
 	}
 
 }

@@ -15,4 +15,9 @@ public class AttackAbility extends Ability {
 		
 	}
 
+	@Override
+	public String getDefaultName() {
+		return "Attack";
+	}
+
 }

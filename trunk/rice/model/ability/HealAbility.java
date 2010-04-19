@@ -14,5 +14,9 @@ public class HealAbility extends Ability{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String getDefaultName() {
+		return "Heal";
+	}
 
 }

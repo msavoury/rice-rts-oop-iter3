@@ -12,7 +12,7 @@ import rice.model.Controllable;
  *
  */
 public abstract class Ability {
-  String name = "default Ability";
+  String name = "Ability";
   Controllable target;
   /**
    * Ready for commands
@@ -44,12 +44,13 @@ public abstract class Ability {
 	  return false;
   }
   
-  
-  
+  public abstract String getDefaultName();
+	  
   
   public Ability(Controllable c){
 	  target = c;
 	  this.state = START;
+	  this.name = getDefaultName();
   }
   
   void setName(String s){
@@ -61,6 +62,7 @@ public abstract class Ability {
   
   public void reset() {
 	  this.state = START;
+	  this.name = getDefaultName();
   }
   
   public abstract void acceptInput(String input);

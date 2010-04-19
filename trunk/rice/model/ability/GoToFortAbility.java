@@ -14,5 +14,8 @@ public class GoToFortAbility extends Ability {
 		// TODO Auto-generated method stub
 		
 	}
+	public String getDefaultName() {
+		return "Go To Fort";
+	}
 
 }

@@ -15,4 +15,7 @@ public class ExploreAbility extends Ability{
 		
 	}
 
+	public String getDefaultName() {
+		return "Explore";
+	}
 }

@@ -42,7 +42,7 @@ public abstract class Controllable extends Locatable implements ViewableControll
   private int offensiveDamage;
   private int defensiveDamage;
   private HashMap<String,Integer> upkeep;
-  private String status = "I'm Chillin";
+  private String status = "Idle";
   private boolean powered = true;
   private CommandQueue commands;
   
@@ -330,7 +330,18 @@ public abstract class Controllable extends Locatable implements ViewableControll
   }
   
   public String getStatus() {
-		return this.status;  	  
+	    if (powered)
+		return this.status;
+	    
+	    return "Powered Down";
+  }
+  
+  public void setStatus(String s){
+	  this.status = s;
+  }
+  
+  public void resetStatus(){
+	  this.status = "Idle";
   }
   
   /**
@@ -338,6 +349,9 @@ public abstract class Controllable extends Locatable implements ViewableControll
    */
   public void setPowerStatus(boolean powerStatus) {
 	  this.powered = powerStatus;
+	  if(!powered){
+		  resetStatus();
+	  }
   }
  
   /**

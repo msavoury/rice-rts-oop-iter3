@@ -15,4 +15,9 @@ public class BuildAbility extends Ability {
 		
 	}
 
+	@Override
+	public String getDefaultName() {
+		return "Build";
+	}
+
 }

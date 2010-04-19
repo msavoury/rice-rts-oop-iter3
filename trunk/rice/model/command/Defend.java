@@ -11,16 +11,20 @@ import rice.model.unit.Unit;
 public class Defend extends Command {
 
 	double defendDirection;
+	String directionString;
 	
-	public Defend(Unit c, double direction) {
+	public Defend(Unit c, double direction, String sdirection) {
 		super(c);
 		this.defendDirection = direction;
+		this.directionString = sdirection;
+		//setName("Defend");
 		
 	}
 
 	@Override
 	public int execute() {
 		CombatManager.Defend(target, defendDirection);
+		target.setStatus("Defending: " + directionString);
 		return CONTINUOUS;
 	}
 

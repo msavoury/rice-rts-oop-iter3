@@ -14,5 +14,9 @@ public class PickUpWorkerAbility extends Ability {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String getDefaultName() {
+		return "Pick Up Worker";
+	}
 
 }

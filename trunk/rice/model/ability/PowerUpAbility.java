@@ -15,4 +15,8 @@ public class PowerUpAbility extends Ability{
 	    target.addCommand(new PowerUp(target));
 	  }
   }
+  
+  public String getDefaultName() {
+		return "Power Up";
+	}
 }

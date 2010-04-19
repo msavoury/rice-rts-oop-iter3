@@ -14,5 +14,9 @@ public class HarvestAbility extends Ability{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String getDefaultName() {
+		return "Harvest";
+	}
 
 }

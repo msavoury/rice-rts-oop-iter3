@@ -9,7 +9,7 @@ public class DecommissionAbility extends Ability {
 	
 	public DecommissionAbility(Controllable c) {
 		super(c);
-		setName("Decommission");
+		//setName("Decommission");
 	}
 
 	@Override
@@ -17,6 +17,11 @@ public class DecommissionAbility extends Ability {
 	  if(input.equals("CONFIRM_SELECTION_NO_ARGS")){
 		    target.addCommand(new Decommission(target));
 	  }
+	}
+
+	@Override
+	public String getDefaultName() {
+		return "Decommission";
 	}
 
 }

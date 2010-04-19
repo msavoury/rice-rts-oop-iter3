@@ -58,6 +58,7 @@ public class AreaTile extends Tile implements ATVisitorAcceptor, ResourceVisitor
 	   if(!this.controllables.contains(c))
 	   {
 		   this.controllables.add(c);
+		   c.setTile(this);
 	   }
    }
    

@@ -14,5 +14,9 @@ public class TravelToRallyAbility extends Ability{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String getDefaultName() {
+		return "Travel To Rally";
+	}
 
 }

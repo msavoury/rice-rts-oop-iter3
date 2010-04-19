@@ -189,13 +189,16 @@ public class VisibilityTile extends Tile implements ViewableTile, Tickable
 		this.discovered=true;
 		this.lastSeenTick=tick;
 		ResourceVisitor rV=new ResourceVisitor();
+                this.areaTile.accept(rV);
 		Resources resources=rV.getResources();
 		if(resources!=null)
 		{
+
 			this.resourceValues=resources.getResources();
 			this.harvestingResource=resources.getHarvestedType();
 			this.harvestingWorkers=resources.getWorkerCount();
 		}
+                
 		
 	}
 

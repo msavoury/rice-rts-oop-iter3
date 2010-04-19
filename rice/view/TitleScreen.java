@@ -26,7 +26,7 @@ class TitleScreen extends GameGraphic{
         drawItems.add(new SelfDrawingImage("rice", .15, .70, .30, .85));
         drawItems.add(new SelfDrawingImage("rice", .70, .15, .85, .30));
         drawItems.add(new SelfDrawingImage("rice", .70, .70, .85, .85));
-        drawItems.add(new SelfDrawingBar(.25, .25, .75, .75, Color.RED, Color.WHITE));
+        drawItems.add(new SelfDrawingImage("tiger", .25, .25, .75, .75));
         drawItems.add(new SelfDrawingText("RICE", .4, .55));
     }
 

@@ -23,6 +23,10 @@ public class GraphicsTable {
         graphics = new HashMap<String, Texture>();
         try{
             graphics.put( "rice", TextureIO.newTexture(ImageIO.read(new File("rice/images/testImage.jpg")), true));
+                        graphics.put( "tiger", TextureIO.newTexture(ImageIO.read(new File("rice/images/tiger.jpg")), true));
+
+            graphics.put( "Food", TextureIO.newTexture(ImageIO.read(new File("rice/images/bread.jpg")), true));
+            graphics.put( "Ore", TextureIO.newTexture(ImageIO.read(new File("rice/images/Magnet.jpg")), true));
             graphics.put( "hud", TextureIO.newTexture(ImageIO.read(new File("rice/images/hud.png")), true));
             graphics.put( "cat", TextureIO.newTexture(ImageIO.read(new File("rice/images/cat.jpg")), true));
             graphics.put( "marblecake", TextureIO.newTexture(ImageIO.read(new File("rice/images/marblecake.jpg")), true));
@@ -31,7 +35,6 @@ public class GraphicsTable {
             graphics.put( "Terrain_3", TextureIO.newTexture(ImageIO.read(new File("rice/images/snail.jpg")), true));
             graphics.put( "Terrain_4", TextureIO.newTexture(ImageIO.read(new File("rice/images/iceTiletest.jpg")), true));
             graphics.put( "Terrain_5", TextureIO.newTexture(ImageIO.read(new File("rice/images/grass.jpg")), true));
-            graphics.put( "Capital", TextureIO.newTexture(ImageIO.read(new File("rice/images/grass.jpg")), true));
             graphics.put( "iceTest", TextureIO.newTexture(ImageIO.read(new File("rice/images/iceTiletest.jpg")), true));
             graphics.put( "arrowRedN", TextureIO.newTexture(ImageIO.read(new File("rice/images/arrowRedN.png")), true));
             graphics.put( "arrowRedNW", TextureIO.newTexture(ImageIO.read(new File("rice/images/arrowRedNW.png")), true));
@@ -61,13 +64,13 @@ public class GraphicsTable {
             graphics.put( "7", TextureIO.newTexture(ImageIO.read(new File("rice/images/7.png")), true));
             graphics.put( "8", TextureIO.newTexture(ImageIO.read(new File("rice/images/8.png")), true));
             graphics.put( "9", TextureIO.newTexture(ImageIO.read(new File("rice/images/9.png")), true));
-	    graphics.put( "melee", TextureIO.newTexture(ImageIO.read(new File("rice/images/melee.png")), true));
-	    graphics.put( "ranged", TextureIO.newTexture(ImageIO.read(new File("rice/images/ranged.png")), true));
-	    graphics.put( "explorer", TextureIO.newTexture(ImageIO.read(new File("rice/images/explorer.png")), true));
-	    graphics.put( "colonist", TextureIO.newTexture(ImageIO.read(new File("rice/images/colonist.png")), true));
-	    graphics.put( "university", TextureIO.newTexture(ImageIO.read(new File("rice/images/university.png")), true));
-	    graphics.put( "capital", TextureIO.newTexture(ImageIO.read(new File("rice/images/capitals.png")), true));
-	    graphics.put( "voltage", TextureIO.newTexture(ImageIO.read(new File("rice/images/voltage.png")), true));
+	    graphics.put( "Decal_1", TextureIO.newTexture(ImageIO.read(new File("rice/images/melee.png")), true));
+	    graphics.put( "Decal_2", TextureIO.newTexture(ImageIO.read(new File("rice/images/ranged.png")), true));
+	    graphics.put( "Decal_0", TextureIO.newTexture(ImageIO.read(new File("rice/images/explorer.png")), true));
+	    graphics.put( "Colonist", TextureIO.newTexture(ImageIO.read(new File("rice/images/colonist.png")), true));
+	    graphics.put( "University", TextureIO.newTexture(ImageIO.read(new File("rice/images/university.png")), true));
+	    graphics.put( "Capital", TextureIO.newTexture(ImageIO.read(new File("rice/images/capital.png")), true));
+	    graphics.put( "Energy", TextureIO.newTexture(ImageIO.read(new File("rice/images/voltage.png")), true));
 	    graphics.put( "fan", TextureIO.newTexture(ImageIO.read(new File("rice/images/fan.png")), true));
         }
         catch(Exception d){

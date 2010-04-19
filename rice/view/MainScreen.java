@@ -441,7 +441,7 @@ class MainScreen extends GameGraphic{
                     thingsToDraw.add(new SelfDrawingText("Spd: " + vm.getCurrentlySelectedRallyPoint().getSpeed(),
                                                              0.81,
                                                              .028 + 2 *.035));
-                    List<ViewableUnit> units = vm.getCurrentlySelectedRallyPoint().getAllUnits();
+                    List<ViewableUnit> units = vm.getCurrentlySelectedRallyPoint().getAllViewableUnits();
                     for(int i = 0; i < units.size(); ++i){
                         if(i < 13){
                             thingsToDraw.add(new SelfDrawingImage(  units.get(i).getType(),

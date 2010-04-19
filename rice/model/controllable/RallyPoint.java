@@ -7,12 +7,13 @@ import rice.model.Controllable;
 import rice.model.player.Player;
 import rice.model.player.RiceSelector;
 import rice.model.unit.Unit;
+import rice.model.unit.UnitOwner;
 import rice.util.Position;
 import rice.view.MSVisitor;
 import rice.view.ViewableRallyPoint;
 import rice.view.ViewableUnit;
 
-public class RallyPoint extends Controllable implements ViewableRallyPoint {
+public class RallyPoint extends Controllable implements ViewableRallyPoint, UnitOwner {
 	private ArrayList<Unit> combatArmy = new ArrayList<Unit>();
 	private ArrayList<Unit> supportArmy = new ArrayList<Unit>();
 	
@@ -26,8 +27,9 @@ public class RallyPoint extends Controllable implements ViewableRallyPoint {
 	}
 
 	@Override
-	public void accept(MSVisitor m) {
-		// TODO Auto-generated method stub
+	public void accept(MSVisitor m)
+	{
+		m.visit(this);
 		
 	}
 	
@@ -49,15 +51,13 @@ public class RallyPoint extends Controllable implements ViewableRallyPoint {
 		return this.supportArmy;
 	}
 
-	@Override
-	public List<ViewableUnit> getAllUnits()
+	public List<ViewableUnit> getAllViewableUnits()
 	{
 		List<ViewableUnit> viewableUnits=new ArrayList<ViewableUnit>();
 		viewableUnits.addAll(this.getFullArmy());
 		return viewableUnits;
 	}
 
-	@Override
 	public List<ViewableUnit> getBattleGroup()
 	{
 		List<ViewableUnit> viewableUnits=new ArrayList<ViewableUnit>();
@@ -65,7 +65,6 @@ public class RallyPoint extends Controllable implements ViewableRallyPoint {
 		return viewableUnits;
 	}
 	
-	@Override
 	public List<ViewableUnit> getSupportGroup()
 	{
 		List<ViewableUnit> viewableUnits=new ArrayList<ViewableUnit>();
@@ -96,5 +95,52 @@ public class RallyPoint extends Controllable implements ViewableRallyPoint {
 		
 		return "default Rally Command";
 	}
+
+	@Override
+	public void addUnit(Unit u)
+	{
+		u.setUnitOwner(this);
+		if((u.getTile()==this.getTile()) && (u.getPowerStatus()))
+		{
+			this.supportArmy.remove(u);
+			if(!this.combatArmy.contains(u))
+			{
+				this.combatArmy.add(u);
+				//put the unit "inside" Rally
+				u.setTile(null);
+			}			
+		}
+		else
+		{
+			if(u.getTile()==null)
+			{
+				u.setTile(this.getTile());
+			}
+			this.combatArmy.remove(u);
+			if(!this.supportArmy.contains(u))
+			{
+				this.supportArmy.add(u);
+			}
+		}
+		
+	}
+
+	@Override
+	public void removeUnit(Unit u)
+	{
+		if(u.getTile()==null)
+		{
+			u.setTile(this.getTile());
+		}
+		this.combatArmy.remove(u);
+		this.supportArmy.remove(u);
+	}
+
+
+	public List<Unit> getAllUnits()
+	{
+		return this.getFullArmy();
+	}
+
 
 }

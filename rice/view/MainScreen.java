@@ -277,15 +277,13 @@ class MainScreen extends GameGraphic{
 
             //FIX HEERRRREEE
             for(int h = 0; h < highlights.size(); ++h){
-                double tileCenterx = (highlights.get(h).getX()-centerx)*sideLength*1.5;
-                double tileCentery = (highlights.get(h).getY()-centery)*sideLength*Math.sqrt(3)*screenRatio;
-                thingsToDraw.add(new SelfDrawingHexHighlight(tileCenterx, tileCentery, screenRatio));
-
+                if(highlights.get(h)!=null){
+                    double tileCenterx = (highlights.get(h).getX()-centerx)*sideLength*1.5;
+                    double tileCentery = (highlights.get(h).getY()-centery)*sideLength*Math.sqrt(3)*screenRatio;
+                    thingsToDraw.add(new SelfDrawingHexHighlight(tileCenterx, tileCentery, screenRatio));
+                }
             }
 
-            /*for(int v = 0; v< vm.getCurrentSelectorPathToInstance().size(); ++v){
-                System.out.println(vm.getCurrentSelectorPathToInstance().get(v));
-            }*/
 
             thingsToDraw.add(new SelfDrawingImage( "hud",
                                                    0,
@@ -349,7 +347,8 @@ class MainScreen extends GameGraphic{
 
             /*if()
             thingsToDraw.add(new SelfDrawingImage(  ));*/
-            
+
+            //thingsToDraw.add(new SelfDrawingText())
 
         }
 

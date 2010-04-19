@@ -82,8 +82,8 @@ class MainScreen extends GameGraphic{
             thingsToDraw = new ArrayList<SelfDrawingObject>();
             map = new ViewableTile[y][x];
 
-            acx = 0;
-            acy = 0;
+            acx = 4;
+            acy = 3;
             
             centerx = acx-3;
             centery = acy-1;
@@ -93,8 +93,8 @@ class MainScreen extends GameGraphic{
         }
 
         void setCenter(int x, int y){
-            acx = x;
-            acy = y;
+            acx = x;//fix
+            acy = y;//fix
             centerx = acx-3;
             centery = acy-1;
         }
@@ -270,9 +270,7 @@ class MainScreen extends GameGraphic{
                                                                     tileCenterx + .013,
                                                                     tileCentery + .013));
                         }
-                         //System.out.println(map[i][j].getBreedingWorkers());
                         if(map[i][j].getBreedingWorkers()>0/*true*/){ //fixHere
-                            System.out.println(map[i][j].getBreedingWorkers());
                             Integer breeding = /*6457*/map[i][j].getBreedingWorkers();
                             String fo = breeding.toString();
                             for(int b = 0; b < fo.length(); ++b){

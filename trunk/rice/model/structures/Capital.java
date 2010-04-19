@@ -52,8 +52,6 @@ public class Capital extends HarvestingStructure implements UnitOwner, OreHarves
                 breedTicker = 0;
                 addWorkers(breedingWorkers/2);
             }
-            //System.out.println("idle: " + super.getIdleWorkerCount());
-            //System.out.println("breed: " + breedingWorkers);
 
         }
 

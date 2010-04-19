@@ -28,6 +28,7 @@ class SelfDrawingImageHex extends SelfDrawingObject{
         this.screenRatio = screenRatio;
         image = graphics.getGraphic(imageName);
         this.visibilityMode = visibilityMode;
+        //System.out.println("vis: " + this.visibilityMode)
     }
 
     void draw(GL gl, GLAutoDrawable drawable, TextRenderer renderer){

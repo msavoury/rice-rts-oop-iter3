@@ -12,6 +12,7 @@ import java.util.List;
 import rice.controller.ControllableModel;
 import rice.controller.Tickable;
 import rice.model.accessories.Accessory;
+import rice.model.accessories.Resources;
 import rice.model.map.AreaMap;
 import rice.model.player.Player;
 import rice.util.Position;
@@ -51,6 +52,13 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
     	  AreaMap.getInstance().putAccessory(accessories.get(i), accessoryPositions.get(i));
       }
       
+      Resources r = new Resources();
+      r.addResource("Ore", 32);
+      r.addResource("Food", 39);
+      r.addResource("Energy", 450);
+      
+      AreaMap.getInstance().putAccessory(r, new Position(2,2));
+      
 	  //make players
       Iterator<Position> iter = mi.getStartingPositions().iterator();
       players = new Player[2];
@@ -60,7 +68,7 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
     	  players[i] = new Player(iter.next());
     	  //players[i].initialize();
     	  //TODO: change this back to initialize
-    	  players[i].testInitialize();
+    	  players[i].initialize();
       }
      
       //set main player
@@ -72,7 +80,6 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
         for(Player p : players){
         	p.tick(tick);
         }
-        
         
     }
 
@@ -241,10 +248,10 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 	public List<Position> getActionTiles() {
 		
 		if(mainPlayer == null){
-			System.err.println("MainPlayer is NULL");
+			//System.err.println("MainPlayer is NULL");
 		}
 		else{
-			System.err.println("MainPlayer is NOT NULL");
+			//System.err.println("MainPlayer is NOT NULL");
 
 		}
 			

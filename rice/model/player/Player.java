@@ -56,13 +56,10 @@ public class Player implements Tickable, MSVisitorAcceptor {
       selector.addColonist(c2);
       AreaMap.getInstance().putControllable(c2,startingPosition);
       
-      Melee m = new Melee(1, this);
-      selector.addMelee(m);
-      AreaMap.getInstance().putControllable(c, startingPosition);
-            
-      Capital cap = new Capital(4, this);
-      selector.addCapital(cap);
-      AreaMap.getInstance().putControllable(cap, new Position(1,2));
+      Explorer e = new Explorer(1,this);
+      selector.addExplorer(e);
+      AreaMap.getInstance().putControllable(e, startingPosition);
+   
 	}
 	
 	/**
@@ -243,7 +240,7 @@ public class Player implements Tickable, MSVisitorAcceptor {
 			return p;
 		}
 		if(selector.getSelected().getActionTiles() == null){
-			System.err.println("NULLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLAJDJDJDJDJDJDSHDSHSHSH");
+			//System.err.println("NULLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLAJDJDJDJDJDJDSHDSHSHSH");
 		}
 		return selector.getSelected().getActionTiles();
 	}

@@ -5,9 +5,13 @@ import java.util.List;
 
 import rice.controller.Tickable;
 import rice.model.Controllable;
+import rice.model.controllable.RallyPoint;
 import rice.model.map.AreaMap;
 import rice.model.structures.Capital;
 import rice.model.unit.Colonist;
+import rice.model.unit.Explorer;
+import rice.model.unit.Melee;
+import rice.model.unit.Ranged;
 import rice.util.Position;
 import rice.view.MSVisitor;
 import rice.view.MSVisitorAcceptor;
@@ -34,16 +38,67 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	}
 	
 	public void initialize() {
-		
-	  //this.addControllable(new Colonist(1, this));
+	
 	  //TODO: remove hardcoded ID\
 	  Colonist c = new Colonist(1, this);
       selector.addColonist(c);
+      AreaMap.getInstance().putControllable(c, startingPosition);
+      
+      Colonist c2 = new Colonist(2,this);
+      selector.addColonist(c2);
+      AreaMap.getInstance().putControllable(c2,startingPosition);
+      
+      Melee m = new Melee(1, this);
+      selector.addMelee(m);
       AreaMap.getInstance().putControllable(c, startingPosition);
             
       Capital cap = new Capital(4, this);
       selector.addCapital(cap);
       AreaMap.getInstance().putControllable(cap, new Position(1,2));
+	}
+	
+	/**
+	 * Adds:
+	 * 2 Colonists
+	 * 1 Melee
+	 * 1 Explorer
+	 * 
+	 * 1 Capital
+	 * 
+	 * 2 Rally Point
+	 */
+	public void testInitialize() {
+		  Colonist c = new Colonist(1, this);
+	      selector.addColonist(c);
+	      AreaMap.getInstance().putControllable(c, startingPosition);
+	      
+	      Colonist c2 = new Colonist(2,this);
+	      selector.addColonist(c2);
+	      AreaMap.getInstance().putControllable(c2,startingPosition);
+	      
+	      Melee m = new Melee(1, this);
+	      selector.addMelee(m);
+	      AreaMap.getInstance().putControllable(c, startingPosition);
+	      
+	      Explorer e = new Explorer(3,this);
+	      selector.addExplorer(e);
+	      AreaMap.getInstance().putControllable(e, startingPosition);
+	      
+	      Ranged r = new Ranged(7,this);
+	      selector.addRanged(r);
+	      AreaMap.getInstance().putControllable(r, startingPosition);
+	            
+	      Capital cap = new Capital(4, this);
+	      selector.addCapital(cap);
+	      AreaMap.getInstance().putControllable(cap, new Position(1,2));
+	      
+	      RallyPoint rp = new RallyPoint(5, this);
+	      selector.addRallyPoint(rp);
+	      AreaMap.getInstance().putControllable(rp, startingPosition);
+	      
+	      RallyPoint rp2 = new RallyPoint(8, this);
+	      selector.addRallyPoint(rp2);
+	      AreaMap.getInstance().putControllable(rp2, startingPosition);
 	}
 	
 	public void setStartingPosition(Position p){

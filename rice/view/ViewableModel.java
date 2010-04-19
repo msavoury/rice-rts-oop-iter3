@@ -30,5 +30,6 @@ public interface ViewableModel {
     public abstract List<ViewableTech> getSelectedTechNodeBranchAllNodes();
     public abstract ViewableTech getCurrentlySelectedTech();
     public abstract Position getMapSize();
+    public abstract List<Position> getActionTiles();
 
 }

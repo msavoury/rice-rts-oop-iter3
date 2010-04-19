@@ -29,8 +29,6 @@ class MainScreen extends GameGraphic{
         this.vm = vm;
         msv = new MainScreenVisitor(size.getX(), size.getY(), vm);
         resourceMode = false;
-        highlights = new ArrayList<Position>();
-        highlights.add(new Position(2,2));
         //msv.preDraw();
         
     }
@@ -48,6 +46,7 @@ class MainScreen extends GameGraphic{
             System.out.println("msv not here");
         }
         msa.accept(msv);
+        highlights = vm.getActionTiles();
         msv.preDraw();
     }
 

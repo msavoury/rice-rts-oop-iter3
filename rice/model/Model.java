@@ -67,9 +67,6 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
         }
         
         
-        
-    	System.out.println("elements: "+mainPlayer.getSelectedPath().size());
-
     }
 
     public void nextMode() {

@@ -110,11 +110,12 @@ public class AreaTileVisitor
 	{
 		this.structure=structure.getType();
 		this.idleWorkers=structure.getIdleWorkerCount();
+                //System.out.println("broken");
 	}
 	
 	public void visit(Capital capital)
 	{
-		this.idleWorkers=capital.getBreedingWorkers();
+                this.breedingWorkers=capital.getBreedingWorkers();
 		this.visit((Structure)capital);
 	}
 	

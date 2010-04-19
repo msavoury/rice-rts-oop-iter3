@@ -123,6 +123,8 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	      RallyPoint rp2 = new RallyPoint(8, this);
 	      selector.addRallyPoint(rp2);
 	      AreaMap.getInstance().putControllable(rp2, startingPosition);
+
+
 	}
 	
 	public void setStartingPosition(Position p){
@@ -144,7 +146,6 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	}
 	
 	public void tick(int tick) {
-		//System.out.println("Player "+ id + " ticked");
 		selector.tick(tick);
 		vmap.updateTiles(new Position(2,2), 3);
 	}

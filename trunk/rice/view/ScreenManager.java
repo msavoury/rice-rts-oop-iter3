@@ -20,9 +20,11 @@ import java.awt.Font;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 import javax.swing.JFrame;
+import rice.util.Position;
 
 /**
  *
@@ -44,6 +46,7 @@ class ScreenManager extends JFrame{
         
         this.model = model;
         this.msa = msa;
+
 
         if(fullScreen){
             GraphicsEnvironment ge = GraphicsEnvironment
@@ -129,7 +132,7 @@ class ScreenManager extends JFrame{
                 screens = new ArrayList<GameGraphic>();
 
                 screens.add(new TitleScreen());
-                screens.add(new MainScreen(msa, model));
+                screens.add(new MainScreen(msa, model, model.getMapSize()));
                 screens.add(new UnitOverviewScreen(model));
                 screens.add(new StructureOverviewScreen());
                 screens.add(new TechOverviewScreen());

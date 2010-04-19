@@ -29,7 +29,7 @@ public class GraphicsTable {
             graphics.put( "Terrain_1", TextureIO.newTexture(ImageIO.read(new File("rice/images/testImage.jpg")), true));
             graphics.put( "Terrain_2", TextureIO.newTexture(ImageIO.read(new File("rice/images/RandomAngle.png")), true));
             graphics.put( "Terrain_3", TextureIO.newTexture(ImageIO.read(new File("rice/images/snail.jpg")), true));
-            graphics.put( "Terrain_4", TextureIO.newTexture(ImageIO.read(new File("rice/images/rainbow.png")), true));
+            graphics.put( "Terrain_4", TextureIO.newTexture(ImageIO.read(new File("rice/images/iceTiletest.jpg")), true));
             graphics.put( "Terrain_5", TextureIO.newTexture(ImageIO.read(new File("rice/images/grass.jpg")), true));
             graphics.put( "Capital", TextureIO.newTexture(ImageIO.read(new File("rice/images/grass.jpg")), true));
             graphics.put( "iceTest", TextureIO.newTexture(ImageIO.read(new File("rice/images/iceTiletest.jpg")), true));

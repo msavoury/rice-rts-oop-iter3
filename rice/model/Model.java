@@ -110,7 +110,7 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 
 	@Override
 	public List<ViewableUnit> getAllUnits() {
-		return null;
+		return mainPlayer.getAllUnits();
 	}
 
 	@Override
@@ -144,8 +144,7 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 
 	@Override
 	public ViewableUnit getCurrentlySelectedUnit() {
-		// TODO Auto-generated method stub
-		return null;
+		return mainPlayer.getSelectedUnit();
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import rice.model.Controllable;
 import rice.model.ability.AttackAbility;
 import rice.model.ability.DefendAbility;
 import rice.model.ability.MoveAbility;
+import rice.model.command.Command;
 import rice.model.map.AreaTileVisitor;
 import rice.model.player.Player;
 import rice.view.ViewableUnit;
@@ -48,6 +49,21 @@ public abstract class Unit extends Controllable implements ViewableUnit {
     {
         return this.speed+this.getOwner().getTechBonus(this.getTypeName(),"Movement Speed");
     }
+    
+    public void tick() {
+      	this.refreshModifiers();
+    	//TODO: stuff with temp direction and speed and what not here
+    	if(!queueIsEmpty()){
+    	//  int result = commands.executeCommand();
+    	  //if( result == Command.FINISHED ||(result == Command.CONTINUOUS && commands.size() > 1)){
+    	  //    commands.pop();
+    	  //}
+    	}
+    	else {
+    			  
+    	}
+    		 
+     }
     
     protected void setSpeed(int speed)
     {

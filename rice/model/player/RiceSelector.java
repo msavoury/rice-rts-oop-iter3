@@ -216,6 +216,18 @@ public class RiceSelector extends Selector<Controllable> implements Tickable {
 	{
 		return this.rallyPoint.getAllLeafs();
 	}
+	
+	public Unit getSelectedUnit(){
+		return (Unit)this.unit.getSelectedLeaf();
+	}
+	
+	public Structure getSelectedStructure() {
+		return (Structure)this.structure.getSelectedLeaf();
+	}
+	
+	public RallyPoint getSelectedRallyPoint(){
+		return (RallyPoint)this.rally.getSelectedLeaf();
+	}
 
 	public void processCommand(String command) {
 		this.getSelected().performSelectedAbility(command);

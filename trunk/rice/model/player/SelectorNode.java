@@ -65,6 +65,13 @@ public class SelectorNode<T>
 		this.children.remove(child);
 	}
 	
+	//removes all children at once
+	public void removeAllChildren()
+	{
+		this.children.clear();
+		this.selection=null;
+	}
+	
 	//removes a child node, returns true if a node was removed
 	public boolean removeChild(T element)
 	{

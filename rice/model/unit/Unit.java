@@ -6,7 +6,9 @@
 package rice.model.unit;
 
 import rice.model.Controllable;
+import rice.model.ability.AttackAbility;
 import rice.model.ability.DefendAbility;
+import rice.model.ability.MoveAbility;
 import rice.model.map.AreaTileVisitor;
 import rice.model.player.Player;
 import rice.view.ViewableUnit;
@@ -36,6 +38,8 @@ public abstract class Unit extends Controllable implements ViewableUnit {
     public void initAbilities(){
     	super.initAbilities();
     	addAbility(new DefendAbility(this));
+    	addAbility(new MoveAbility(this));
+    	addAbility(new AttackAbility(this));
     	//attack
     	//
     }

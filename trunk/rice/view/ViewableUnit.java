@@ -11,6 +11,7 @@ package rice.view;
  */
 public interface ViewableUnit extends ViewableControllable{
     public abstract double getHealth();
+    public abstract double getHealthPercentage();
     public abstract int getSpeed();
     public abstract int getArmor();
     public abstract int getAttack();

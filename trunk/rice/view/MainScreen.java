@@ -47,9 +47,11 @@ class MainScreen extends GameGraphic{
             System.out.println("msv not here");
         }
         msa.accept(msv);
-        highlights = vm.getActionTiles();
-        if(highlights.size()>0 && highlights.get(highlights.size()-1)!=null)
-            msv.setCenter(highlights.get(highlights.size()-1).getX(), highlights.get(highlights.size()-1).getY());
+        if(vm.getActionTiles()!=null){
+            highlights = vm.getActionTiles();
+            if(highlights.size()>0 && highlights.get(highlights.size()-1)!=null)
+                msv.setCenter(highlights.get(highlights.size()-1).getX(), highlights.get(highlights.size()-1).getY());
+        }
         msv.preDraw();
     }
 
@@ -122,7 +124,7 @@ class MainScreen extends GameGraphic{
                             tileCentery +=  sideLength*Math.sqrt(3)*screenRatio*.5;
                         }
                         if(map[i][j].getTerrainType()!= null){
-                            thingsToDraw.add(new SelfDrawingImageHex(/*"iceTest"*/ map[i][j].getTerrainType(), tileCenterx, tileCentery, screenRatio));
+                            thingsToDraw.add(new SelfDrawingImageHex(/*"iceTest"*/ map[i][j].getTerrainType(), tileCenterx, tileCentery, screenRatio, map[i][j].getVisibilityMode()));
                         }//fixHere
                         if(map[i][j].getRallyPoints()!=null/*true*/){ //fixHere
                             List<ViewableRallyPoint> rp = map[i][j].getRallyPoints(); //fixHere
@@ -186,8 +188,10 @@ class MainScreen extends GameGraphic{
                         if(j%2 == 1){
                             tileCentery +=  sideLength*Math.sqrt(3)*screenRatio*.5;
                         }
-                        thingsToDraw.add(new SelfDrawingImageHex(/*"iceTest"*/ map[i][j].getTerrainType(), tileCenterx, tileCentery, screenRatio)); //fixHere
 
+                        if(map[i][j].getTerrainType()!= null){
+                            thingsToDraw.add(new SelfDrawingImageHex(/*"iceTest"*/ map[i][j].getTerrainType(), tileCenterx, tileCentery, screenRatio, map[i][j].getVisibilityMode()));
+                        }
                         HashMap<String, Integer> resc = map[i][j].getResourceValues(); //fixHere
 
                         if(resc.get("Food")!=null/*true*/){ //fixHere
@@ -266,7 +270,9 @@ class MainScreen extends GameGraphic{
                                                                     tileCenterx + .013,
                                                                     tileCentery + .013));
                         }
+                         //System.out.println(map[i][j].getBreedingWorkers());
                         if(map[i][j].getBreedingWorkers()>0/*true*/){ //fixHere
+                            System.out.println(map[i][j].getBreedingWorkers());
                             Integer breeding = /*6457*/map[i][j].getBreedingWorkers();
                             String fo = breeding.toString();
                             for(int b = 0; b < fo.length(); ++b){
@@ -278,8 +284,8 @@ class MainScreen extends GameGraphic{
                             }
                         }
                         if(map[i][j].getIdleWorkers()>0/*true*/){ //fixHere
-                            Integer breeding = /*6457*/map[i][j].getBreedingWorkers();
-                            String fo = breeding.toString();
+                            Integer idle = /*6457*/map[i][j].getIdleWorkers();
+                            String fo = idle.toString();
                             for(int b = 0; b < fo.length(); ++b){
                                 thingsToDraw.add(new SelfDrawingImage(  fo.charAt(b) + "", //fixHere
                                                                     tileCenterx + .030 + b*.008,

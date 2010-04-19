@@ -19,20 +19,20 @@ class SelfDrawingImageHex extends SelfDrawingObject{
     private double x;
     private double y;
     Texture image;
-    double r;
-    double h;
     double screenRatio;
+    int visibilityMode;
 
-    SelfDrawingImageHex(String imageName, double x, double y, double screenRatio){
+    SelfDrawingImageHex(String imageName, double x, double y, double screenRatio, int visibilityMode){
         this.x = x;
         this.y = y;
         this.screenRatio = screenRatio;
         image = graphics.getGraphic(imageName);
+        this.visibilityMode = visibilityMode;
     }
 
     void draw(GL gl, GLAutoDrawable drawable, TextRenderer renderer){
 
-
+        //if()
 
         image.bind();
 

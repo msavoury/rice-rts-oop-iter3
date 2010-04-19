@@ -16,6 +16,7 @@ public class FoundCapital extends Command {
 	public int execute() {
 		Capital c = new Capital(1, target.getOwner());
 		AreaMap.getInstance().putControllable(c, target.getLocation());
+		target.getOwner().addCapital(c);
 		c.addWorkers(5);
 		
 		Melee m1 = new Melee(1, target.getOwner());

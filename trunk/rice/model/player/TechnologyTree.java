@@ -1,6 +1,8 @@
 package rice.model.player;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 public abstract class TechnologyTree
 {
@@ -30,6 +32,11 @@ public abstract class TechnologyTree
 		}
 		HashMap<String,TechNode> techBranch = this.techBranches.get(branch);
 		techBranch.put(techNode.getName(), techNode);
+	}
+	
+	public Collection<TechNode> getBranch(String branch)
+	{
+		return this.techBranches.get(branch).values();
 	}
 	
 	//returns the specific research

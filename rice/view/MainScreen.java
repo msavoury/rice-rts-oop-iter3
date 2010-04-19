@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import javax.media.opengl.GL;
 import javax.media.opengl.GLAutoDrawable;
+import rice.util.Position;
 
 /**
  *
@@ -21,12 +22,15 @@ class MainScreen extends GameGraphic{
     MSVisitorAcceptor msa;
     MainScreenVisitor msv;
     boolean resourceMode;
+    private List<Position> highlights;
 
-    MainScreen(MSVisitorAcceptor model, ViewableModel vm){
+    MainScreen(MSVisitorAcceptor model, ViewableModel vm, Position size){
         this.msa = model;
         this.vm = vm;
-        msv = new MainScreenVisitor(5, 5, vm);
+        msv = new MainScreenVisitor(size.getX(), size.getY(), vm);
         resourceMode = false;
+        highlights = new ArrayList<Position>();
+        highlights.add(new Position(2,2));
         //msv.preDraw();
         
     }
@@ -270,6 +274,15 @@ class MainScreen extends GameGraphic{
                     }
                 }
             }
+
+
+            //FIX HEERRRREEE
+            /*for(int h = 0; h < highlights.size(); ++h){
+                double tileCenterx = (highlights.get(h).getX()-centerx)*sideLength*1.5;
+                double tileCentery = (highlights.get(h).getY()-centery)*sideLength*Math.sqrt(3)*screenRatio;
+                thingsToDraw.add(new SelfDrawingHexHighlight(tileCenterx, tileCentery, screenRatio));
+
+            }*/
 
             /*for(int v = 0; v< vm.getCurrentSelectorPathToInstance().size(); ++v){
                 System.out.println(vm.getCurrentSelectorPathToInstance().get(v));

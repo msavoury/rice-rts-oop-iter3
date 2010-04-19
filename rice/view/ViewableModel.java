@@ -7,6 +7,7 @@ package rice.view;
 
 import java.util.HashMap;
 import java.util.List;
+import rice.util.Position;
 
 /**
  *
@@ -28,5 +29,6 @@ public interface ViewableModel {
     public abstract String getSelectedTechNodeBranch();
     public abstract List<ViewableTech> getSelectedTechNodeBranchAllNodes();
     public abstract ViewableTech getCurrentlySelectedTech();
+    public abstract Position getMapSize();
 
 }

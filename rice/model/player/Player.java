@@ -63,7 +63,7 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	 * 2 Colonists
 	 * 2 Melee
 	 * 2 Explorer
-	 * 
+	 * 2 Ranged
 	 * 1 Capital
 	 * 1 University
 	 * 2 Rally Point

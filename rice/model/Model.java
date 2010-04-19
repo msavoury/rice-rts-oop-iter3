@@ -5,6 +5,7 @@
 
 package rice.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -232,6 +233,12 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 
 	public Position getMapSize() {
 		return AreaMap.getSize();
+	}
+	
+	public List<Position> getActionTiles() {
+		List<Position> p = new ArrayList<Position>();
+		p.add(new Position(2,2));
+		return p;
 	}
 
 }

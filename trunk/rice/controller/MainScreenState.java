@@ -61,6 +61,10 @@ class MainScreenState extends ControllerState
 	{
 	    model.previousInstance();
 	}
+	else if( command.equals( "CYCLE_INSTANCES_RIGHT" ) )
+	{
+	    model.nextInstance();
+	}
 	else if( command.equals( "CYCLE_MODES_RIGHT" ) )
 	{
 	    model.nextInstance();

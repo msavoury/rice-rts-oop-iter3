@@ -14,6 +14,8 @@ import rice.view.ViewableStructure;
 public abstract class Structure extends Controllable implements WorkerOwner, Allocatable, ViewableStructure
 {
 	private double completionLevel=0;
+        private int workers=0;
+        private int idleWorkers=0;
 
 	public Structure(String typeName, int id, Player owner)
 	{
@@ -51,17 +53,19 @@ public abstract class Structure extends Controllable implements WorkerOwner, All
 	
 	public int getIdleWorkerCount(){
 		//TODO: Implement
-		return 0;
+		return idleWorkers;
 	}
 	
 	public int getTotalWorkerCount(){
 		//TODO: Implement
-		return 0;
+		return workers;
 	}
 	
 	public int addWorkers(int workers ){
 		//TODO: Implement
-		return 0;
+                this.workers += workers;
+                this.idleWorkers += workers;
+		return this.workers;
 	}
 	
 	/**
@@ -69,10 +73,16 @@ public abstract class Structure extends Controllable implements WorkerOwner, All
 	  */
 	public int removeWorkers(){
 		//TODO: Implement
-		return 0;
+                int w = workers;
+                workers = 0;
+		return w;
 	}
 	public int removeIdleWorkers(int num ){
 		//TODO: Implement
+                if(idleWorkers-num >=0){
+                    workers -= num;
+                    idleWorkers -=num;
+                }
 		return 0;	
 	}
 

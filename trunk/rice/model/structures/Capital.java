@@ -3,7 +3,7 @@ package rice.model.structures;
 import java.util.HashMap;
 import java.util.List;
 
-import rice.model.map.ATVisitorAcceptor;
+import rice.model.ability.BreedAbility;
 import rice.model.map.AreaTile;
 import rice.model.map.AreaTileVisitor;
 import rice.model.player.Player;
@@ -13,7 +13,9 @@ import rice.model.unit.UnitOwner;
 
 public class Capital extends HarvestingStructure implements UnitOwner, OreHarvester, FoodHarvester, EnergyHarvester 
 {
-	private int breadingWorkers;
+	private int breedingWorkers;
+        private int breedTicker;
+        private int breedTick;
 	
 	public Capital(int id, Player owner)
 	{
@@ -30,7 +32,30 @@ public class Capital extends HarvestingStructure implements UnitOwner, OreHarves
 	  newUpkeep.put("Food", 0);
 	  newUpkeep.put("Energy", 5);
 	  this.setUpkeep(newUpkeep);
+          breedTicker = 0;
+          breedTick = 5;
+          super.addWorkers(2);
 	}
+
+        @Override
+        public void initAbilities(){
+            super.initAbilities();
+            super.addAbility(new BreedAbility(this));
+        }
+
+        @Override
+        public void tick(){
+            super.tick();
+            breedTicker++;
+
+            if(breedTicker == breedTick){
+                breedTicker = 0;
+                addWorkers(breedingWorkers/2);
+            }
+            //System.out.println("idle: " + super.getIdleWorkerCount());
+            //System.out.println("breed: " + breedingWorkers);
+
+        }
 
 	@Override
 	public void addUnit(Unit u) {
@@ -68,40 +93,56 @@ public class Capital extends HarvestingStructure implements UnitOwner, OreHarves
 		
 	}
 
+        public int addBreedingWorkers(int num){
+            if(num-super.getIdleWorkerCount()>=0){
+                super.removeIdleWorkers(num);
+                breedingWorkers += num;
+                return breedingWorkers;
+            }
+            return 0;
+        }
+
 	@Override
 	public int addWorkers(int workers) {
 		// TODO Auto-generated method stub
-		return 0;
+                super.addWorkers(workers);
+		return workers;
 	}
 
 	@Override
 	public int getIdleWorkerCount() {
 		// TODO Auto-generated method stub
-		return 0;
+                return super.getIdleWorkerCount();
 	}
 
 	@Override
 	public int getTotalWorkerCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return super.getTotalWorkerCount();
 	}
 
 	@Override
 	public int removeIdleWorkers(int num) {
 		// TODO Auto-generated method stub
-		return 0;
+		return super.removeIdleWorkers(num);
 	}
 
 	@Override
 	public int removeWorkers() {
 		// TODO Auto-generated method stub
-		return 0;
+		return super.removeWorkers();
 	}
+
+
+        @Override
+        public double getHealthPercentage(){
+            return super.getHealthPercentage();
+        }
 
 	//returns the number of breeding workers
 	public int getBreedingWorkers()
 	{
-		return this.breadingWorkers;
+		return this.breedingWorkers;
 	}
 
 	public void accept(AreaTileVisitor v)

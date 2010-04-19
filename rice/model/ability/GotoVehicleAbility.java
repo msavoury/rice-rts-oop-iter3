@@ -14,5 +14,9 @@ public class GotoVehicleAbility extends Ability{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String getDefaultName() {
+		return "Go To Vehicle";
+	}
 
 }

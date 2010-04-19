@@ -14,5 +14,8 @@ public class DropOffWorkerAbility extends Ability{
 		// TODO Auto-generated method stub
 		
 	}
+	public String getDefaultName() {
+		return "Drop Off Worker";
+	}
 
 }

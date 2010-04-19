@@ -14,6 +14,9 @@ public class FoundCapitalAbility extends Ability{
 		// TODO Auto-generated method stub
 		
 	}
+	public String getDefaultName() {
+		return "Found Capital";
+	}
 
 	
 }

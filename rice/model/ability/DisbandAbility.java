@@ -15,4 +15,7 @@ public class DisbandAbility extends Ability {
 		
 	}
 
+	public String getDefaultName() {
+		return "Disband";
+	}
 }

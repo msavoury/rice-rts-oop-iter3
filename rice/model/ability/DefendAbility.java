@@ -8,7 +8,7 @@ public class DefendAbility extends Ability {
 
 	public DefendAbility(Unit c) {
 		super(c);
-		
+				
 	}
 
 	@Override
@@ -22,12 +22,17 @@ public class DefendAbility extends Ability {
 		  break;
 		case CAPTURING:
 		  if(isDirection(input)){
-			  target.addCommand(new Defend((Unit)target, MapPositionTranslator.convertDirection(input)));
+			  target.addCommand(new Defend((Unit)target, MapPositionTranslator.convertDirection(input), input));
 			  reset();
 		  }
 		break;
 	  }
 		
+	}
+
+	@Override
+	public String getDefaultName() {
+		return "Defend";
 	}
 
 }

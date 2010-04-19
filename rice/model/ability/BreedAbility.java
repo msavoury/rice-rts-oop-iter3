@@ -16,4 +16,9 @@ public class BreedAbility extends Ability
 		
 	}
 
+	@Override
+	public String getDefaultName() {
+		return "Breed";
+	}
+
 }

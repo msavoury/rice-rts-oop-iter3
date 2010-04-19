@@ -42,6 +42,10 @@ public class AreaMap extends Map
 		this.setHeight(h);
 	}
 	
+	public static Position getSize() {
+		return new Position(instance.getWidth(),instance.getHeight());
+	}
+	
 	public AreaTile getTile(Position position)
 	{
 		return (AreaTile)super.getTile(position);

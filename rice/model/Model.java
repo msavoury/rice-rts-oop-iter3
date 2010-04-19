@@ -220,6 +220,8 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 		
 	}
 
-	
+	public Position getMapSize() {
+		return AreaMap.getSize();
+	}
 
 }

@@ -8,7 +8,7 @@ public class PowerDownAbility extends Ability{
 	
 	public PowerDownAbility(Controllable c) {
 		super(c);
-		setName("Power Down");
+		//setName("Power Down");
 	}
 
 
@@ -18,4 +18,8 @@ public class PowerDownAbility extends Ability{
 	    target.addCommand(new PowerDown(target));
 	  }
   }
+  
+  public String getDefaultName() {
+		return "Power Down";
+	}
 }

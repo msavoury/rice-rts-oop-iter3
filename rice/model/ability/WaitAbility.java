@@ -7,7 +7,7 @@ public class WaitAbility extends Ability {
 
 	public WaitAbility(Controllable c) {
 		super(c);
-		setName("Wait");
+		//setName("Wait");
 	}
 
 	@Override
@@ -15,6 +15,10 @@ public class WaitAbility extends Ability {
 		if(input.equals("CONFIRM_SELECTION_NO_ARGS")){
 		    target.addCommand(new Wait(target));
 		 }
+	}
+	
+	public String getDefaultName() {
+		return "Wait";
 	}
 
 }

@@ -468,6 +468,9 @@ class MainScreen extends GameGraphic{
 
                 }
                 if(vm.getCurrentSelectorPathToInstance().get(0).equals("Unit") && vm.getCurrentlySelectedUnit()!=null){
+                    thingsToDraw.add(new SelfDrawingText("x " + vm.getCurrentlySelectedUnit().getLocation().getX() + " y " + vm.getCurrentlySelectedUnit().getLocation().getY(),
+                                                             0.81,
+                                                             .028 + 5 *.035));
                     thingsToDraw.add(new SelfDrawingText("Atk: " + vm.getCurrentlySelectedUnit().getAttack(),
                                                              0.81,
                                                              .028 + 4 *.035));

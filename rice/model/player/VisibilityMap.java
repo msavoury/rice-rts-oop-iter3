@@ -42,6 +42,15 @@ public class VisibilityMap extends Map implements MSVisitorAcceptor, Tickable
 	public void tick(int tick)
 	{
 		this.currentTick=tick;
+		for(int i=0;i<this.getHeight();i++)
+		{
+			for (int j=0;j<this.getWidth();j++)
+			{
+				VisibilityTile tile = this.getTile(new Position(j,i));
+				tile.tick(tick);
+			}
+		}
+		
 	}
 	
 	public void updateTiles(Position origin, int radius)

@@ -1,6 +1,7 @@
 package rice.model.ability;
 
 import rice.model.Controllable;
+import rice.model.command.Explore;
 
 public class ExploreAbility extends Ability{
 
@@ -11,7 +12,11 @@ public class ExploreAbility extends Ability{
 
 	@Override
 	public void acceptInput(String input) {
-		// TODO Auto-generated method stub
+		if(input.equals("CONFIRM_SELECTION_NO_ARGS")){
+			  //state = CAPTURING;
+			 // setName("Enter Direction");
+            target.addCommand(new Explore(target));
+		  }
 		
 	}
 

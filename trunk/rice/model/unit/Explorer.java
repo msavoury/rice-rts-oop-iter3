@@ -7,6 +7,7 @@ package rice.model.unit;
 
 import java.util.HashMap;
 
+import rice.model.ability.ExploreAbility;
 import rice.model.player.Player;
 import rice.model.player.RiceSelector;
 import rice.view.MSVisitor;
@@ -48,10 +49,20 @@ public class Explorer extends Unit{
     public boolean isSoldier() {
 		return false;
 	}
+  
+    public void initAbilities() {
+    	super.initAbilities();
+    	addAbility(new ExploreAbility(this));
+    }
     
 	public void accept(RiceSelector s)
 	{
 		s.addExplorer(this);
+	}
+	
+	public void tick() {
+		super.tick();
+		getOwner().updateResources(getLocation(), getVisibilityRadius());
 	}
 
 }

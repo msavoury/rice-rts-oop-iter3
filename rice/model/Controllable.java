@@ -46,6 +46,8 @@ public abstract class Controllable extends Locatable implements ViewableControll
   private boolean powered = true;
   private CommandQueue commands;
   
+  private List<Position> actionTiles;
+  
   private ModifierVisitor modifiers;
   
   private int abilityPointer = 0; 
@@ -70,6 +72,7 @@ public abstract class Controllable extends Locatable implements ViewableControll
 	  this.setUpkeep(newUpkeep);
 	  
 	  this.commands = new CommandQueue();
+	  resetActionTiles();
 	  initAbilities();
   }
   
@@ -389,11 +392,12 @@ public abstract class Controllable extends Locatable implements ViewableControll
   }
   
   public void resetActionTiles() {
-	  
+	  actionTiles = new ArrayList<Position>();
+	  actionTiles.add(this.getLocation());
   }
   
   public void addActionTile(Position p){
-	  
+	  actionTiles.add(p);
   }
   
   /**
@@ -402,8 +406,8 @@ public abstract class Controllable extends Locatable implements ViewableControll
    * currently selected path to be traveled.  The array should be in order, such that the final
    * destination tile is the last tile in the array.
    */
-  public void getActionTiles() {
-	  
+  public List<Position> getActionTiles() {
+	  return this.actionTiles;
   }
   
   public String getCommand() {

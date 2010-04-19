@@ -61,6 +61,10 @@ public class GraphicsTable {
             graphics.put( "7", TextureIO.newTexture(ImageIO.read(new File("rice/images/7.png")), true));
             graphics.put( "8", TextureIO.newTexture(ImageIO.read(new File("rice/images/8.png")), true));
             graphics.put( "9", TextureIO.newTexture(ImageIO.read(new File("rice/images/9.png")), true));
+	    graphics.put( "melee", TextureIO.newTexture(ImageIO.read(new File("rice/images/melee.png")), true));
+	    graphics.put( "ranged", TextureIO.newTexture(ImageIO.read(new File("rice/images/ranged.png")), true));
+	    graphics.put( "explorer", TextureIO.newTexture(ImageIO.read(new File("rice/images/explorer.png")), true));
+	    graphics.put( "colonist", TextureIO.newTexture(ImageIO.read(new File("rice/images/colonist.png")), true));
         }
         catch(Exception d){
             d.printStackTrace();

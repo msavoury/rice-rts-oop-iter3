@@ -6,6 +6,7 @@
 package rice.view;
 
 import com.sun.opengl.util.j2d.TextRenderer;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -373,6 +374,57 @@ class MainScreen extends GameGraphic{
 
 
             if(vm.getCurrentSelectorPathToInstance().get(0)!=null){
+                /*for(int i = 0; i < 26; ++i){
+                    if(i < 13){
+                        thingsToDraw.add(new SelfDrawingImage(  "cat",
+                                                                .22 + i * .035,
+                                                                .86 ,
+                                                                .245 + i * .035,
+                                                                .90));
+                        thingsToDraw.add(new SelfDrawingBar(    .22 + i * .035,
+                                                                .90 ,
+                                                                .245 + i * .035,
+                                                                .91,
+                                                                Color.GREEN,
+                                                                Color.WHITE));
+                    }
+                    else{
+                        thingsToDraw.add(new SelfDrawingImage(  "cat",
+                                                                .22 + (i-13) * .035,
+                                                                .93 ,
+                                                                .245 + (i-13) * .035,
+                                                                .97));
+                        thingsToDraw.add(new SelfDrawingBar(    .22 + (i-13) * .035,
+                                                                .97 ,
+                                                                .245 + (i-13) * .035,
+                                                                .98,
+                                                                Color.GREEN,
+                                                                Color.WHITE));
+                    }
+
+                }*/
+                if(vm.getCurrentSelectorPathToInstance().get(0).equals("Structure") && vm.getCurrentlySelectedStructure()!=null){
+                    thingsToDraw.add(new SelfDrawingText("Atk: " + vm.getCurrentlySelectedStructure().getAttack(),
+                                                             0.81,
+                                                             .028 + 4 *.035));
+                    thingsToDraw.add(new SelfDrawingText("Def: " + vm.getCurrentlySelectedStructure().getDefense(),
+                                                             0.81,
+                                                             .028 + 3 *.035));
+                    thingsToDraw.add(new SelfDrawingText("Arm: " + vm.getCurrentlySelectedStructure().getArmor(),
+                                                             0.81,
+                                                             .028 + 2 *.035));
+                    thingsToDraw.add(new SelfDrawingImage(  "cat",
+                                                                .22 + .035,
+                                                                .86 ,
+                                                                .245 + .035,
+                                                                .90));
+                    thingsToDraw.add(new SelfDrawingBar(    .22 + .035,
+                                                            .90 ,
+                                                            .22 + .035 + ((.245 + .035)-(.22 + .035))*vm.getCurrentlySelectedStructure().getHealth(),
+                                                            .91,
+                                                            Color.GREEN,
+                                                            Color.WHITE));
+                }
                 if(vm.getCurrentSelectorPathToInstance().get(0).equals("Rally") && vm.getCurrentlySelectedRallyPoint()!=null){
                     thingsToDraw.add(new SelfDrawingText("Atk: " + vm.getCurrentlySelectedRallyPoint().getAttack(),
                                                              0.81,
@@ -383,6 +435,37 @@ class MainScreen extends GameGraphic{
                     thingsToDraw.add(new SelfDrawingText("Spd: " + vm.getCurrentlySelectedRallyPoint().getSpeed(),
                                                              0.81,
                                                              .028 + 2 *.035));
+                    List<ViewableUnit> units = vm.getCurrentlySelectedRallyPoint().getAllUnits();
+                    for(int i = 0; i < units.size(); ++i){
+                        if(i < 13){
+                            thingsToDraw.add(new SelfDrawingImage(  units.get(i).getType(),
+                                                                    .22 + i * .035,
+                                                                    .86 ,
+                                                                    .245 + i * .035,
+                                                                    .90));
+                            thingsToDraw.add(new SelfDrawingBar(    .22 + i * .035,
+                                                                    .90 ,
+                                                                    .22 + i * .035 + ((.245 + i * .035) - (.22 + i * .035))*units.get(i).getHealth(),
+                                                                    .91,
+                                                                    Color.GREEN,
+                                                                    Color.WHITE));
+                        }
+                        else{
+                            thingsToDraw.add(new SelfDrawingImage(  units.get(i).getType(),
+                                                                    .22 + (i-13) * .035,
+                                                                    .93 ,
+                                                                    .245 + (i-13) * .035,
+                                                                    .97));
+                            thingsToDraw.add(new SelfDrawingBar(    .22 + (i-13) * .035,
+                                                                    .97 ,
+                                                                    .22 + (i-13) * .035 + ((.245 + (i-13) * .035) - (.22 + (i-13) * .035))*units.get(i).getHealth(),
+                                                                    .98,
+                                                                    Color.GREEN,
+                                                                    Color.WHITE));
+                        }
+
+                    }
+
                 }
                 if(vm.getCurrentSelectorPathToInstance().get(0).equals("Unit") && vm.getCurrentlySelectedUnit()!=null){
                     thingsToDraw.add(new SelfDrawingText("Atk: " + vm.getCurrentlySelectedUnit().getAttack(),
@@ -400,6 +483,17 @@ class MainScreen extends GameGraphic{
                     thingsToDraw.add(new SelfDrawingText("Sze: " + vm.getCurrentlySelectedUnit().getSize(),
                                                              0.81,
                                                              .028 + 0 *.035));
+                    thingsToDraw.add(new SelfDrawingImage(  "cat",
+                                                                .22 + .035,
+                                                                .86 ,
+                                                                .245 + .035,
+                                                                .90));
+                    thingsToDraw.add(new SelfDrawingBar(    .22 + .035,
+                                                            .90 ,
+                                                            .22 + .035 + ((.245 + .035)-(.22 + .035))*vm.getCurrentlySelectedUnit().getHealth(),
+                                                            .91,
+                                                            Color.GREEN,
+                                                            Color.WHITE));
                 }
             }
             /*if()

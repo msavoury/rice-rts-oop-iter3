@@ -19,6 +19,7 @@ import javax.media.opengl.GLAutoDrawable;
 class UnitOverviewScreen extends GameGraphic{
     ViewableModel model;
     UnitOverviewVisitor uov;
+    List<ViewableUnit> unitList;
 
     UnitOverviewScreen(ViewableModel model){
         this.model = model;
@@ -26,7 +27,7 @@ class UnitOverviewScreen extends GameGraphic{
     }
 
     void refresh(){
-
+        unitList = model.getAllUnits();
         uov.preDraw();
 
     }
@@ -44,7 +45,7 @@ class UnitOverviewScreen extends GameGraphic{
         ArrayList<SelfDrawingObject> thingsToDraw;
 
 
-        List<ViewableUnit> unitList;
+        
 
         UnitOverviewVisitor(ViewableModel model){
 
@@ -63,7 +64,45 @@ class UnitOverviewScreen extends GameGraphic{
                                                     0,
                                                     1,
                                                     1));
-            int g = 25/*unitList.size()*/;
+
+
+                thingsToDraw.add(new SelfDrawingText("Type",
+                                                     0.06,
+                                                     .036 + 26 *.035));
+                thingsToDraw.add(new SelfDrawingText("ID",
+                                                     0.15,
+                                                     .036 + 26 *.035));
+                thingsToDraw.add(new SelfDrawingText("Owner",
+                                                     0.20,
+                                                     .036 + 26 *.035));
+                thingsToDraw.add(new SelfDrawingText("HP",
+                                                     0.30,
+                                                     .036 + 26 *.035));
+                thingsToDraw.add(new SelfDrawingText("Arm",
+                                                     0.37,
+                                                     .036 + 26 *.035));
+                thingsToDraw.add(new SelfDrawingText("Atk",
+                                                     0.43,
+                                                     .036 + 26 *.035));
+                thingsToDraw.add(new SelfDrawingText("Def",
+                                                     0.50,
+                                                     .036 + 26 *.035));
+                thingsToDraw.add(new SelfDrawingText("Size",
+                                                     0.60,
+                                                     .036 + 26 *.035));
+                thingsToDraw.add(new SelfDrawingText("Spd",
+                                                     0.70,
+                                                     .036 + 26 *.035));
+                thingsToDraw.add(new SelfDrawingText("Status",
+                                                     0.80,
+                                                     .036 + 26 *.035));
+
+
+
+            int g = 0;
+            if(unitList!=null){
+                g = unitList.size();
+            }
 
             for(int i = 0; i < g; ++i){
                 thingsToDraw.add(new SelfDrawingBar(.05,
@@ -83,63 +122,45 @@ class UnitOverviewScreen extends GameGraphic{
                                                 Color.GREEN));
             
             for(int i = 0; i < g; ++i){
-                thingsToDraw.add(new SelfDrawingText("UnitName",
+                thingsToDraw.add(new SelfDrawingText(unitList.get(i).getType(),
                                                      0.06,
-                                                     .036 + i *.035));
+                                                     .036 + (24-i) *.035));
 
-            }
-            for(int i = 0; i < g; ++i){
-                thingsToDraw.add(new SelfDrawingText("ID",
+                thingsToDraw.add(new SelfDrawingText(unitList.get(i).getID()+"",
                                                      0.15,
-                                                     .036 + i *.035));
+                                                     .036 + (24-i) *.035));
 
-            }
-            for(int i = 0; i < g; ++i){
-                thingsToDraw.add(new SelfDrawingText("Owner",
+                thingsToDraw.add(new SelfDrawingText(unitList.get(i).getViewableUnitOwner(),
                                                      0.20,
-                                                     .036 + i *.035));
+                                                     .036 + (24-i) *.035));
 
-            }
-            for(int i = 0; i < g; ++i){
-                thingsToDraw.add(new SelfDrawingText("h10",
+                thingsToDraw.add(new SelfDrawingText((int)(unitList.get(i).getHealth()*100)+"",
                                                      0.30,
-                                                     .036 + i *.035));
+                                                     .036 + (24-i) *.035));
 
-            }
-            for(int i = 0; i < g; ++i){
-                thingsToDraw.add(new SelfDrawingText("ar10",
+                thingsToDraw.add(new SelfDrawingText(unitList.get(i).getArmor() + "",
                                                      0.37,
-                                                     .036 + i *.035));
+                                                     .036 + (24-i) *.035));
 
-            }
-            for(int i = 0; i < g; ++i){
-                thingsToDraw.add(new SelfDrawingText("at10",
+                thingsToDraw.add(new SelfDrawingText(unitList.get(i).getAttack() + "",
                                                      0.43,
-                                                     .036 + i *.035));
+                                                     .036 + (24-i) *.035));
 
-            }
-            for(int i = 0; i < g; ++i){
-                thingsToDraw.add(new SelfDrawingText("de99",
+                thingsToDraw.add(new SelfDrawingText(unitList.get(i).getDefense() + "",
                                                      0.50,
-                                                     .036 + i *.035));
+                                                     .036 + (24-i) *.035));
 
-            }
-            for(int i = 0; i < g; ++i){
-                thingsToDraw.add(new SelfDrawingText("si34",
+                thingsToDraw.add(new SelfDrawingText(unitList.get(i).getSize() + "",
                                                      0.60,
-                                                     .036 + i *.035));
+                                                     .036 + (24-i) *.035));
 
-            }
-            for(int i = 0; i < g; ++i){
-                thingsToDraw.add(new SelfDrawingText("sp20",
+                thingsToDraw.add(new SelfDrawingText(unitList.get(i).getSpeed() + "",
                                                      0.70,
-                                                     .036 + i *.035));
+                                                     .036 + (24-i) *.035));
 
-            }
-            for(int i = 0; i < g; ++i){
-                thingsToDraw.add(new SelfDrawingText("status",
+                thingsToDraw.add(new SelfDrawingText(unitList.get(i).getStatus(),
                                                      0.80,
-                                                     .036 + i *.035));
+                                                     .036 + (24-i) *.035));
 
             }
 

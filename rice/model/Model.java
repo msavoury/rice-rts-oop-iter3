@@ -57,7 +57,14 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
       r.addResource("Food", 39);
       r.addResource("Energy", 450);
       
+      Resources m = new Resources();
+      m.addResource("Ore", 90);
+      m.addResource("Food", 319);
+      m.addResource("Energy", 103);
+      
       AreaMap.getInstance().putAccessory(r, new Position(2,2));
+      AreaMap.getInstance().putAccessory(r, new Position(2,1));
+
       
 	  //make players
       Iterator<Position> iter = mi.getStartingPositions().iterator();

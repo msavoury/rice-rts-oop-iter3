@@ -210,6 +210,11 @@ public class Controller extends KeyAdapter implements ActionListener
 	   views.get(0).switchMode( stateIDs.get( statesIndex ) );
 	   views.get(0).refresh();
        }
+
+       void updateKeyBindingState()
+       {
+	   keyBindingState.setCurKeyConfig();
+       }
        
 // accessor and mutator functions
 // -----------------------------------------------------------------------------

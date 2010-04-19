@@ -18,7 +18,6 @@ class KeyBindingState extends ControllerState
 // -----------------------------------------------------------------------------
     final private String activeID = "KeyBindingState";
     private boolean isActive;
-    private boolean inKeyReassignmentMode = false;
     private List< KeyboardHashMapPair > curKeyConfig = new ArrayList< KeyboardHashMapPair >();
     private int curIndex;
 
@@ -50,11 +49,11 @@ class KeyBindingState extends ControllerState
     {
 	//System.out.println("Woohoo! " + activeID);
 
-	if( command.equals( "SWITCH_SCREEN_LEFT" ) && !inKeyReassignmentMode )
+	if( command.equals( "SWITCH_SCREEN_LEFT" ) )
 	{
 	   controller.switchScreenLeft();
 	}
-	else if( command.equals( "SWITCH_SCREEN_RIGHT" ) && !inKeyReassignmentMode )
+	else if( command.equals( "SWITCH_SCREEN_RIGHT" ) )
 	{
 	    controller.switchScreenRight();
 	}
@@ -102,13 +101,37 @@ class KeyBindingState extends ControllerState
 	    else
 		System.out.println( "Current command: " + curKeyConfig.get( curIndex ).getValue() +"; current key: " + KeyEvent.getKeyText( curKeyConfig.get( curIndex ).getKey()) );
 	}
+	else if( command.equals( "CONFIRM_SELECTION_NO_ARGS" ) ) //confirming that you want to reassign the currently selected key with another key
+	{
+	    System.out.println("BAHREACHED! ENTER has been selected. Current key is: " + curKeyConfig.get( curIndex ).getKey() + ", current value is: " + curKeyConfig.get( curIndex ).getValue() );
+	    inputDecoder.switchToAssignMode( curKeyConfig.get( curIndex ).getValue() );
+	}
+	else if( command.equals( "RESET_CONTROL_CONFIG" ) )
+	{
+	    inputDecoder.loadDefaultConfig();
+	    this.setCurKeyConfig();
+	}
+	else if( command.equals( "LOAD_CUSTOM_CONFIG" ) )
+	{
+	    inputDecoder.loadCustomFile();
+	    this.setCurKeyConfig();
+	}
+	else if( command.equals( "SAVE_CUSTOM_CONFIG" ) )
+	{
+	    inputDecoder.saveCustomFile();
+	    this.setCurKeyConfig();
+	}
     }
 
     // press enter: confirm to change key. changes inKeyReassignmentMode to true, which also switches inputDecoder to the assignmentMode
-    //  
+    //  when a key is pressed, it is passed into inputDecoder: you should check to see if the current command you are wanting to reassign
+    //  has that key used in any other command. If they are, have that command swap its key storage with this one. This way, keys are
+    //  just reassigned
 
+    
     // call setCurKeyConfig each time a reassignment is successful
     // have a way to reset controls to default configuration (just call the loadDefaultControlConfig inside of inputDecoder and have that call keyboardHashMap)
+    //  just make it recognize another key for this...
 
 // accessor and mutator functions
 // -----------------------------------------------------------------------------

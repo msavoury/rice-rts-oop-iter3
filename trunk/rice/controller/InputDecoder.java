@@ -21,6 +21,9 @@ class InputDecoder extends KeyAdapter implements MouseListener
     private Controller controller;
     private KeyboardHashMap keyboardHashMap;
 
+    private boolean inAssignmentMode = false;
+    private String commandToBeReassigned = "";
+
 // initialization functions
 // -----------------------------------------------------------------------------
     InputDecoder( Controller controller )
@@ -32,21 +35,21 @@ class InputDecoder extends KeyAdapter implements MouseListener
 
 // loading control configuration files
 // -----------------------------------------------------------------------------
-    void loadDefaultFile()
+    void loadDefaultConfig()
     {
-
+	keyboardHashMap.loadDefaultConfig();
     }
 
     void loadCustomFile()
     {
-	// will need a JDialogueChooser
+	keyboardHashMap.loadControlConfig();
     }
 
 // saving control configuration files
 // -----------------------------------------------------------------------------
     void saveCustomFile()
     {
-
+	keyboardHashMap.saveControlConfig();
     }
 
 // modifying the current configuration file
@@ -58,11 +61,30 @@ class InputDecoder extends KeyAdapter implements MouseListener
     }
     */
 
-// toggling key assignment mode
+// key assignment mode functions
 // -----------------------------------------------------------------------------
     void switchToAssignMode( String command )
     {
+	inAssignmentMode = true;
+	commandToBeReassigned = command;
+    }
 
+    void assignNewKeyToCommand( int keyValue )
+    {
+	//check to see if any other command has the key that was pressed
+	// if it does, then you switch that key to this and this key to that
+	// if that key is not used by anyone, you just overwrite the key
+	// associated with that command
+System.out.println(commandToBeReassigned);
+	if( !commandToBeReassigned.equals( "" ) )
+	{
+	    System.out.println("ABOUT TO REASSIGN KEY: " + keyValue + ", TO COMMAND: " + commandToBeReassigned );
+	    keyboardHashMap.assignNewKeyConfig( keyValue, commandToBeReassigned );
+	}
+
+	controller.updateKeyBindingState();
+	inAssignmentMode = false;
+	commandToBeReassigned = "";
     }
 
 // retrieve current key configuration
@@ -93,14 +115,20 @@ class InputDecoder extends KeyAdapter implements MouseListener
 	   keyPressedModifier += 20000;
        else if( e.isShiftDown() )
 	   keyPressedModifier += 30000;
-       //System.out.println( keyPressedModifier );
+
        String command = keyboardHashMap.getKeyInfo( e.getKeyCode() +
 						   keyPressedModifier );
-       if( command != null )
+       if( !inAssignmentMode )
        {
-	   controller.processCommand( command );
+	   if( command != null )
+	   {
+	       controller.processCommand( command );
+	   }
        }
-       //System.out.println( command );
+       else if( inAssignmentMode )
+       {
+	   assignNewKeyToCommand( e.getKeyCode() + keyPressedModifier );
+       }
    }
 
 // mouse input event handlers

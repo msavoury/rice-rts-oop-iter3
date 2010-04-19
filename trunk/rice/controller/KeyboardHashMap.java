@@ -65,11 +65,14 @@ class KeyboardHashMap
 
 	keyboardKeysInfo = defaultKeyConfig.getDefaultConfig();
 
+	keyboardHashMap.clear();
+
 	for( int i = 0; i < keyboardKeysInfo.size(); ++i )
 	{
 	    putKeyInfo( keyboardKeysInfo.get( i ).getKey(),
 			  keyboardKeysInfo.get( i ).getValue() );
 	}
+	System.out.println("REACHED");
 
 	/*
 	List< KeyboardHashMapPair > keyboardKeysInfo =
@@ -119,7 +122,12 @@ class KeyboardHashMap
 	
 	if( keyboardKeysInfo != null )
 	{
-	    
+	    keyboardHashMap.clear();
+
+	    for( int i = 0; i < keyboardKeysInfo.size(); ++i )
+	    {
+		keyboardHashMap.put( keyboardKeysInfo.get( i ).getKey(), keyboardKeysInfo.get( i ).getValue() );
+	    }
 	}
 	else
 	{
@@ -154,18 +162,16 @@ class KeyboardHashMap
     {
 	List< KeyboardHashMapPair > curKeyConfig = packCurKeyConfig();
 
-	// if keyboardHashMap.get( keyValue ) != null, then that key is stored
-	//  in the map with a command and must be addressed
-	if( keyboardHashMap.get( keyValue ) != null && !keyboardHashMap.get( keyValue ).equals(commandName) )
+	// if: checking to see if keyboardHashMap is currently using the passed in keyValue
+	if( keyboardHashMap.get( keyValue ) != null )
 	{
-	    // if: checking to see if keyboardHashMap is currently using the passed in keyValue
-	    if( keyboardHashMap.get( keyValue ) != null )
+	    if( !keyboardHashMap.get( keyValue ).equals( commandName ) )
 	    {
 		String tempCommandName = keyboardHashMap.get( keyValue );
 
 		for( int i = 0; i < curKeyConfig.size(); ++i )
 		{
-		    if( curKeyConfig.get( i ).getValue().equals( "commandName" ) )
+		    if( curKeyConfig.get( i ).getValue().equals( commandName ) )
 		    {
 			keyboardHashMap.put( curKeyConfig.get( i ).getKey(), tempCommandName );
 			break;
@@ -174,35 +180,19 @@ class KeyboardHashMap
 
 		keyboardHashMap.put( keyValue, commandName );
 	    }
-	    else // keyboardHashMap is not using keyValue anywhere
+	}
+	else // keyboardHashMap is not using keyValue anywhere
+	{
+	    for( int i = 0; i < curKeyConfig.size(); ++i )
 	    {
-		for( int i = 0; i < curKeyConfig.size(); ++i )
+		if( curKeyConfig.get( i ).getValue().equals( commandName ) )
 		{
-		    if( curKeyConfig.get( i ).getValue().equals( "commandName") )
-		    {
-			keyboardHashMap.remove( curKeyConfig.get( i ).getKey() );
-			keyboardHashMap.put( keyValue, commandName);
-			break;
-		    }
+		    keyboardHashMap.remove( curKeyConfig.get( i ).getKey() );
+		    keyboardHashMap.put( keyValue, commandName);
+		    break;
 		}
 	    }
 	}
-
-	// I want to assign this keyValue to this commandName
-	//  if the hashmap returns a command by passing in keyValue
-	//  that means a command is already assigned to it.
-	//  get that command, give it the keyvalue that the passed
-	//  in commandname is currently assigned to inside of keyboardHashMap, then give the keyvalue passed in
-	//  to the passed in commandname.
-	// if that keyValue has not been used,
-	//  add in the current command name with the passed in keyValue
-
-	// remove the pair from the map then add in the current
-	// command name
-	//  be careful of the case where the user enters the same key
-	//  as is already assigned to the commandName3
-
-
     }
 
 // control information saving functions
@@ -240,7 +230,7 @@ class DefaultKeyConfiguration
 	//         10000 is added to a KeyEvent.KEYNAME value. The same goes for
 	//         the alt key (20000 is added), and shift (30000 is added).
 
-	// CTRL key must be pressed for the following commands to work
+	// Ctrl key must be pressed for the following commands to work
 	//  (i.e. 10000 must be added in addition to the keyboard key value)
 	defaultConfig.add( new KeyboardHashMapPair( 
 		KeyEvent.VK_UP + 10000, "CYCLE_MODES_UP" ) );
@@ -254,11 +244,16 @@ class DefaultKeyConfiguration
 		KeyEvent.VK_EQUALS + 10000, "INCREASE_CLOCK_RATE" ) );
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_MINUS + 10000, "DECREASE_CLOCK_RATE" ) );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_ENTER + 10000, "RESET_CONTROL_CONFIG" ) );
 
-	// ALT key must be pressed for the following commands to work
+	// Alt key must be pressed for the following commands to work
 	//  (i.e. 20000 must be added in addition to the keyboard key value)
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_Q + 20000, "QUIT" ) );
+
+	// Shift key must be pressed for the following commands to work
+	//  (i.e. 30000 must be added in addition to the keyboard key value)
 
 	// no key is required to be pressed for the following commands to work
 	// (i.e. nothing needs to be added to the keybaord key value )
@@ -322,6 +317,10 @@ class DefaultKeyConfiguration
 		KeyEvent.VK_NUMPAD4, "WEST") );
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_NUMPAD6, "EAST") );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_L, "LOAD_CUSTOM_CONFIG") );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_S, "SAVE_CUSTOM_CONFIG") );
 
 	return defaultConfig;
     }

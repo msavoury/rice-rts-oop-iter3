@@ -38,6 +38,22 @@ class TechnologyState extends ControllerState
 	   controller.switchScreenLeft();
 	else if( command.equals( "SWITCH_SCREEN_RIGHT" ) )
 	    controller.switchScreenRight();
+	else if( command.equals( "NORTH" ) )
+	{
+	    
+	}
+	else if( command.equals( "SOUTH" ) )
+	{
+
+	}
+	else if( command.equals( "EAST" ) )
+	{
+
+	}
+	else if( command.equals( "WEST" ) )
+	{
+
+	}
     }
 
 // accessor and mutator functions

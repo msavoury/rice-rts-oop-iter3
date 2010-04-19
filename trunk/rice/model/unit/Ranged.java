@@ -53,5 +53,10 @@ public class Ranged extends Unit{
 	{
 		s.addRanged(this);
 	}
+	
+	public void destroy() {
+		super.destroy();
+		getOwner().removeRanged(this);
+	}
 
 }

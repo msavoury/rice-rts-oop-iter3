@@ -12,6 +12,7 @@ import java.util.List;
 
 import rice.model.accessories.Accessory;
 import rice.model.accessories.Decal;
+import rice.model.accessories.Flow;
 import rice.model.map.AreaMap;
 import rice.model.map.HexTranslator;
 import rice.model.map.MapPositionTranslator;
@@ -70,6 +71,14 @@ public class MapInitializer {
 		controllables = new ArrayList<Controllable>();
 		cPositions = new ArrayList<Position>();
 		aPositions = new ArrayList<Position>();
+	}
+	
+	public List<Accessory> getAccessories() {
+		return accessories;
+	}
+	
+	public List<Position> getAccessoryPositions() {
+		return this.aPositions;
 	}
 		
 	public void setFile(String filename){
@@ -167,11 +176,15 @@ public class MapInitializer {
 				   continue;
 			   }
 			   else if(strLine.startsWith("decal")
-					  || strLine.startsWith("flow")
+			//		  || strLine.startsWith("flow")
 					  || strLine.startsWith("resource")
 			   )
 			   {
 				   state = new AccessoryState(this);
+				   continue;
+			   }
+			   else if (strLine.startsWith("flow")){
+				   state = new FlowState(this);
 				   continue;
 			   }
 			   else if(strLine.startsWith("/*") || strLine.startsWith("*/")){
@@ -288,6 +301,23 @@ class AccessoryState extends InitializerState {
 	
 }
 
+class FlowState extends InitializerState {
+
+	public FlowState(MapInitializer m) {
+		super(m);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	void processLine(String s) {
+		//x,y,rate,direction
+		String [] num = s.split(",");
+		m.addAccessory(new Flow(Integer.parseInt(num[2]), Integer.parseInt(num[3])));
+		m.addAccessoryPosition(new Position(Integer.parseInt(num[0]), Integer.parseInt(num[1])));
+	    System.out.println("added flow");	  
+	}
+	
+}
 /**
  * Parse location for controllable
  */

@@ -124,7 +124,6 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	      selector.addRallyPoint(rp2);
 	      AreaMap.getInstance().putControllable(rp2, startingPosition);
 
-
 	}
 	
 	public void setStartingPosition(Position p){
@@ -147,7 +146,7 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	
 	public void tick(int tick) {
 		selector.tick(tick);
-		vmap.updateTiles(new Position(2,2), 3);
+		//vmap.updateTiles(new Position(2,2), 3);
 	}
 		
 	@Override
@@ -236,8 +235,37 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	}
 	
 	public List<Position> getActionTiles() {
+		if(selector.getSelected() == null){
+			List <Position >p = new ArrayList<Position>();
+			p.add(new Position(startingPosition));
+			return p;
+		}
+		if(selector.getSelected().getActionTiles() == null){
+			System.err.println("NULLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLAJDJDJDJDJDJDSHDSHSHSH");
+		}
 		return selector.getSelected().getActionTiles();
 	}
 	
+	public void addMelee(Melee m){
+		selector.addMelee(m);
+	}
+	public void addRanged(Ranged r){
+		selector.addRanged(r);
+	}
+	public void addExplorer(Explorer m){
+		selector.addExplorer(m);
+	}
+	
+	public void addCapital(Capital c){
+		selector.addCapital(c);
+	}
+	
+	public void removeRanged(Ranged r){
+		selector.removeRanged(r);
+	}
+	
+	public void removeMelee(Melee m){
+		selector.removeMelee(m);
+	}
 	
 }

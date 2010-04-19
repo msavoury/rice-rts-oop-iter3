@@ -49,4 +49,9 @@ public void accept(MSVisitor v){
 	{
 		s.addMelee(this);
 	}
+	
+	public void destroy() {
+		super.destroy();
+		getOwner().removeMelee(this);
+	}
 }

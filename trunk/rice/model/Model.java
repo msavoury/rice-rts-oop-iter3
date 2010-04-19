@@ -5,13 +5,13 @@
 
 package rice.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 import rice.controller.ControllableModel;
 import rice.controller.Tickable;
+import rice.model.accessories.Accessory;
 import rice.model.map.AreaMap;
 import rice.model.player.Player;
 import rice.util.Position;
@@ -44,10 +44,17 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
       AreaMap.setTranslator(mi.getTranslator());
       AreaMap.setPositions(mi.getStartingPositions());
      
+      List<Position> accessoryPositions = mi.getAccessoryPositions();
+      List<Accessory> accessories = mi.getAccessories();
+      
+      for(int i = 0; i < accessories.size(); i++){
+    	  AreaMap.getInstance().putAccessory(accessories.get(i), accessoryPositions.get(i));
+      }
       
 	  //make players
       Iterator<Position> iter = mi.getStartingPositions().iterator();
       players = new Player[2];
+     //players = new Player[1];
       
       for(int i = 0; i < players.length; i++){
     	  players[i] = new Player(iter.next());
@@ -232,6 +239,16 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 	}
 	
 	public List<Position> getActionTiles() {
+		
+		if(mainPlayer == null){
+			System.err.println("MainPlayer is NULL");
+		}
+		else{
+			System.err.println("MainPlayer is NOT NULL");
+
+		}
+			
+		
 		return mainPlayer.getActionTiles();
 		
 	}

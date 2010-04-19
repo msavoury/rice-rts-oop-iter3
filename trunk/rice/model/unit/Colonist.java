@@ -7,6 +7,7 @@ package rice.model.unit;
 
 import java.util.HashMap;
 
+import rice.model.ability.FoundCapitalAbility;
 import rice.model.player.Player;
 import rice.model.player.RiceSelector;
 import rice.view.MSVisitor;
@@ -41,6 +42,11 @@ public class Colonist extends Unit {
     public boolean isSoldier() {
 		return false;
 	}
+    
+    public void initAbilities() {
+    	super.initAbilities();
+    	addAbility(new FoundCapitalAbility(this));
+    }
     
 	public void accept(UOVisitor u) {
         throw new UnsupportedOperationException("Not supported yet.");

@@ -250,6 +250,7 @@ public abstract class Controllable extends Locatable implements ViewableControll
   
   public void tick() {
   	this.refreshModifiers();
+  	getOwner().updateTiles(getLocation(), visibilityRadius);
 	//TODO: stuff with temp direction and speed and what not here
 	if(!commands.isEmpty()){
 	  int result = commands.executeCommand();
@@ -264,7 +265,10 @@ public abstract class Controllable extends Locatable implements ViewableControll
   }
   
   public void destroy() {
-	  //remove reference in the selector
+	if(this.getTile() != null){
+		getTile().removeControllable(this);
+	}
+
   }
   
   /**
@@ -394,6 +398,7 @@ public abstract class Controllable extends Locatable implements ViewableControll
   
   public void resetActionTiles() {
 	  actionTiles = new ArrayList<Position>();
+	  System.out.println("Tiles reset, action tiles are now " + this.getLocation());
 	  actionTiles.add(this.getLocation());
   }
   
@@ -411,9 +416,17 @@ public abstract class Controllable extends Locatable implements ViewableControll
 	  return this.actionTiles;
   }
   
+  public void popCommand() {
+	  commands.pop();
+  }
+  
   public String getCommand() {
 	  String[] coms = commands.getCommandStrings();
 	  return coms[0];
+  }
+  
+  public int getCommandSize() {
+	  return commands.size();
   }
   
   public String getAbility() {

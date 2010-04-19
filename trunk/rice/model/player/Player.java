@@ -8,6 +8,7 @@ import rice.model.Controllable;
 import rice.model.controllable.RallyPoint;
 import rice.model.map.AreaMap;
 import rice.model.structures.Capital;
+import rice.model.structures.University;
 import rice.model.unit.Colonist;
 import rice.model.unit.Explorer;
 import rice.model.unit.Melee;
@@ -60,11 +61,11 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	/**
 	 * Adds:
 	 * 2 Colonists
-	 * 1 Melee
-	 * 1 Explorer
+	 * 2 Melee
+	 * 2 Explorer
 	 * 
 	 * 1 Capital
-	 * 
+	 * 1 University
 	 * 2 Rally Point
 	 */
 	public void testInitialize() {
@@ -78,19 +79,35 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	      
 	      Melee m = new Melee(1, this);
 	      selector.addMelee(m);
-	      AreaMap.getInstance().putControllable(c, startingPosition);
+	      AreaMap.getInstance().putControllable(m, startingPosition);
 	      
-	      Explorer e = new Explorer(3,this);
+	      Melee m2 = new Melee(2, this);
+	      selector.addMelee(m2);
+	      AreaMap.getInstance().putControllable(m2, startingPosition);
+	      
+	      Explorer e = new Explorer(1,this);
 	      selector.addExplorer(e);
 	      AreaMap.getInstance().putControllable(e, startingPosition);
 	      
-	      Ranged r = new Ranged(7,this);
+	      Explorer e2 = new Explorer(2,this);
+	      selector.addExplorer(e2);
+	      AreaMap.getInstance().putControllable(e2, startingPosition);
+	      
+	      Ranged r = new Ranged(1,this);
 	      selector.addRanged(r);
 	      AreaMap.getInstance().putControllable(r, startingPosition);
+	      
+	      Ranged r2 = new Ranged(2,this);
+	      selector.addRanged(r2);
+	      AreaMap.getInstance().putControllable(r2, startingPosition);
 	            
-	      Capital cap = new Capital(4, this);
+	      Capital cap = new Capital(1, this);
 	      selector.addCapital(cap);
 	      AreaMap.getInstance().putControllable(cap, new Position(1,2));
+	      
+	      University u = new University(1, this);
+	      selector.addUniversity(u);
+	      AreaMap.getInstance().putControllable(u, new Position(2,2));
 	      
 	      RallyPoint rp = new RallyPoint(5, this);
 	      selector.addRallyPoint(rp);

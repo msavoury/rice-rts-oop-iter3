@@ -19,6 +19,7 @@ import rice.model.unit.Unit;
 import rice.util.Position;
 import rice.view.MSVisitor;
 import rice.view.MSVisitorAcceptor;
+import rice.view.ViewableStructure;
 import rice.view.ViewableUnit;
 
 public class Player implements Tickable, MSVisitorAcceptor {
@@ -220,10 +221,20 @@ public class Player implements Tickable, MSVisitorAcceptor {
 		  unitList.add((Unit)c);
 	  }
 		return unitList;
-		//return (selector.getAllUnits());
+		
+	}
+	
+	public List<ViewableStructure> getAllStructures() {
+		List<ViewableStructure> structList = new ArrayList<ViewableStructure>();
+		for(Controllable c : selector.getAllUnits()){
+			  structList.add((Structure)c);
+		  }
+			return structList;
 	}
 	
 	public List<Position> getActionTiles() {
 		return selector.getSelected().getActionTiles();
 	}
+	
+	
 }

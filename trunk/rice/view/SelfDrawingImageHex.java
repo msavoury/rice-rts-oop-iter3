@@ -32,7 +32,12 @@ class SelfDrawingImageHex extends SelfDrawingObject{
 
     void draw(GL gl, GLAutoDrawable drawable, TextRenderer renderer){
 
-        //if()
+        if(visibilityMode == 1){
+            gl.glColor3d(.35, .35, .35);
+        }
+        if(visibilityMode == 0){
+            gl.glColor3d(0, 0, 0);
+        }
 
         image.bind();
 
@@ -61,6 +66,8 @@ class SelfDrawingImageHex extends SelfDrawingObject{
             gl.glEnd();
 
         gl.glPopMatrix();
+
+        gl.glColor3f(1, 1, 1);
 
     }
 

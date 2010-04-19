@@ -426,7 +426,7 @@ class MainScreen extends GameGraphic{
                                                                 .90));
                     thingsToDraw.add(new SelfDrawingBar(    .22 + .035,
                                                             .90 ,
-                                                            .22 + .035 + ((.245 + .035)-(.22 + .035))*vm.getCurrentlySelectedStructure().getHealth(),
+                                                            .22 + .035 + ((.245 + .035)-(.22 + .035))*vm.getCurrentlySelectedStructure().getHealthPercentage(),
                                                             .91,
                                                             Color.GREEN,
                                                             Color.WHITE));
@@ -451,7 +451,7 @@ class MainScreen extends GameGraphic{
                                                                     .90));
                             thingsToDraw.add(new SelfDrawingBar(    .22 + i * .035,
                                                                     .90 ,
-                                                                    .22 + i * .035 + ((.245 + i * .035) - (.22 + i * .035))*units.get(i).getHealth(),
+                                                                    .22 + i * .035 + ((.245 + i * .035) - (.22 + i * .035))*units.get(i).getHealthPercentage(),
                                                                     .91,
                                                                     Color.GREEN,
                                                                     Color.WHITE));
@@ -464,7 +464,7 @@ class MainScreen extends GameGraphic{
                                                                     .97));
                             thingsToDraw.add(new SelfDrawingBar(    .22 + (i-13) * .035,
                                                                     .97 ,
-                                                                    .22 + (i-13) * .035 + ((.245 + (i-13) * .035) - (.22 + (i-13) * .035))*units.get(i).getHealth(),
+                                                                    .22 + (i-13) * .035 + ((.245 + (i-13) * .035) - (.22 + (i-13) * .035))*units.get(i).getHealthPercentage(),
                                                                     .98,
                                                                     Color.GREEN,
                                                                     Color.WHITE));
@@ -499,7 +499,7 @@ class MainScreen extends GameGraphic{
                                                                 .90));
                     thingsToDraw.add(new SelfDrawingBar(    .22 + .035,
                                                             .90 ,
-                                                            .22 + .035 + ((.245 + .035)-(.22 + .035))*vm.getCurrentlySelectedUnit().getHealth(),
+                                                            .22 + .035 + ((.245 + .035)-(.22 + .035))*vm.getCurrentlySelectedUnit().getHealthPercentage(),
                                                             .91,
                                                             Color.GREEN,
                                                             Color.WHITE));

@@ -105,7 +105,7 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 	@Override
 	public List<ViewableStructure> getAllStructures() {
 		// TODO Auto-generated method stub
-		return null;
+		return mainPlayer.getAllStructures();
 	}
 
 	@Override

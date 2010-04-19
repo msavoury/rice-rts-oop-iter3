@@ -295,7 +295,7 @@ class MainScreen extends GameGraphic{
                                                    1));
 
             //MODE BOX
-            thingsToDraw.add(new SelfDrawingImage(  "cat", //comm1
+            thingsToDraw.add(new SelfDrawingImage(  "marblecake", //comm1
                                                     1-.15626,
                                                     0,
                                                     1,
@@ -305,7 +305,7 @@ class MainScreen extends GameGraphic{
                                                     1-.08125 + .035));
 
             //TYPE BOX
-            thingsToDraw.add(new SelfDrawingImage(  "cat", //comm2
+            thingsToDraw.add(new SelfDrawingImage(  "marblecake", //comm2
                                                     1-.15626,
                                                     0+.08125*1,
                                                     1,
@@ -317,7 +317,7 @@ class MainScreen extends GameGraphic{
             }
 
             //INSTANCE BOX
-            thingsToDraw.add(new SelfDrawingImage(  "cat", //comm3
+            thingsToDraw.add(new SelfDrawingImage(  "marblecake", //comm3
                                                     1-.15626,
                                                     0+.08125*2,
                                                     1,
@@ -327,7 +327,7 @@ class MainScreen extends GameGraphic{
                                                     1-.08125*3 + .035));
 
             //ABILITY BOX
-            thingsToDraw.add(new SelfDrawingImage(  "cat", //comm4
+            thingsToDraw.add(new SelfDrawingImage(  "marblecake", //comm4
                                                     1-.15626,
                                                     0+.08125*3,
                                                     1,
@@ -337,7 +337,7 @@ class MainScreen extends GameGraphic{
                                                     1-.08125*4 + .035));
 
             //STATUS BOX
-            thingsToDraw.add(new SelfDrawingImage(  "cat", //comm5
+            thingsToDraw.add(new SelfDrawingImage(  "marblecake", //comm5
                                                     1-.15626,
                                                     0+.08125*4,
                                                     1,

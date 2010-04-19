@@ -12,7 +12,9 @@ public class CombatManager
 
 	public static void Attack(Controllable c, double direction)
 	{		
+		
 		double dmg=c.getAttack();
+		System.out.println("Damage is : " + dmg);
 		if((dmg>0) && (c.getLocation()!=null))
 		{
 			Position targetPosition = AreaMap.getInstance().getAdjecentPosition(c.getLocation(), direction);
@@ -20,6 +22,7 @@ public class CombatManager
 			{
 				double defDmg=dealDamage(c, targetPosition, dmg);
 				c.takeDamage(defDmg);
+				System.out.println("damage dealth " + defDmg);
 			}
 		}
 	}

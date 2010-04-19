@@ -71,7 +71,7 @@ public class ModifierVisitor
 	
 	public void visit(Flow f)
 	{
-		this.flowRate=f.getDirection();
+		this.flowRate=f.getFlowRate();
 		this.flowDirection=f.getDirection();
 	}
 }

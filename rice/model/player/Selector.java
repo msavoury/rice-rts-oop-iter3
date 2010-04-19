@@ -67,6 +67,10 @@ public class Selector<T> {
 	//gets the current selection
 	public T getSelected()
 	{
+		if(this.mainNode.getSelectedLeaf()==null)
+		{
+			this.mainNode.selectNextLeaf();
+		}
 		return this.mainNode.getSelectedLeaf();
 	}
 }

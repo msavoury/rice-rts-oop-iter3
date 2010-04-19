@@ -20,6 +20,7 @@ public class Attack extends Command {
 	@Override
 	public int execute() {
 		CombatManager.Attack(target, attackDirection);
+		//System.out.println();
 		target.setStatus("Attacking: " + directionString);
 		return CONTINUOUS;
 	}

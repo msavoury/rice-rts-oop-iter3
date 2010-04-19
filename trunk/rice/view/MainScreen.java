@@ -47,7 +47,7 @@ class MainScreen extends GameGraphic{
         }
         msa.accept(msv);
         highlights = vm.getActionTiles();
-        if(highlights.get(highlights.size()-1)!=null)
+        if(highlights.size()>0 && highlights.get(highlights.size()-1)!=null)
             msv.setCenter(highlights.get(highlights.size()-1).getX(), highlights.get(highlights.size()-1).getY());
         msv.preDraw();
     }

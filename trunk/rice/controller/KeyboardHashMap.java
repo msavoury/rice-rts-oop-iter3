@@ -321,6 +321,8 @@ class DefaultKeyConfiguration
 		KeyEvent.VK_L, "LOAD_CUSTOM_CONFIG") );
 	defaultConfig.add( new KeyboardHashMapPair(
 		KeyEvent.VK_S, "SAVE_CUSTOM_CONFIG") );
+	defaultConfig.add( new KeyboardHashMapPair(
+		KeyEvent.VK_SPACE, "TOGGLE_MAINSCREEN_TILES") );
 
 	return defaultConfig;
     }

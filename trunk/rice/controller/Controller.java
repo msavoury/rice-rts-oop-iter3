@@ -119,6 +119,7 @@ public class Controller extends KeyAdapter implements ActionListener
        {
            views.add(view);
 	   view.addKeyListener( inputDecoder );
+	   mainScreenState.setView( views.get( 0 ) );
        }
 
 // global commands input processing

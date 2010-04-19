@@ -4,6 +4,7 @@
  */
 
 package rice.controller;
+import rice.view.ControllableView;
 
 /**
  *
@@ -18,6 +19,7 @@ class MainScreenState extends ControllerState
 
     private Controller controller;
     private ControllableModel model;
+    private ControllableView view;
 
 // initialization functions
 // -----------------------------------------------------------------------------
@@ -77,6 +79,10 @@ class MainScreenState extends ControllerState
 	{
 	    model.createRallyPoint();
 	}
+	else if( command.equals( "TOGGLE_MAINSCREEN_TILES" ) )
+	{
+	    view.toggleMainScreenMode();
+	}
 	else // all other keys end up here: model will be concerned with hotkeys and numpad movement keys (speaking from the default key configuration)
 	{
 	    model.processCommand( command );
@@ -88,6 +94,11 @@ class MainScreenState extends ControllerState
     void setModel( ControllableModel model )
     {
 	this.model = model;
+    }
+
+    void setView( ControllableView view )
+    {
+	this.view = view;
     }
 
     String getActiveID()

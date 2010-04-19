@@ -144,14 +144,21 @@ class MainScreen extends GameGraphic{
                             }
                         }
                         if(map[i][j].getStructure()!=null/*true*/){ //fixHere
-                            thingsToDraw.add(new SelfDrawingImage(  "arrowBlueN", //fixHere
+                            thingsToDraw.add(new SelfDrawingImage(  map[i][j].getStructure(), //fixHere
+                                                                    tileCenterx - .013,
+                                                                    tileCentery - .013,
+                                                                    tileCenterx + .013,
+                                                                    tileCentery + .013));
+                        }
+                        if(map[i][j].getFlow()!=0/*true*/){ //fixHere
+                            thingsToDraw.add(new SelfDrawingImage(  "fan", //fixHere
                                                                     tileCenterx - .013,
                                                                     tileCentery - .013,
                                                                     tileCenterx + .013,
                                                                     tileCentery + .013));
                         }
                         if(map[i][j].getDecal()!=null/*true*/){ //fixHere
-                            thingsToDraw.add(new SelfDrawingImage(  "arrowBlueNW", //fixHere
+                            thingsToDraw.add(new SelfDrawingImage(  map[i][j].getDecal(), //fixHere
                                                                     tileCenterx - .041,
                                                                     tileCentery - .013,
                                                                     tileCenterx - .015,
@@ -193,9 +200,13 @@ class MainScreen extends GameGraphic{
                             thingsToDraw.add(new SelfDrawingImageHex(/*"iceTest"*/ map[i][j].getTerrainType(), tileCenterx, tileCentery, screenRatio, map[i][j].getVisibilityMode()));
                         }
                         HashMap<String, Integer> resc = map[i][j].getResourceValues(); //fixHere
-
+                        if(i==2 && j==2){
+                            System.out.print(resc.get("Food"));
+                            System.out.print(resc.get("Ore"));
+                            System.out.print(resc.get("Energy"));
+                        }
                         if(resc.get("Food")!=null/*true*/){ //fixHere
-                            thingsToDraw.add(new SelfDrawingImage(  "arrowBlueNW", //fixHere
+                            thingsToDraw.add(new SelfDrawingImage(  "Food", //fixHere
                                                                     tileCenterx - .055,
                                                                     tileCentery - .102,
                                                                     tileCenterx - .030,
@@ -213,7 +224,7 @@ class MainScreen extends GameGraphic{
                         }
                         
                         if(resc.get("Energy")!=null/*true*/){ //fixHere
-                            thingsToDraw.add(new SelfDrawingImage(  "arrowBlueNE", //fixHere
+                            thingsToDraw.add(new SelfDrawingImage(  "Energy", //fixHere
                                                                     tileCenterx + .030,
                                                                     tileCentery - .102,
                                                                     tileCenterx + .055,
@@ -230,7 +241,7 @@ class MainScreen extends GameGraphic{
                         }
                         
                         if(resc.get("Ore")!=null/*true*/){ //fixHere
-                            thingsToDraw.add(new SelfDrawingImage(  "arrowBlueN", //fixHere
+                            thingsToDraw.add(new SelfDrawingImage(  "Ore", //fixHere
                                                                     tileCenterx - .013,
                                                                     tileCentery - .102,
                                                                     tileCenterx + .013,
@@ -264,7 +275,7 @@ class MainScreen extends GameGraphic{
                         }
 
                         if(map[i][j].getStructure()!=null/*true*/){ //fixHere
-                            thingsToDraw.add(new SelfDrawingImage(  "arrowBlueN", //fixHere
+                            thingsToDraw.add(new SelfDrawingImage(  map[i][j].getStructure(), //fixHere
                                                                     tileCenterx - .013,
                                                                     tileCentery - .013,
                                                                     tileCenterx + .013,

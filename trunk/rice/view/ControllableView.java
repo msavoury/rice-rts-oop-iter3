@@ -13,6 +13,7 @@ import java.awt.event.KeyListener;
  */
 public interface ControllableView {
     public abstract void switchMode(String type);
+    public abstract void toggleMainScreenMode();
     public abstract void refresh();
     public abstract void addKeyListener(KeyListener k);
     public abstract void removeKeyListener(KeyListener k);

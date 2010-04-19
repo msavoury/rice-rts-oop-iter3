@@ -193,4 +193,8 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	public List<String> getSelectedPath() {
 		return selector.getBranchPath();
 	}
+	
+	public List<Position> getActionTiles() {
+		return selector.getSelected().getActionTiles();
+	}
 }

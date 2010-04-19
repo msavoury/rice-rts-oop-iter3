@@ -233,13 +233,7 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 	}
 	
 	public List<Position> getActionTiles() {
-		List<Position> p = new ArrayList<Position>();
-		p.add(new Position(2,2));
-		if((System.currentTimeMillis() % 1000) < 800){
-			p.add(new Position(2,3));
-			p.add(new Position(2,4));
-		}
-		return p;
+		return mainPlayer.getActionTiles();
 	}
 
 }

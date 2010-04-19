@@ -277,12 +277,12 @@ class MainScreen extends GameGraphic{
 
 
             //FIX HEERRRREEE
-            /*for(int h = 0; h < highlights.size(); ++h){
+            for(int h = 0; h < highlights.size(); ++h){
                 double tileCenterx = (highlights.get(h).getX()-centerx)*sideLength*1.5;
                 double tileCentery = (highlights.get(h).getY()-centery)*sideLength*Math.sqrt(3)*screenRatio;
                 thingsToDraw.add(new SelfDrawingHexHighlight(tileCenterx, tileCentery, screenRatio));
 
-            }*/
+            }
 
             /*for(int v = 0; v< vm.getCurrentSelectorPathToInstance().size(); ++v){
                 System.out.println(vm.getCurrentSelectorPathToInstance().get(v));
@@ -300,9 +300,11 @@ class MainScreen extends GameGraphic{
                                                     0,
                                                     1,
                                                     .08125));
-            thingsToDraw.add(new SelfDrawingText(  /*"Mode"*/ vm.getCurrentSelectorPathToInstance().get(0), //comm1
-                                                    1-.12,
-                                                    1-.08125 + .035));
+            if(vm.getCurrentSelectorPathToInstance().get(0)!=null){
+                thingsToDraw.add(new SelfDrawingText(  /*"Mode"*/ vm.getCurrentSelectorPathToInstance().get(0), //comm1
+                                                        1-.12,
+                                                        1-.08125 + .035));
+            }
 
             //TYPE BOX
             thingsToDraw.add(new SelfDrawingImage(  "marblecake", //comm2

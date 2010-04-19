@@ -228,7 +228,6 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 	@Override
 	public void previousTechnolgy() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	public Position getMapSize() {

@@ -139,6 +139,8 @@ public class VisibilityTile extends Tile implements ViewableTile, Tickable
 	//returns the visibility mode
 	public int getVisibilityMode()
 	{
+            System.out.println(this.currentTick);
+            System.out.println(this.lastSeenTick);
 		if(this.discovered)
 		{
 			if(this.currentTick==this.lastSeenTick)

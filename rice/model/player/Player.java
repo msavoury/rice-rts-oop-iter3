@@ -110,7 +110,7 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	            
 	      Capital cap = new Capital(1, this);
 	      selector.addCapital(cap);
-	      AreaMap.getInstance().putControllable(cap, new Position(1,2));
+	      AreaMap.getInstance().putControllable(cap, startingPosition);
 	      
 	      University u = new University(1, this);
 	      selector.addUniversity(u);
@@ -145,6 +145,8 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	}
 	
 	public void tick(int tick) {
+
+                this.vmap.tick(tick);
 		selector.tick(tick);
 		//vmap.updateTiles(new Position(2,2), 3);
 	}

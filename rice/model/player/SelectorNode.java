@@ -30,14 +30,15 @@ public class SelectorNode<T>
 	public List<String> getBranchPath()
 	{
 		List<String> branchPath = new ArrayList<String>();
-		if(!this.isLeaf())
-		{
-			if(!this.getBranchName().isEmpty())
+			if(this.getBranchName()!=null && !this.getBranchName().isEmpty())
 			{
 				branchPath.add(this.getBranchName());
 			}
-			branchPath.addAll(this.selection.getBranchPath());
-		}		
+			if(!this.isLeaf())
+			{
+				branchPath.addAll(this.selection.getBranchPath());
+			}
+	
 		return branchPath;
 	}
 	
@@ -82,8 +83,8 @@ public class SelectorNode<T>
 	
 	//return true if this node is a leaf
 	public boolean isLeaf()
-	{
-		return this.children.size()==0;
+	{		
+		return (this.children.size()==0);
 	}
 	
 	//returns the element
@@ -191,27 +192,76 @@ public class SelectorNode<T>
 	//select next node at certain level
 	public void selectNext(int level)
 	{
-		if(this.isLeaf() || (level<=0))
+		if(this.selection.isLeaf() || (level<=0))
 		{
+			
 			this.selectNext();
+			
+				for(int i=0;i<this.children.size();i++)
+				{
+					if(this.selection.getAllLeafCount()==0)
+					{					
+						this.selectNext();
+					}
+					else
+					{
+						break;
+					}
+				}
+			if(this.selection.getSelectedLeaf()==null)
+			{
+				this.selection.selectNextLeaf();
+			}
 		}
 		else
 		{
-			this.selection.selectNext(level-1);
+			for(int i=0;i<this.getAllLeafCount();i++)
+			{
+				this.selection.selectNext(level-1);
+				if(this.selection.getAllLeafCount()>0)
+				{
+					return;
+				}
+			}
+			this.selectNextLeaf();
 		}		
 	}
 	
-	//select next node at certain level
+	//select prev node at certain level
 	public void selectPrev(int level)
 	{
-		if(this.isLeaf() || (level<=0))
+		if(this.selection.isLeaf() || (level<=0))
 		{
-			this.selectPrev();
+			
+			this.selectPrev();			
+				for(int i=0;i<this.children.size();i++)
+				{
+					if(this.selection.getAllLeafCount()==0)
+					{					
+						this.selectPrev();
+					}
+					else
+					{
+						break;
+					}
+				}
+			if(this.selection.getSelectedLeaf()==null)
+			{
+				this.selection.selectPrevLeaf();
+			}
 		}
 		else
 		{
-			this.selection.selectPrev(level-1);
-		}	
+			for(int i=0;i<this.getAllLeafCount();i++)
+			{
+				this.selection.selectPrev(level-1);
+				if(this.selection.getAllLeafCount()>0)
+				{
+					return;
+				}
+			}
+			this.selectPrevLeaf();
+		}		
 	}
 	
 	//selects the next leaf
@@ -219,59 +269,93 @@ public class SelectorNode<T>
 	{
 		if(this.isLeaf())
 		{
-			this.selectNext();
-			return this.isFirstSelected();
+			return true;
 		}
-		else
+		
+		if(this.getAllLeafCount()==0)
 		{
-			int leafCount=this.getAllLeafCount();
-			if(leafCount==0)
+			return true;
+		}
+		
+		if(this.selection.getAllLeafCount()!=0)
+		{
+			if(this.selection.selectNextLeaf())
 			{
-				return true;
-			}			
-			for(int i=0; i<leafCount;i++)
+				this.selectNext();
+				this.selection.selectFirst();
+				if(this.selection.getAllLeafCount()>0)
+				{
+					return this.isFirstSelected();
+				}	
+			}	
+			else
 			{
-				if(this.selection.selectNextLeaf())
+				return false;
+			}
+		}
+
+		if(this.selection.getAllLeafCount()==0)
+		{
+			for(int i=0; i<this.children.size();i++)
+			{
+				if(this.selection.getAllLeafCount()==0)
 				{
 					this.selectNext();
-					this.selection.selectFirst();
-					if(this.selection.getAllLeafCount()>0)
-					{
-						return this.isFirstSelected();
-					}					
-				}				
-			}			
+					this.selection.selectFirst();					
+				}
+				else
+				{
+					return false;				
+				}					
+			}	
 		}
 		return true;
 	}
 	
-	//selects the previous leaf
+	//selects the next leaf
 	public boolean selectPrevLeaf()
 	{
 		if(this.isLeaf())
 		{
-			this.selectPrev();
-			return this.isLastSelected();
+			return true;
 		}
-		else
+		
+		if(this.getAllLeafCount()==0)
 		{
-			int leafCount=this.getAllLeafCount();
-			if(leafCount==0)
+			return true;
+		}
+		
+		if(this.selection.getAllLeafCount()!=0)
+		{
+			if(this.selection.selectPrevLeaf())
 			{
-				return true;
-			}			
-			for(int i=0; i<leafCount;i++)
+				this.selectPrev();
+				this.selection.selectLast();
+				if(this.selection.getAllLeafCount()>0)
+				{
+					return this.isLastSelected();
+				}	
+			}	
+			else
 			{
-				if(this.selection.selectPrevLeaf())
+				return false;
+			}
+		}
+
+		if(this.selection.getAllLeafCount()==0)
+		{
+			for(int i=0; i<this.children.size();i++)
+			{
+				if(this.selection.getAllLeafCount()==0)
 				{
 					this.selectPrev();
 					this.selection.selectLast();					
-					if(this.selection.getAllLeafCount()>0)
-					{
-						return this.isLastSelected();
-					}					
 				}
-			}
+				else
+				{
+					return false;				
+				}					
+			}	
 		}
 		return true;
 	}
@@ -284,7 +368,7 @@ public class SelectorNode<T>
 	public List<T> getAllLeafs()
 	{
 		ArrayList<T> leafs = new ArrayList<T>();
-		if(this.isLeaf() && this.getElement() != null)
+		if(this.isLeaf() && (this.getElement() !=null))
 		{
 			leafs.add(this.getElement());
 		}
@@ -310,7 +394,7 @@ public class SelectorNode<T>
 		{
 			if(this.selection.getSelectedLeaf()==null)
 			{
-				this.selectNextLeaf();
+				//this.selectNextLeaf();
 			}			
 			return this.selection.getSelectedLeaf();
 		}

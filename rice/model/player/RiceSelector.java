@@ -68,7 +68,10 @@ public class RiceSelector extends Selector<Controllable> implements Tickable {
 		fort = addNode("Structure","Fort");
 		university = addNode("Structure","University");
 		
+		
+		rallyPoint = new SelectorNode<Controllable>("RallyPoint");
 		rallyPoint = addNode("Rally","RallyPoint");
+		addNode("Army","EntireArmy");
 		
 	}
 	
@@ -192,7 +195,6 @@ public class RiceSelector extends Selector<Controllable> implements Tickable {
 	public void tick(int tickNum)
 	{
 		List<Controllable> leafs = this.controllables.getAllLeafs();
-		//System.out.println("Leafs size "+ leafs.size());
 		Iterator<Controllable> iter = leafs.iterator();
 		while(iter.hasNext())
 		{

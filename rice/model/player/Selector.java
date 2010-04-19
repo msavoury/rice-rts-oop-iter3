@@ -1,6 +1,7 @@
 package rice.model.player;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class Selector<T> {

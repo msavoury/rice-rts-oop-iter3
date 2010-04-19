@@ -47,6 +47,8 @@ class MainScreen extends GameGraphic{
         }
         msa.accept(msv);
         highlights = vm.getActionTiles();
+        if(highlights.get(highlights.size()-1)!=null)
+            msv.setCenter(highlights.get(highlights.size()-1).getX(), highlights.get(highlights.size()-1).getY());
         msv.preDraw();
     }
 
@@ -62,6 +64,8 @@ class MainScreen extends GameGraphic{
         ArrayList<SelfDrawingObject> thingsToDraw;
         int centerx;
         int centery;
+        int acx;
+        int acy;
         double screenRatio = 1280.0/800.0;
         String hudInfoMode;
 
@@ -74,9 +78,22 @@ class MainScreen extends GameGraphic{
             this.model = model;
             thingsToDraw = new ArrayList<SelfDrawingObject>();
             map = new ViewableTile[y][x];
-            centerx = 0;
-            centery = 0;
 
+            acx = 0;
+            acy = 0;
+            
+            centerx = acx-3;
+            centery = acy-1;
+
+
+
+        }
+
+        void setCenter(int x, int y){
+            acx = x;
+            acy = y;
+            centerx = acx-3;
+            centery = acy-1;
         }
 
         public void visit(ViewableStructure s){
@@ -324,9 +341,11 @@ class MainScreen extends GameGraphic{
                                                     0+.08125*2,
                                                     1,
                                                     .08125*3));
-            thingsToDraw.add(new SelfDrawingText(  /*"Colonist 1"*/vm.getCurrentlySelectedInstance().getType() + vm.getCurrentlySelectedInstance().getID(), //comm3
-                                                    1-.12,
-                                                    1-.08125*3 + .035));
+            if(vm.getCurrentlySelectedInstance()!=null){
+                thingsToDraw.add(new SelfDrawingText(  /*"Colonist 1"*/vm.getCurrentlySelectedInstance().getType() + vm.getCurrentlySelectedInstance().getID(), //comm3
+                                                        1-.12,
+                                                        1-.08125*3 + .035));
+            }
 
             //ABILITY BOX
             thingsToDraw.add(new SelfDrawingImage(  "marblecake", //comm4
@@ -334,9 +353,11 @@ class MainScreen extends GameGraphic{
                                                     0+.08125*3,
                                                     1,
                                                     .08125*4));
-            thingsToDraw.add(new SelfDrawingText(  /*"Ability"*/ vm.getCurrentlySelectedInstance().getAbility(), //comm4
-                                                    1-.12,
-                                                    1-.08125*4 + .035));
+            if(vm.getCurrentlySelectedInstance()!=null){
+                thingsToDraw.add(new SelfDrawingText(  /*"Ability"*/ vm.getCurrentlySelectedInstance().getAbility(), //comm4
+                                                        1-.12,
+                                                        1-.08125*4 + .035));
+            }
 
             //STATUS BOX
             thingsToDraw.add(new SelfDrawingImage(  "marblecake", //comm5
@@ -344,10 +365,43 @@ class MainScreen extends GameGraphic{
                                                     0+.08125*4,
                                                     1,
                                                     .08125*5));
-            thingsToDraw.add(new SelfDrawingText(  /*"Status"*/ vm.getCurrentlySelectedInstance().getStatus(), //comm5
-                                                    1-.12,
-                                                    1-.08125*5 + .035));
+            if(vm.getCurrentlySelectedInstance()!=null){
+                thingsToDraw.add(new SelfDrawingText(  /*"Status"*/ vm.getCurrentlySelectedInstance().getStatus(), //comm5
+                                                        1-.12,
+                                                        1-.08125*5 + .035));
+            }
 
+
+            if(vm.getCurrentSelectorPathToInstance().get(0)!=null){
+                if(vm.getCurrentSelectorPathToInstance().get(0).equals("Rally") && vm.getCurrentlySelectedRallyPoint()!=null){
+                    thingsToDraw.add(new SelfDrawingText("Atk: " + vm.getCurrentlySelectedRallyPoint().getAttack(),
+                                                             0.81,
+                                                             .028 + 4 *.035));
+                    thingsToDraw.add(new SelfDrawingText("Def: " + vm.getCurrentlySelectedRallyPoint().getDefense(),
+                                                             0.81,
+                                                             .028 + 3 *.035));
+                    thingsToDraw.add(new SelfDrawingText("Spd: " + vm.getCurrentlySelectedRallyPoint().getSpeed(),
+                                                             0.81,
+                                                             .028 + 2 *.035));
+                }
+                if(vm.getCurrentSelectorPathToInstance().get(0).equals("Unit") && vm.getCurrentlySelectedUnit()!=null){
+                    thingsToDraw.add(new SelfDrawingText("Atk: " + vm.getCurrentlySelectedUnit().getAttack(),
+                                                             0.81,
+                                                             .028 + 4 *.035));
+                    thingsToDraw.add(new SelfDrawingText("Def: " + vm.getCurrentlySelectedUnit().getDefense(),
+                                                             0.81,
+                                                             .028 + 3 *.035));
+                    thingsToDraw.add(new SelfDrawingText("Arm: " + vm.getCurrentlySelectedUnit().getArmor(),
+                                                             0.81,
+                                                             .028 + 2 *.035));
+                    thingsToDraw.add(new SelfDrawingText("Spd: " + vm.getCurrentlySelectedUnit().getSpeed(),
+                                                             0.81,
+                                                             .028 + 1 *.035));
+                    thingsToDraw.add(new SelfDrawingText("Sze: " + vm.getCurrentlySelectedUnit().getSize(),
+                                                             0.81,
+                                                             .028 + 0 *.035));
+                }
+            }
             /*if()
             thingsToDraw.add(new SelfDrawingImage(  ));*/
 

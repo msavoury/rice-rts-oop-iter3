@@ -1,6 +1,7 @@
 package rice.model.player;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rice.controller.Tickable;
@@ -8,14 +9,17 @@ import rice.model.Controllable;
 import rice.model.controllable.RallyPoint;
 import rice.model.map.AreaMap;
 import rice.model.structures.Capital;
+import rice.model.structures.Structure;
 import rice.model.structures.University;
 import rice.model.unit.Colonist;
 import rice.model.unit.Explorer;
 import rice.model.unit.Melee;
 import rice.model.unit.Ranged;
+import rice.model.unit.Unit;
 import rice.util.Position;
 import rice.view.MSVisitor;
 import rice.view.MSVisitorAcceptor;
+import rice.view.ViewableUnit;
 
 public class Player implements Tickable, MSVisitorAcceptor {
 
@@ -196,6 +200,27 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	
 	public List<String> getSelectedPath() {
 		return selector.getBranchPath();
+	}
+	
+	public Unit getSelectedUnit() {
+		return selector.getSelectedUnit();
+	}
+	
+	public Structure getSelectedStructure() {
+		return selector.getSelectedStructure();
+	}
+	
+	public RallyPoint getSelectedRallyPoint() {
+		return selector.getSelectedRallyPoint();
+	}
+	
+	public List<ViewableUnit> getAllUnits(){
+	  List <ViewableUnit> unitList = new ArrayList<ViewableUnit>();
+		for(Controllable c : selector.getAllUnits()){
+		  unitList.add((Unit)c);
+	  }
+		return unitList;
+		//return (selector.getAllUnits());
 	}
 	
 	public List<Position> getActionTiles() {

@@ -420,4 +420,12 @@ public abstract class Controllable extends Locatable implements ViewableControll
 	  
 	  return abilities.get(abilityPointer).toString();
   }
+  
+  public int executeCommand() {
+	  return commands.executeCommand();
+  }
+  
+  public boolean queueIsEmpty(){
+	  return commands.isEmpty();
+  }
 }

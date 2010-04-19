@@ -30,7 +30,7 @@ public class SelfDrawingHexHighlight extends SelfDrawingObject{
         gl.glPushMatrix();
 
             gl.glLineWidth(20f);
-            gl.glColor3f(1, 1, 0);
+            gl.glColor3f(1, 0, 0);
 
             gl.glBegin(GL.GL_LINES);
 

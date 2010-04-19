@@ -16,7 +16,7 @@ public class ObservatoryTower extends Structure {
 		  this.setArmor(5);
 		  this.setOffensiveDamage(0);
 		  this.setDefensiveDamage(1);
-		  this.setVisibilityRadius(1);
+		  this.setVisibilityRadius(3);
 		  HashMap<String,Integer> newUpkeep = new HashMap<String,Integer>();
 		  newUpkeep.put("Ore", 1);
 		  newUpkeep.put("Food", 0);

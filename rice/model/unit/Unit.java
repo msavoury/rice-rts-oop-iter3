@@ -22,6 +22,7 @@ public abstract class Unit extends Controllable implements ViewableUnit {
      private int speed;
      private int size;
      private int passabilityLevel;
+     private UnitOwner unitOwner;
 	
      public Unit(String typeName, int id, Player owner)
      {
@@ -33,6 +34,20 @@ public abstract class Unit extends Controllable implements ViewableUnit {
 		this.setPassability(1);
 		
 	 }
+     
+     public UnitOwner getUnitOwner()
+     {
+    	 return this.unitOwner;
+     }
+     
+     public void setUnitOwner(UnitOwner unitOwner)
+     {
+    	 if (this.unitOwner!=null)
+    	 {
+    		 this.unitOwner.removeUnit(this);
+    	 }
+    	 this.unitOwner=unitOwner;
+     }
 
     public abstract boolean isSoldier();
     

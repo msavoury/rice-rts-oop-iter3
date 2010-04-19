@@ -32,12 +32,14 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	private Position startingPosition;
 	private RiceSelector selector;
 	private RiceTree techs;
+	private IDHashMap idMap;
 	private VisibilityMap vmap;
 	
 	public Player(Position startingPosition){
 		this.startingPosition = startingPosition;
 		this.id = playerCount;
-		this.selector = new RiceSelector();
+		this.idMap = new IDHashMap();
+		this.selector = new RiceSelector(this.idMap);
 		this.techs = new RiceTree();
 		this.vmap = new VisibilityMap(this);
 		playerCount++;

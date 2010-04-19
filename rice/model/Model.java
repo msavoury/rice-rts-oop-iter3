@@ -50,7 +50,9 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
       
       for(int i = 0; i < players.length; i++){
     	  players[i] = new Player(iter.next());
-    	  players[i].initialize();
+    	  //players[i].initialize();
+    	  //TODO: change this back to initialize
+    	  players[i].testInitialize();
       }
      
       //set main player
@@ -70,25 +72,36 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
     }
 
     public void nextMode() {
-    	
+      mainPlayer.nextMode();	
     }
-    public void previousMode(){}
-    public void nextSubmode(){}
-    public void previousSubmode(){}
-    public void nextInstance(){}
-    public void previousInstance(){}
+    public void previousMode(){
+      mainPlayer.previousMode();
+    }
+    public void nextSubmode(){
+      mainPlayer.nextSubmode();
+    }
+    public void previousSubmode(){
+      mainPlayer.previousSubmode();
+    }
+    public void nextInstance(){
+      mainPlayer.nextInstance();
+    }
+    public void previousInstance(){
+      mainPlayer.previousInstance();
+    }
+    public void nextAbility(){
+        mainPlayer.nextAbility();	
+    }
+    public void previousAbility(){
+        mainPlayer.previousAbility();
+    }
 
     public void nextTechnology(){}
     public void previousTechnology(){}
     public void nextTechnoogyBranch(){}
     public void previousTechnologyBranch(){}
 
-    public void nextAbility(){
-      mainPlayer.nextAbility();	
-    }
-    public void previousAbility(){
-    	mainPlayer.previousAbility();
-    }
+    
     public void createRallyPoint(){}
     
 	@Override
@@ -99,19 +112,17 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 
 	@Override
 	public List<ViewableUnit> getAllUnits() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ViewableControllable getCurrentlySelectedInstance() {
 		return mainPlayer.getSelected();
-		//return null;
+		
 	}
 
 	@Override
 	public String getCurrentlySelectedMode() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

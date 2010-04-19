@@ -16,6 +16,10 @@ public class RallyPoint extends Controllable implements ViewableRallyPoint {
 		super(typeName, id, owner);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public RallyPoint(int id, Player owner){
+		super("Rally Point",id, owner);
+	}
 
 	@Override
 	public void accept(MSVisitor m) {

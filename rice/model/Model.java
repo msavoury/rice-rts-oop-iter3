@@ -235,6 +235,9 @@ public class Model implements ViewableModel, ControllableModel, Tickable, MSVisi
 	public List<Position> getActionTiles() {
 		//if(mainPlayer != null){
 		  return mainPlayer.getActionTiles();
+                  /*List<Position> p = new ArrayList<Position>();
+                  p.add(new Position(1,1));
+                  return p;*/
 		//}
 	}
 

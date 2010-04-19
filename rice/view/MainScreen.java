@@ -280,6 +280,9 @@ class MainScreen extends GameGraphic{
                 if(highlights.get(h)!=null){
                     double tileCenterx = (highlights.get(h).getX()-centerx)*sideLength*1.5;
                     double tileCentery = (highlights.get(h).getY()-centery)*sideLength*Math.sqrt(3)*screenRatio;
+                    if(highlights.get(h).getX()%2 == 1){
+                            tileCentery +=  sideLength*Math.sqrt(3)*screenRatio*.5;
+                    }
                     thingsToDraw.add(new SelfDrawingHexHighlight(tileCenterx, tileCentery, screenRatio));
                 }
             }

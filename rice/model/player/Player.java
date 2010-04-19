@@ -226,7 +226,7 @@ public class Player implements Tickable, MSVisitorAcceptor {
 	
 	public List<ViewableStructure> getAllStructures() {
 		List<ViewableStructure> structList = new ArrayList<ViewableStructure>();
-		for(Controllable c : selector.getAllUnits()){
+		for(Controllable c : selector.getAllStructures()){
 			  structList.add((Structure)c);
 		  }
 			return structList;

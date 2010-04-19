@@ -134,7 +134,7 @@ class ScreenManager extends JFrame{
                 screens.add(new TitleScreen());
                 screens.add(new MainScreen(msa, model, model.getMapSize()));
                 screens.add(new UnitOverviewScreen(model));
-                screens.add(new StructureOverviewScreen());
+                screens.add(new StructureOverviewScreen(model));
                 screens.add(new TechOverviewScreen());
                 screens.add(new KeyBindingScreen(model));
 

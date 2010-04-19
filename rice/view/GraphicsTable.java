@@ -65,6 +65,8 @@ public class GraphicsTable {
 	    graphics.put( "ranged", TextureIO.newTexture(ImageIO.read(new File("rice/images/ranged.png")), true));
 	    graphics.put( "explorer", TextureIO.newTexture(ImageIO.read(new File("rice/images/explorer.png")), true));
 	    graphics.put( "colonist", TextureIO.newTexture(ImageIO.read(new File("rice/images/colonist.png")), true));
+	    graphics.put( "university", TextureIO.newTexture(ImageIO.read(new File("rice/images/university.png")), true));
+	    graphics.put( "capital", TextureIO.newTexture(ImageIO.read(new File("rice/images/capital.png")), true));
         }
         catch(Exception d){
             d.printStackTrace();

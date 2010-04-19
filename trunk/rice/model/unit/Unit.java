@@ -110,8 +110,20 @@ public abstract class Unit extends Controllable implements ViewableUnit {
 		v.visit(this);
 	}
 	
-	public String getViewableUnitOwner(){
-		return getOwner().toString();
+	public double getHealthPercentage()
+	{
+		return this.getHealth()/this.getMaxHealth();
+	}
+  	
+	public String getViewableUnitOwner()
+	{
+		if(this.getUnitOwner()==null)
+		{
+			return "";
+		}
+		{
+			return this.getUnitOwner().toString();
+		}
 	}
 	
 }

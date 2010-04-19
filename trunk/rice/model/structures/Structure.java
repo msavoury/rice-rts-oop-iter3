@@ -4,6 +4,7 @@ import rice.model.Controllable;
 import rice.model.map.ATVisitorAcceptor;
 import rice.model.map.AreaTileVisitor;
 import rice.model.player.Player;
+import rice.model.player.RiceSelector;
 import rice.model.unit.WorkerOwner;
 import rice.util.Position;
 import rice.view.MSVisitor;
@@ -88,6 +89,17 @@ public abstract class Structure extends Controllable implements WorkerOwner, All
 	public void accept(MSVisitor m)
 	{
 		m.visit(this);		
+	}
+
+	public double getHealthPercentage()
+	{
+		return this.getHealth()/this.getMaxHealth();
+	}
+
+	@Override
+	public void accept(RiceSelector s) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
